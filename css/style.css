@@ -241,7 +241,6 @@ footer {
     height: 140px;
     border-radius: 50%; /* Bulle ronde */
     background-image: url('../images/psykoprofil.png');
-    background-size: cover; /* L'image remplit la bulle */
     background-position: center; 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Un peu de relief pour la faire "ressortir" */
     margin-bottom: 2.5rem; /* Espace avant le nom */
