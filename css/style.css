@@ -82,6 +82,7 @@ nav {
     color: #f7ab55; /* Bleu accent */
 }
 
+/* Le paragraphe de la section hero*/
 .hero p {
     color: #9ca3af;
     max-width: 600px;
@@ -94,7 +95,7 @@ nav {
     display: flex;
     gap: 1rem;
 }
-
+/* Le bouton principal avec un style lumineux*/
 .btn-primary {
     background: white;
     color: black;
@@ -104,7 +105,7 @@ nav {
     font-weight: 600;
     transition: transform 0.2s;
 }
-
+/* Le bouton secondaire avec un style plus sombre */
 .btn-secondary {
     background: #1f2937;
     color: white;
@@ -114,7 +115,7 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: background 0.2s;
 }
-
+/* Effet de survol pour les boutons */
 .btn-primary:hover, .btn-secondary:hover {
     transform: translateY(-3px);
     filter: brightness(1.2);
@@ -142,7 +143,7 @@ footer {
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
-
+    /* La ligne de dégradé sous le titre */
 .underline-gradient {
     width: 80px;
     height: 4px;
@@ -150,7 +151,7 @@ footer {
     margin: 0 auto 20px;
     border-radius: 10px;
 }
-
+/* Sous-titre de la section compétences */
 .section-subtitle {
     color: #9ca3af;
     max-width: 800px;
@@ -165,7 +166,7 @@ footer {
     padding: 30px;
     text-align: left;
 }
-
+/* Le header de la grande carte, avec l'icône et le titre alignés sur la même ligne */
 .card-header {
     display: flex;
     align-items: center;
@@ -173,6 +174,7 @@ footer {
     margin-bottom: 30px;
 }
 
+/* Les petites cartes d'icônes */
 .icon-box-orange {
     background: rgba(249, 115, 22, 0.1);
     border: 1px solid #f97316;
@@ -197,41 +199,40 @@ footer {
 }
 
 .skill-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Légère élévation au survol */
     border-color: #475569;
 }
 
 .skill-info {
-    display: flex;
+    display: flex; /* Pour aligner l'icône et le titre sur la même ligne */
     align-items: center;
     gap: 12px;
     margin-bottom: 12px;
 }
 
 .skill-icon {
-    width: 32px;
+    width: 32px; /* Taille de l'icône */
     height: 32px;
 }
 
 .skill-icon-emoji {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Taille de l'emoji */
 }
 
 .skill-item h4 {
-    margin: 0;
+    margin: 0; /* Enlève les marges par défaut */
     font-size: 1.1rem;
     color: white;
 }
 
 .skill-item p {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Texte plus petit pour la description */
     color: #9ca3af;
     line-height: 1.5;
     margin: 0;
 }
 .skills-grid {
-    display: grid;
-    /* On réduit un peu la taille minimale pour faire tenir plus de colonnes si besoin */
+    display: grid; /* pour la mise en page en grille */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 20px;
 }
@@ -241,6 +242,7 @@ footer {
     height: 140px;
     border-radius: 50%; /* Bulle ronde */
     background-image: url('../images/psykoprofil.png');
+    background-size: cover; /* L'image remplit la bubulle */
     background-position: center; 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Un peu de relief pour la faire "ressortir" */
     margin-bottom: 2.5rem; /* Espace avant le nom */
