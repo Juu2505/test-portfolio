@@ -239,8 +239,6 @@ footer {
 }
 /* --- HERO IMAGE DE PROFIL --- */
 .hero .profile-img {
-    width: 140px; /* Taille de la bubulle */
-    height: 140px;
     border-radius: 50%; /* Bulle ronde */
     background-image: url('../images/psykoprofil.png');
     background-size: cover; /* L'image remplit la bubulle */
