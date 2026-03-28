@@ -272,3 +272,296 @@ footer {
     text-align: center;
     min-height: 80vh; /* Centrer verticalement */
 }
+/* --- SECTION À PROPOS (NÉON FERNANDES) --- */
+
+.about-section {
+    padding: 60px 10%;
+    color: #f9fafb; /* Texte blanc cassé */
+}
+
+.container-apropo {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- COLONNE GAUCHE (CARTE DE PROFIL) --- */
+
+.profile-card {
+    background-color: #0f172a; /* Fond sombre */
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1); /* Lueur subtile globale */
+    position: relative;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* L'effet de bordure néon orange/violet */
+.profile-card::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(to right, #f97316, #a855f7);
+    border-radius: 22px;
+    z-index: -1;
+    filter: blur(1px); /* Pour adoucir */
+}
+
+.profile-card:hover {
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.2), 0 0 25px rgba(168, 85, 247, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 15px rgba(168, 85, 247, 0.4); /* Néon sur l'image */
+    overflow: hidden; /* Pour que l'image soit bien ronde */
+    border: 3px solid #fff;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-card h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-card h3 {
+    font-size: 1.1rem;
+    color: #f97316; /* Orange pour le titre */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block; /* Pour centrer le bloc */
+    margin-bottom: 20px;
+}
+
+.contact-list li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #9ca3af; /* Gris clair */
+}
+
+/* Icônes néon orange */
+.icon-neo-orange {
+    font-size: 1.2rem;
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-box {
+    background-color: #1e293b; /* Boîte d'info grise */
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f97316; /* Nombre en orange */
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stat-number.stat-plus::after {
+    content: "+";
+    font-size: 1.2rem;
+    vertical-align: super;
+}
+
+.stat-box p {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(to right, #f97316, #a855f7); /* Dégradé néon */
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 15px rgba(168, 85, 247, 0.4);
+    transition: all 0.2s ease;
+}
+
+.icon-neo-cv {
+    font-size: 1.2rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.btn-cv:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6), 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+/* --- COLONNE DROITE (CONTENU AVEC EFFET NÉON) --- */
+
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.box-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.icon-neo-box {
+    font-size: 1.5rem;
+    color: #f97316; /* Icône en orange néon */
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+.about-box {
+    background-color: #0f172a; /* Fond sombre */
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.about-box::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(to right, #f97316, #a855f7);
+    border-radius: 18px;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+.about-box:hover {
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-box p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.info-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-box {
+    background-color: #0f172a; /* Fond sombre */
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.info-box::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(to right, #f97316, #a855f7);
+    border-radius: 18px;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+.info-box:hover {
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.info-box h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.points-forts h3 { color: #f97316; } /* Titre en orange */
+.interests h3 { color: #a855f7; } /* Titre en violet */
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-box ul li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: #9ca3af;
+}
+
+/* Puces colorées néon via ::before */
+.points-forts ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px;
+    background-color: #f97316; /* Puce orange */
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+}
+
+.interests ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px;
+    background-color: #a855f7; /* Puce violette */
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+
+@media (max-width: 900px) {
+    .container-apropo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .info-subgrid, .stat-grid {
+        grid-template-columns: 1fr;
+    }
+}
