@@ -84,12 +84,20 @@ nav {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-image: url('../images/psykoprofil.png');
-    background-size: cover;
-    background-position: center;
+    /* On enlève background-image, size et position car l'image est dans le HTML */
     box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
     border: 3px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 2rem;
+    overflow: hidden; /* INDISPENSABLE : coupe ce qui dépasse du cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recadre l'image proprement sans la déformer */
 }
 
 .hero h1 {
@@ -287,4 +295,54 @@ footer {
     align-items: center; /* Aligne l'icône et le titre verticalement */
     gap: 15px;
     margin-bottom: 20px;
+}
+
+/* Conteneur principal : Profil à gauche (350px), Infos à droite (le reste) */
+.container-apropo {
+    display: grid;
+    grid-template-columns: 350px 1fr; 
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* La colonne de droite empile le gros bloc et la petite grille */
+.column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* La petite grille pour mettre Points forts et Intérêts côte à côte */
+.info-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% / 50% */
+    gap: 25px;
+}
+
+/* On s'assure que les cartes de profil ne sont pas vides */
+.profile-card {
+    min-height: 500px; /* Force une taille minimale pour éviter que la carte s'écrase */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img, .profile-image-container, .profile-frame {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important; /* On force la découpe du cercle */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+    margin: 0 auto 20px;
+}
+
+.profile-img img, .profile-image-container img, .profile-frame img, .profile-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Recadrage intelligent sans déformer */
+    display: block;
 }
