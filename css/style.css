@@ -161,12 +161,16 @@ footer {
 
 /* Le grand conteneur bleu foncé */
 .main-card {
-    background-color: #0f172a; /* Bleu très foncé */
-    border: 1px solid #1e293b;
+    background: linear-gradient(#0f172a, #0f172a) padding-box,
+                linear-gradient(to right, #f97316, #a855f7) border-box;
+    border: 1px solid transparent;
     border-radius: 16px;
     padding: 30px;
     text-align: left;
+    /* Lueur subtile pour le grand cadre */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
 /* Le header de la grande carte, avec l'icône et le titre alignés sur la même ligne */
 .card-header {
     display: flex;
@@ -192,17 +196,27 @@ footer {
 }
 
 .skill-item {
-    background-color: #1e293b; /* Bleu un peu plus clair pour les cartes */
-    padding: 20px;
+    position: relative;
+    /* On définit le fond de la carte et la bordure dégradée avec ce calcul magique */
+    background: linear-gradient(#1e293b, #1e293b) padding-box,
+                linear-gradient(to right, #f97316, #a855f7) border-box;
+    
+    border: 1px solid transparent; /* La bordure est transparente pour laisser passer le dégradé derrière */
     border-radius: 12px;
-    border: 1px solid #334155;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    transition: all 0.3s ease;
+    
+    /* L'effet néon (ombre portée colorée très diffuse) */
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.05), 0 0 15px rgba(168, 85, 247, 0.05);
 }
 
+/* Effet quand on passe la souris (l'éclat néon s'intensifie) */
 .skill-item:hover {
-    transform: translateY(-5px); /* Légère élévation au survol */
-    border-color: #475569;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.2), 0 0 30px rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Optionnel : rend le bord un peu plus brillant */
 }
+
 
 .skill-info {
     display: flex; /* Pour aligner l'icône et le titre sur la même ligne */
