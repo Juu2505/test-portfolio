@@ -1,24 +1,32 @@
-/* Fichier : style.css
-   C'est ici que vous allez ajouter votre magie visuelle.
-   Astuce : Pour mettre le menu en horizontal, commencez par travailler sur .menu { display: flex; }
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== 
 */
 
-/* Application de la police Aptos à tout le document */
-/* Importation d'une police proche si Aptos n'est pas là */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
 
 body {
-    background-color: #030712; /* Le noir profond du site */
-    color: #f9fafb; /* Texte blanc cassé */
+    background-color: #030712; /* Noir profond Fernandes */
     font-family: 'Aptos', 'Inter', sans-serif;
+    color: #f9fafb;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- NAVIGATION --- */
+/* ==========================================================================
+   2. NAVIGATION (Capsule Menu)
+   ========================================================================== 
+*/
+
 header {
-    padding: 2rem 10%;
+    padding: 1.5rem 10%;
+    background-color: #030712;
 }
 
 nav {
@@ -28,255 +36,125 @@ nav {
 }
 
 .logo {
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
 }
 
 .menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    background: rgba(255, 255, 255, 0.05); /* Effet de capsule */
-    padding: 0.5rem 2rem;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 1.8rem;
     border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px); /* Effet flou sous le menu */
 }
 
 .menu a {
     text-decoration: none;
-    color: #9ca3af; /* Gris clair */
-    font-size: 0.9rem;
-    transition: color 0.3s;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .menu a:hover {
-    color: white;
+    color: #f97316; /* Orange au survol */
 }
 
-/* --- HERO SECTION --- */
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 100px;
-    padding: 0 10%;
-}
+/* ==========================================================================
+   3. HERO SECTION (Présentation)
+   ========================================================================== 
+*/
 
-.profile-img {
-    width: 100px;
-    height: 100px;
-    background: #1f2937;
-    border-radius: 50%;
-    margin-bottom: 2rem;
-    border: 4px solid #374151;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.hero h1 span {
-    color: #f7ab55; /* Bleu accent */
-}
-
-/* Le paragraphe de la section hero*/
-.hero p {
-    color: #9ca3af;
-    max-width: 600px;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-/* --- BOUTONS --- */
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-}
-/* Le bouton principal avec un style lumineux*/
-.btn-primary {
-    background: white;
-    color: black;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.2s;
-}
-/* Le bouton secondaire avec un style plus sombre */
-.btn-secondary {
-    background: #1f2937;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.2s;
-}
-/* Effet de survol pour les boutons */
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.2);
-}
-
-/* --- FOOTER --- */
-footer {
-    margin-top: 100px;
-    padding: 2rem;
-    text-align: center;
-    color: #4b5563;
-    font-size: 0.8rem;
-}
-
-/* --- SECTION COMPÉTENCES --- */
-.skills-section {
-    padding: 60px 10%;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    background: linear-gradient(to right, #f97316, #a855f7); /* Dégradé Orange vers Violet */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-    /* La ligne de dégradé sous le titre */
-.underline-gradient {
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(to right, #f97316, #a855f7);
-    margin: 0 auto 20px;
-    border-radius: 10px;
-}
-/* Sous-titre de la section compétences */
-.section-subtitle {
-    color: #9ca3af;
-    max-width: 800px;
-    margin: 0 auto 40px;
-}
-
-/* Le grand conteneur bleu foncé */
-.main-card {
-    background: linear-gradient(#0f172a, #0f172a) padding-box,
-                linear-gradient(to right, #f97316, #a855f7) border-box;
-    border: 1px solid transparent;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: left;
-    /* Lueur subtile pour le grand cadre */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Le header de la grande carte, avec l'icône et le titre alignés sur la même ligne */
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-/* Les petites cartes d'icônes */
-.icon-box-orange {
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid #f97316;
-    padding: 10px;
-    border-radius: 12px;
-    color: #f97316;
-}
-
-/* La grille des petites cartes */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.skill-item {
-    position: relative;
-    /* On définit le fond de la carte et la bordure dégradée avec ce calcul magique */
-    background: linear-gradient(#1e293b, #1e293b) padding-box,
-                linear-gradient(to right, #f97316, #a855f7) border-box;
-    
-    border: 1px solid transparent; /* La bordure est transparente pour laisser passer le dégradé derrière */
-    border-radius: 12px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    
-    /* L'effet néon (ombre portée colorée très diffuse) */
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.05), 0 0 15px rgba(168, 85, 247, 0.05);
-}
-
-/* Effet quand on passe la souris (l'éclat néon s'intensifie) */
-.skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.2), 0 0 30px rgba(168, 85, 247, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Optionnel : rend le bord un peu plus brillant */
-}
-
-
-.skill-info {
-    display: flex; /* Pour aligner l'icône et le titre sur la même ligne */
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.skill-icon {
-    width: 32px; /* Taille de l'icône */
-    height: 32px;
-}
-
-.skill-icon-emoji {
-    font-size: 1.5rem; /* Taille de l'emoji */
-}
-
-.skill-item h4 {
-    margin: 0; /* Enlève les marges par défaut */
-    font-size: 1.1rem;
-    color: white;
-}
-
-.skill-item p {
-    font-size: 0.9rem; /* Texte plus petit pour la description */
-    color: #9ca3af;
-    line-height: 1.5;
-    margin: 0;
-}
-.skills-grid {
-    display: grid; /* pour la mise en page en grille */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 20px;
-}
-/* --- HERO IMAGE DE PROFIL --- */
-.hero .profile-img {
-    width: 150px; /* Taille de la bubulle */
-    height: 150px;
-    border-radius: 50%; /* Bulle ronde */
-    background-image: url('../images/psykoprofil.png');
-    background-size: cover; /* L'image remplit la bubulle */
-    background-position: center; 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Un peu de relief pour la faire "ressortir" */
-    margin-bottom: 2.5rem; /* Espace avant le nom */
-}
-
-/* --- HERO SECTION CENTRAGE --- */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 80vh; /* Centrer verticalement */
+    min-height: 70vh;
+    padding: 0 10%;
+    background: transparent; /* Force la suppression du dégradé */
 }
-/* --- SECTION À PROPOS (NÉON FERNANDES) --- */
+
+.hero .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url('../images/psykoprofil.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    background: linear-gradient(to right, #f97316, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: #9ca3af;
+    max-width: 600px;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* ==========================================================================
+   4. BOUTONS
+   ========================================================================== 
+*/
+
+.cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: #030712;
+}
+
+.btn-secondary {
+    background: #1f2937;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   5. SECTION À PROPOS (Néon Cards)
+   ========================================================================== 
+*/
 
 .about-section {
-    padding: 60px 10%;
-    color: #f9fafb; /* Texte blanc cassé */
+    padding: 80px 10%;
+    background-color: transparent;
 }
 
 .container-apropo {
@@ -286,282 +164,127 @@ footer {
     align-items: start;
 }
 
-/* --- COLONNE GAUCHE (CARTE DE PROFIL) --- */
-
-.profile-card {
-    background-color: #0f172a; /* Fond sombre */
-    padding: 30px;
+/* Style commun pour toutes les cartes Néon */
+.profile-card, .about-box, .info-box, .main-card {
+    background-color: #0f172a;
     border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1); /* Lueur subtile globale */
     position: relative;
     border: 1px solid transparent;
-    transition: all 0.3s ease;
-}
-
-/* L'effet de bordure néon orange/violet */
-.profile-card::before {
-    content: "";
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    background: linear-gradient(to right, #f97316, #a855f7);
-    border-radius: 22px;
-    z-index: -1;
-    filter: blur(1px); /* Pour adoucir */
-}
-
-.profile-card:hover {
-    box-shadow: 0 0 25px rgba(249, 115, 22, 0.2), 0 0 25px rgba(168, 85, 247, 0.2);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.profile-image-container {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    position: relative;
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 15px rgba(168, 85, 247, 0.4); /* Néon sur l'image */
-    overflow: hidden; /* Pour que l'image soit bien ronde */
-    border: 3px solid #fff;
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.profile-card h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.profile-card h3 {
-    font-size: 1.1rem;
-    color: #f97316; /* Orange pour le titre */
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.contact-list {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    display: inline-block; /* Pour centrer le bloc */
-    margin-bottom: 20px;
-}
-
-.contact-list li {
-    font-size: 0.95rem;
-    margin-bottom: 10px;
+    background: linear-gradient(#0f172a, #0f172a) padding-box,
+                linear-gradient(to right, #f97316, #a855f7) border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* ... tes autres propriétés (background, border, etc.) ... */
+    padding: 40px; /* Augmente de 30px à 40px ou 50px pour plus d'espace */
     display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #9ca3af; /* Gris clair */
+    flex-direction: column;
+    gap: 30px; /* Ajoute un espace automatique entre le titre et la grille */
 }
 
-/* Icônes néon orange */
-.icon-neo-orange {
-    font-size: 1.2rem;
-    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+.profile-card:hover, .about-box:hover, .info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.15), 0 0 25px rgba(168, 85, 247, 0.15);
 }
+
+/* Détails internes À Propos */
+.profile-card { padding: 40px 30px; text-align: center; }
+.about-box, .info-box { padding: 30px; }
 
 .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-bottom: 25px;
+    margin: 20px 0;
 }
 
 .stat-box {
-    background-color: #1e293b; /* Boîte d'info grise */
+    background: rgba(255, 255, 255, 0.03);
     padding: 15px;
-    border-radius: 12px;
-    text-align: center;
+    border-radius: 15px;
 }
 
 .stat-number {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #f97316; /* Nombre en orange */
-    margin-bottom: 5px;
-    display: block;
-}
-
-.stat-number.stat-plus::after {
-    content: "+";
-    font-size: 1.2rem;
-    vertical-align: super;
-}
-
-.stat-box p {
-    font-size: 0.8rem;
-    color: #9ca3af;
-    margin: 0;
-}
-
-.btn-cv {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: linear-gradient(to right, #f97316, #a855f7); /* Dégradé néon */
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 15px rgba(168, 85, 247, 0.4);
-    transition: all 0.2s ease;
-}
-
-.icon-neo-cv {
-    font-size: 1.2rem;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-}
-
-.btn-cv:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6), 0 0 20px rgba(168, 85, 247, 0.6);
-}
-
-/* --- COLONNE DROITE (CONTENU AVEC EFFET NÉON) --- */
-
-.box-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.box-header h3 {
-    margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
+    color: #f97316;
 }
 
-.icon-neo-box {
-    font-size: 1.5rem;
-    color: #f97316; /* Icône en orange néon */
-    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+/* ==========================================================================
+   6. SECTION COMPÉTENCES
+   ========================================================================== 
+*/
+
+.skills-section {
+    padding: 80px 10%;
 }
 
-.about-box {
-    background-color: #0f172a; /* Fond sombre */
-    padding: 25px;
-    border-radius: 16px;
-    margin-bottom: 25px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.about-box::before {
-    content: "";
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
     background: linear-gradient(to right, #f97316, #a855f7);
-    border-radius: 18px;
-    z-index: -1;
-    filter: blur(1px);
-}
-
-.about-box:hover {
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.about-box p {
-    font-size: 0.95rem;
-    color: #9ca3af;
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
-.info-subgrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.info-box {
-    background-color: #0f172a; /* Fond sombre */
-    padding: 25px;
-    border-radius: 16px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.info-box::before {
-    content: "";
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    background: linear-gradient(to right, #f97316, #a855f7);
-    border-radius: 18px;
-    z-index: -1;
-    filter: blur(1px);
-}
-
-.info-box:hover {
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.1), 0 0 15px rgba(168, 85, 247, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.info-box h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.points-forts h3 { color: #f97316; } /* Titre en orange */
-.interests h3 { color: #a855f7; } /* Titre en violet */
-
-.info-box ul {
-    list-style: none;
-    padding: 0;
-}
-
-.info-box ul li {
-    font-size: 0.9rem;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-    color: #9ca3af;
 }
 
-/* Puces colorées néon via ::before */
-.points-forts ul li::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 50%; transform: translateY(-50%);
-    width: 8px; height: 8px;
-    background-color: #f97316; /* Puce orange */
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+.skills-grid {
+   display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Espace entre les petites cartes elles-mêmes */
+    width: 100%;
 }
 
-.interests ul li::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 50%; transform: translateY(-50%);
-    width: 8px; height: 8px;
-    background-color: #a855f7; /* Puce violette */
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+.skill-item {
+    background: linear-gradient(#1e293b, #1e293b) padding-box,
+                linear-gradient(to right, #f97316, #a855f7) border-box;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
 }
 
-/* --- RESPONSIVE (MOBILE) --- */
+/* Taille des icônes dans les compétences */
+.skill-icon {
+    width: 40px;      /* Force la largeur */
+    height: 40px;     /* Force la hauteur */
+    object-fit: contain; /* Empêche l'image d'être écrasée ou déformée */
+    margin-bottom: 0; /* Aligne bien avec le texte si besoin */
+}
+
+/* Si tu n'as pas mis la classe "skill-icon" sur tes images, 
+   cette règle forcera toutes les images dans les skills à être petites : */
+.skill-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.skill-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* ==========================================================================
+   7. FOOTER & RESPONSIVE
+   ========================================================================== 
+*/
+
+footer {
+    padding: 4rem;
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
 @media (max-width: 900px) {
-    .container-apropo {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+    .container-apropo { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
 }
 
-@media (max-width: 600px) {
-    .info-subgrid, .stat-grid {
-        grid-template-columns: 1fr;
-    }
+.card-header {
+    display: flex;
+    align-items: center; /* Aligne l'icône et le titre verticalement */
+    gap: 15px;
+    margin-bottom: 20px;
 }
