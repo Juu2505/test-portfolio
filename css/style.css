@@ -17,7 +17,7 @@ body {
     padding: 0;
     line-height: 1.6;
     overflow-x: hidden;
-    font-size: 15px; /* Réduction globale de la police */
+    font-size: 14px; /* Réduction globale de la police */
 }
 
 /* ==========================================================================
@@ -162,7 +162,7 @@ nav {
 */
 
 .about-section {
-    padding: 80px 10%;
+    padding: 40px 10%; /* Réduit pour éviter le gros trou blanc */
     background-color: transparent;
 }
 
@@ -195,8 +195,8 @@ nav {
 }
 
 /* Détails internes À Propos */
-.profile-card { padding: 40px 30px; text-align: center; }
-.about-box, .info-box { padding: 30px; }
+.profile-card { padding: 20px 15px; text-align: center; }
+.about-box, .info-box { padding: 15px; }
 
 .stat-grid {
     display: grid;
@@ -223,7 +223,7 @@ nav {
 */
 
 .skills-section {
-    padding: 60px 5%;
+    padding: 40px 5%; /* Réduit pour l'espacement */
     text-align: center;
 }
 
