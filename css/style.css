@@ -182,10 +182,10 @@ nav {
                 linear-gradient(to right, #f97316, #a855f7) border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* ... tes autres propriétés (background, border, etc.) ... */
-    padding: 40px; /* Augmente de 30px à 40px ou 50px pour plus d'espace */
+    padding: 25px; /* Réduit pour des cartes moins grandes */
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Ajoute un espace automatique entre le titre et la grille */
+    gap: 20px; /* Ajoute un espace automatique entre le titre et la grille */
 }
 
 .profile-card:hover, .about-box:hover, .info-box:hover {
@@ -331,7 +331,7 @@ footer {
 
 /* On s'assure que les cartes de profil ne sont pas vides */
 .profile-card {
-    min-height: 500px; /* Force une taille minimale pour éviter que la carte s'écrase */
+    min-height: auto; /* Supprime la grande taille minimale fixe */
     display: flex;
     flex-direction: column;
     align-items: center;
