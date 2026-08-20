@@ -15,7 +15,7 @@ body {
     color: #f9fafb;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.4;
     overflow-x: hidden;
     font-size: 14px; /* Réduction globale de la police */
 }
@@ -103,7 +103,7 @@ nav {
 
 .hero h1 {
     font-size: 3.5rem;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0; /* Espacement réduit */
     font-weight: 800;
 }
 
@@ -129,13 +129,13 @@ nav {
 .hero-subtitle {
     font-size: 1.5rem;
     color: #f9fafb;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem; /* Espacement réduit */
     font-weight: 600;
 }
 
 .hero-desc {
     color: #9ca3af;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem; /* Espacement réduit */
     font-size: 1.1rem;
 }
 
