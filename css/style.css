@@ -114,13 +114,34 @@ nav {
     -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-    color: #9ca3af;
-    max-width: 600px;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 3rem 4rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #f9fafb;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.hero-desc {
+    color: #9ca3af;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.hero-desc strong {
+    color: #f97316;
+}
 /* ==========================================================================
    4. BOUTONS
    ========================================================================== 
@@ -222,65 +243,23 @@ nav {
    ========================================================================== 
 */
 
-.skills-section {
-    padding: 40px 5%; /* Réduit pour l'espacement */
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.2rem; /* Réduction de la taille de la police */
-    font-weight: 800;
-    background: linear-gradient(to right, #f97316, #a855f7);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.skills-grid {
-   display: grid; /* pour la mise en page en grille */
-    
-    /* MODIFICATION : On remplace 'auto-fit' par 'repeat(5, 1fr)' */
-    /* Cela force exactement 5 colonnes de largeur égale, sans retour à la ligne */
-    grid-template-columns: repeat(5, 1fr); 
-    
-    gap: 20px; /* Espace entre les cartes */
-    width: 100%; /* S'assure que la grille prend toute la largeur disponible */
-}
-
-.skill-item {
-    background: linear-gradient(#1e293b, #1e293b) padding-box,
-                linear-gradient(to right, #f97316, #a855f7) border-box;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    padding: 15px; /* Réduit pour des cartes plus petites */
-    transition: all 0.3s ease;
+.mini-skills-grid {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre les éléments horizontalement */
-    justify-content: center; /* Centre les éléments verticalement */
-    text-align: center; /* Centre le texte */
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
-/* Taille des icônes dans les compétences */
-.skill-icon {
-    width: 40px;      /* Force la largeur */
-    height: 40px;     /* Force la hauteur */
-    object-fit: contain; /* Empêche l'image d'être écrasée ou déformée */
-    margin-bottom: 0; /* Aligne bien avec le texte si besoin */
-}
-
-/* Si tu n'as pas mis la classe "skill-icon" sur tes images, 
-   cette règle forcera toutes les images dans les skills à être petites : */
-.skill-item img {
+.mini-skill-icon {
     width: 40px;
     height: 40px;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
-.skill-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+.mini-skill-icon:hover {
+    transform: scale(1.15) translateY(-3px);
 }
 
 /* ==========================================================================
