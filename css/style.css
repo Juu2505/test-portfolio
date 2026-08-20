@@ -243,23 +243,68 @@ nav {
    ========================================================================== 
 */
 
-.mini-skills-grid {
+.skills-section {
+    padding: 40px 5%; /* Réduit pour l'espacement */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem; /* Réduction de la taille de la police */
+    font-weight: 800;
+    background: linear-gradient(to right, #f97316, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; /* Espace réduit */
+    width: 100%;
+}
+
+.skill-item {
+    background: linear-gradient(#1e293b, #1e293b) padding-box,
+                linear-gradient(to right, #f97316, #a855f7) border-box;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 15px; /* Réduit pour des cartes plus petites */
+    transition: all 0.3s ease;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 15px;
+    text-align: center;
 }
 
-.mini-skill-icon {
-    width: 40px;
-    height: 40px;
+.skill-item p {
+    font-size: 0.9rem; /* Description plus petite pour que ça rentre */
+    line-height: 1.4;
+}
+
+/* Taille des icônes dans les compétences */
+.skill-icon {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    margin-bottom: 5px;
 }
 
-.mini-skill-icon:hover {
-    transform: scale(1.15) translateY(-3px);
+.skill-item img {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    object-fit: contain;
+}
+
+.skill-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
 /* ==========================================================================
