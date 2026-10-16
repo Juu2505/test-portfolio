@@ -20,14 +20,11 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: var(--bg-main);
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.04) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.04) 0px, transparent 50%);
-    background-attachment: fixed;
+html, body {
+    background-color: #f8fafc !important;
+    background: #f8fafc !important;
     font-family: 'Aptos', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--text-main);
+    color: #0f172a !important;
     margin: 0;
     padding: 0;
     line-height: 1.6;
