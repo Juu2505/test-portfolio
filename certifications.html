@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css?v=light-2026">
+    <style>
+        html, body {
+            background-color: #f8fafc !important;
+            background: #f8fafc !important;
+            color: #0f172a !important;
+        }
+
+        .cert-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Synthèse Banner */
+        .synthesis-card {
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, rgba(249, 115, 22, 0.45), rgba(168, 85, 247, 0.45)) border-box;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .synthesis-card:hover {
+            box-shadow: 0 18px 35px -5px rgba(249, 115, 22, 0.12), 0 8px 20px -5px rgba(168, 85, 247, 0.12);
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, #f97316, #a855f7) border-box;
+        }
+
+        .synthesis-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .synthesis-title-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .synthesis-title-box h3 {
+            margin: 0;
+            font-size: 1.35rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .synthesis-desc {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            max-width: 900px;
+        }
+
+        .synthesis-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-synthesis-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-synthesis-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(249, 115, 22, 0.45);
+            color: #fff;
+        }
+
+        .btn-synthesis-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .btn-synthesis-secondary:hover {
+            background: rgba(168, 85, 247, 0.08);
+            border-color: #a855f7;
+            color: #9333ea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);
+        }
+
+        /* Section Heading */
+        .projects-heading {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .projects-heading h3 {
+            font-size: 1.45rem;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .projects-heading p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Project Cards Grid */
+        .project-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .project-ui-card {
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(168, 85, 247, 0.4)) border-box;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-ui-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.15), 0 10px 20px -5px rgba(168, 85, 247, 0.15);
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, #f97316, #a855f7) border-box;
+        }
+
+        .project-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 10px;
+        }
+
+        .badge-cadre {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .badge-cadre.anssi {
+            background: rgba(249, 115, 22, 0.1);
+            color: #ea580c;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .badge-cadre.school {
+            background: rgba(168, 85, 247, 0.1);
+            color: #9333ea;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .badge-option {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.35;
+        }
+
+        .project-summary {
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 18px 0;
+        }
+
+        /* Compétences Section inside card */
+        .project-competencies {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .project-competencies-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #ea580c;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .competency-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .competency-list li {
+            color: #334155;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .competency-list li .check-icon {
+            color: #059669;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Tech Tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .project-tag {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .project-ui-card:hover .project-tag {
+            border-color: rgba(168, 85, 247, 0.35);
+            color: #1e293b;
+        }
+
+        /* Action button */
+        .project-card-cta {
+            margin-top: auto;
+        }
+
+        .btn-view-fiche {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(168, 85, 247, 0.08));
+            border: 1px solid rgba(249, 115, 22, 0.35);
+            color: #ea580c;
+            font-weight: 600;
+            font-size: 0.92rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-fiche:hover {
+            background: linear-gradient(135deg, #f97316, #a855f7);
+            border-color: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.28);
+        }
+
+        @media (max-width: 768px) {
+            .project-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .synthesis-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+            <ul class="menu">
+                <li><a href="epreuve-e5.html">Epreuve E5</a></li>
+                <li><a href="epreuve-e6.html">Epreuve E6</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="veille-technologique.html">Veille technologique</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="skills-section">
+            <div class="cert-container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="underline-gradient"></div>
+                <p class="section-subtitle">Attestations officielles, MOOC et compétences numériques validées</p>
+
+                <!-- BANNIÈRE PRÉSENTATION -->
+                <div class="synthesis-card">
+                    <div class="synthesis-header">
+                        <div class="synthesis-title-box">
+                            <div>
+                                <h3>Parcours de Certification & Cybersécurité</h3>
+                                <span style="font-size: 0.8rem; color: #f97316; font-weight: 600;">Formation continue & Compétences certifiées</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="synthesis-desc">
+                        Dans le cadre de ma formation en BTS SIO et de mon activité professionnelle chez Kyriba, la validation de certifications officielles garantit la maîtrise des bonnes pratiques en matière de sécurité informatique, d'hygiène numérique et de protection des données.
+                    </p>
+                    <div class="synthesis-actions">
+                        <a href="documentation/MOOC Secnum.pdf" target="_blank" class="btn-synthesis-primary">
+                            Consulter l'attestation MOOC ANSSI (PDF)
+                        </a>
+                        <a href="https://secnumacademie.gouv.fr/" target="_blank" class="btn-synthesis-secondary">
+                            Plateforme SecNumacadémie
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SECTION CARDS -->
+                <div class="projects-heading">
+                    <h3>Attestations & MOOC obtenus</h3>
+                    <p>Détail des modules validés, scores obtenus et certificats officiels téléchargeables.</p>
+                </div>
+
+                <div class="project-cards-grid">
+
+                    <!-- CARD MOOC SECNUMACADEMIE -->
+                    <div class="project-ui-card">
+                        <div>
+                            <div class="project-badge-row">
+                                <span class="badge-cadre anssi">Certification officielle · ANSSI</span>
+                                <span class="badge-option">Cybersécurité</span>
+                            </div>
+                            <h4 class="project-title">
+                                MOOC SecNumacadémie – Sécurité du Numérique
+                            </h4>
+                            <p class="project-summary">
+                                Formation certifiante d'initiation et de sensibilisation à la cybersécurité délivrée par l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI). Validation complète des 4 modules avec une moyenne générale de 86%.
+                            </p>
+
+                            <div class="project-competencies">
+                                <div class="project-competencies-label">
+                                    Modules &amp; Scores officiels validés (22 Février 2026)
+                                </div>
+                                <ul class="competency-list">
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Panorama de la SSI</strong> : Enjeux, menaces et principes de la sécurité informatique (Score : 86%)</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Sécurité de l'authentification</strong> : Mots de passe robustes, coffres-forts et 2FA (Score : 84%)</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Sécurité sur Internet</strong> : Navigation sécurisée, phishing et réseaux sociaux (Score : 88%)</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Poste de travail et nomadisme</strong> : Protection des équipements, sauvegardes et chiffrement (Score : 86%)</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag">ANSSI</span>
+                                <span class="project-tag">SecNumacadémie</span>
+                                <span class="project-tag">Cybersécurité</span>
+                                <span class="project-tag">Hygiène informatique</span>
+                                <span class="project-tag">Authentification &amp; 2FA</span>
+                                <span class="project-tag">Protection des données</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card-cta">
+                            <a href="documentation/MOOC Secnum.pdf" target="_blank" class="btn-view-fiche">
+                                Consulter l'attestation de réussite (PDF) →
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Tous droits réservés</p>
+    </footer>
+
+</body>
+
+</html>
