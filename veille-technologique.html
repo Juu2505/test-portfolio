@@ -1,11 +1,384 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veille Technologique - Portfolio</title>
     <link rel="stylesheet" href="css/style.css?v=light-2026">
+    <style>
+        html, body {
+            background-color: #f8fafc !important;
+            background: #f8fafc !important;
+            color: #0f172a !important;
+        }
+
+        .veille-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Bannière d'introduction */
+        .synthesis-card {
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, rgba(249, 115, 22, 0.45), rgba(168, 85, 247, 0.45)) border-box;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 30px 34px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .synthesis-card:hover {
+            box-shadow: 0 18px 35px -5px rgba(249, 115, 22, 0.12), 0 8px 20px -5px rgba(168, 85, 247, 0.12);
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, #f97316, #a855f7) border-box;
+        }
+
+        .synthesis-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .synthesis-title-box h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.4rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .synthesis-desc {
+            color: #475569;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            margin: 0 0 20px 0;
+            max-width: 1050px;
+        }
+
+        .synthesis-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #f97316;
+            font-weight: 700;
+        }
+
+        .meta-value {
+            font-size: 0.92rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* Titres de sections */
+        .section-block-heading {
+            text-align: left;
+            margin: 45px 0 24px;
+        }
+
+        .section-block-heading h3 {
+            font-size: 1.45rem;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .section-block-heading p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Grille des cartes comparatives */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 28px;
+            margin-bottom: 35px;
+        }
+
+        .project-ui-card {
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(168, 85, 247, 0.4)) border-box;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-ui-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.15), 0 10px 20px -5px rgba(168, 85, 247, 0.15);
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, #f97316, #a855f7) border-box;
+        }
+
+        .project-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 10px;
+        }
+
+        .badge-cadre {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .badge-cadre.windows {
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284c7;
+            border: 1px solid rgba(2, 132, 199, 0.3);
+        }
+
+        .badge-cadre.apple {
+            background: rgba(168, 85, 247, 0.1);
+            color: #9333ea;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .badge-option {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .project-summary {
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 18px 0;
+        }
+
+        /* Boîte technique détaillée */
+        .project-competencies {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+        }
+
+        .project-competencies-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #ea580c;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .competency-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .competency-list li {
+            color: #334155;
+            font-size: 0.89rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .competency-list li .check-icon {
+            color: #f97316;
+            font-weight: 800;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Tags techniques */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .project-ui-card:hover .project-tag {
+            border-color: rgba(168, 85, 247, 0.35);
+            color: #1e293b;
+        }
+
+        /* Tableau comparatif récapitulatif */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0 45px;
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .comparative-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        .comparative-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 16px 20px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparative-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        .comparative-table tr:hover td {
+            background: rgba(249, 115, 22, 0.02);
+        }
+
+        .comparative-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-feature {
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        /* Méthodologie et outils */
+        .methodo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+
+        .methodo-card {
+            background: linear-gradient(#ffffff, #ffffff) padding-box,
+                        linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(168, 85, 247, 0.3)) border-box;
+            border: 1px solid transparent;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .methodo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(249, 115, 22, 0.1);
+        }
+
+        .methodo-card h4 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .methodo-card p {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0 0 12px 0;
+        }
+
+        .methodo-card ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #334155;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
@@ -14,44 +387,346 @@
             <ul class="menu">
                 <li><a href="epreuve-e5.html">Epreuve E5</a></li>
                 <li><a href="epreuve-e6.html">Epreuve E6</a></li>
-                <li><a href="certifications.html">Certifications</a></li> 
-                <li><a href="veille-technologique.html">Veille technologique</a></li> 
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="veille-technologique.html">Veille technologique</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="skills-section">
-            <div class="container">
+            <div class="veille-container">
                 <h2 class="section-title">Veille Technologique</h2>
                 <div class="underline-gradient"></div>
-                <p class="section-subtitle">Étude, suivi et analyse d'une innovation technologique majeure</p>
+                <p class="section-subtitle">Étude comparative des architectures de sécurité des systèmes d'exploitation modernes (BTS SIO)</p>
 
-                <div class="main-card">
-                    <div class="card-header">
-                        <h3>Ma Thématique : [Insérer le titre de votre sujet ici]</h3>
+                <!-- BANNIÈRE THÉMATIQUE -->
+                <div class="synthesis-card">
+                    <div class="synthesis-header">
+                        <div class="synthesis-title-box">
+                            <h3>Thématique : macOS (Apple Silicon) vs Windows 11 (x86/ARM)</h3>
+                            <span style="font-size: 0.82rem; color: #f97316; font-weight: 600;">Sécurité native, isolation matérielle et gestion des privilèges en entreprise</span>
+                        </div>
                     </div>
-                    
-                    <p style="color: var(--text-sub); line-height: 1.8; margin-top: 15px;">
-                        C'est ici que vous allez pouvoir introduire votre sujet de veille technologique (par exemple : l'évolution de l'IA dans le développement d'applications, les nouvelles architectures micro-services, les outils DevSecOps, ou les avancées de la cybersécurité). 
-                        Expliquez brièvement pourquoi ce sujet est crucial pour votre profil d'informaticienne.
+                    <p class="synthesis-desc">
+                        Dans le cadre de mes fonctions d'IT Support Niveau 3 chez <strong>Kyriba</strong>, la gestion quotidienne d'un parc informatique hétérogène (composé de stations Windows 11 et de MacBook sous architecture Apple Silicon) m'amène à observer et comparer les mécanismes de protection native et les modèles de gestion des privilèges mis en œuvre par Microsoft et Apple. Cette veille analyse la convergence des deux géants vers la sécurité assistée par le matériel tout en étudiant leurs divergences profondes sur l'expérience d'élévation et l'administration réseau.
                     </p>
+                    <div class="synthesis-meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">Périodicité</span>
+                            <span class="meta-value">Veille hebdomadaire & continue</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Cadre d'application</span>
+                            <span class="meta-value">Flotte hybride entreprise (Kyriba)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Axes d'analyse</span>
+                            <span class="meta-value">Sécurité native · UAC vs TCC · MDM</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Épreuve BTS SIO</span>
+                            <span class="meta-value">Support de l'Épreuve E6</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <div style="margin-top: 35px;">
-                        <h4 style="color: var(--text-main); margin-bottom: 12px; font-size: 1.2rem; font-weight: 700;">Ma méthode de collecte & Outils :</h4>
-                        <ul style="color: var(--text-sub); padding-left: 20px; line-height: 1.8;">
-                            <li>• <strong>Agrégateur de flux RSS :</strong> Feedly, Inoreader (pour centraliser les articles)</li>
-                            <li>• <strong>Alertes automatisées :</strong> Google Alerts, Mention (sur des mots-clés précis)</li>
-                            <li>• <strong>Médias et Newsletters spécialisés :</strong> Le Monde Informatique, ZDNet, Next, L'Anssi...</li>
-                            <li>• <strong>Réseaux professionnels :</strong> Suivi de comptes d'experts tech sur LinkedIn ou Mastodon</li>
+                <!-- AXE 1 : SÉCURITÉ NATIVE -->
+                <div class="section-block-heading">
+                    <h3>1. Sécurité Native : Deux Philosophies d'Architecture</h3>
+                    <p>Comparaison des couches de protection matérielle, de l'isolation mémoire et des moteurs de détection intégrés.</p>
+                </div>
+
+                <div class="comparison-grid">
+
+                    <!-- WINDOWS 11 -->
+                    <div class="project-ui-card">
+                        <div>
+                            <div class="project-badge-row">
+                                <span class="badge-cadre windows">Microsoft · Windows 11</span>
+                                <span class="badge-option">x86 &amp; ARM</span>
+                            </div>
+                            <h4 class="project-title">
+                                L'approche Microsoft : La sécurité par le matériel et l'IA
+                            </h4>
+                            <p class="project-summary">
+                                Historiquement conçu pour une multitude de constructeurs et de matériels tiers, Windows 11 a franchi un cap strict en imposant des prérequis matériels pour créer des frontières de confiance cryptographiques et isoler les processus critiques.
+                            </p>
+
+                            <div class="project-competencies">
+                                <div class="project-competencies-label">
+                                    Mécanismes clés analysés
+                                </div>
+                                <ul class="competency-list">
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Prérequis TPM 2.0 &amp; Secure Boot :</strong> Stockage matériel inviolable des secrets, clés BitLocker et intégrité de la séquence de démarrage (Secure Launch).</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>VBS (Virtualization-Based Security) &amp; HVCI :</strong> Utilisation de l'hyperviseur Hyper-V pour créer une enclave mémoire sécurisée étanche isolant le noyau (Kernel) des attaques par injection de code.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Microsoft Defender for Endpoint &amp; Copilot for Security :</strong> Évolution d'un simple antivirus vers une plateforme XDR connectée au cloud, analysant les signaux comportementaux en temps réel via l'IA.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag">TPM 2.0</span>
+                                <span class="project-tag">VBS / HVCI</span>
+                                <span class="project-tag">Defender XDR</span>
+                                <span class="project-tag">Copilot for Security</span>
+                                <span class="project-tag">Secured-Core PC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MACOS APPLE SILICON -->
+                    <div class="project-ui-card">
+                        <div>
+                            <div class="project-badge-row">
+                                <span class="badge-cadre apple">Apple · macOS</span>
+                                <span class="badge-option">Apple Silicon (M-Series)</span>
+                            </div>
+                            <h4 class="project-title">
+                                L'approche Apple : La forteresse transparente intégrée
+                            </h4>
+                            <p class="project-summary">
+                                Maîtrisant à la fois le silicium (puces M1/M2/M3/M4) et le système d'exploitation, Apple déploie une approche de sécurité silencieuse et profondément intégrée, minimisant les interruptions pour l'utilisateur final.
+                            </p>
+
+                            <div class="project-competencies">
+                                <div class="project-competencies-label">
+                                    Mécanismes clés analysés
+                                </div>
+                                <ul class="competency-list">
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Secure Enclave &amp; Architecture SoC :</strong> Coprocesseur matériel dédié à la cryptographie, au chiffrement FileVault et à l'authentification biométrique Touch ID directement au niveau de la puce.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Protection silencieuse (XProtect &amp; MRT) :</strong> Moteur de détection heuristique et de remédiation (XProtect Remediator) mis à jour en arrière-plan sans redémarrage ni sollicitation utilisateur.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Gatekeeper, Notarisation &amp; SIP :</strong> Contrôle cryptographique de chaque exécutable validé par Apple, couplé au SIP (System Integrity Protection) et au volume système scellé (SSV) empêchant même le compte root d'altérer les fichiers vitaux.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag">Apple Silicon</span>
+                                <span class="project-tag">Secure Enclave</span>
+                                <span class="project-tag">Gatekeeper</span>
+                                <span class="project-tag">Notarisation</span>
+                                <span class="project-tag">SIP &amp; SSV</span>
+                                <span class="project-tag">XProtect</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- AXE 2 : GESTION DES PRIVILÈGES -->
+                <div class="section-block-heading">
+                    <h3>2. La Gestion des Privilèges : UAC vs TCC en Environnement Professionnel</h3>
+                    <p>Divergences ergonomiques et administratives pour la limitation des droits locaux et le contrôle d'accès.</p>
+                </div>
+
+                <div class="comparison-grid">
+
+                    <!-- WINDOWS UAC & LAPS -->
+                    <div class="project-ui-card">
+                        <div>
+                            <div class="project-badge-row">
+                                <span class="badge-cadre windows">Windows · UAC &amp; LAPS</span>
+                                <span class="badge-option">Moindre Privilège</span>
+                            </div>
+                            <h4 class="project-title">
+                                Côté Windows : L'élévation contextuelle et Windows LAPS
+                            </h4>
+                            <p class="project-summary">
+                                Windows applique le principe de séparation des jetons : même lorsqu'un utilisateur appartient au groupe des Administrateurs, ses applications s'exécutent avec des droits standards par défaut.
+                            </p>
+
+                            <div class="project-competencies">
+                                <div class="project-competencies-label">
+                                    Fonctionnement &amp; Enjeux d'administration
+                                </div>
+                                <ul class="competency-list">
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Le concept de l'UAC (User Account Control) :</strong> Isolation de l'invite sur le bureau sécurisé (Secure Desktop). L'élévation n'intervient que pour les tâches critiques nécessitant le jeton administrateur complet.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Déploiement de Windows LAPS (Local Administrator Password Solution) :</strong> Gestion dynamique et rotation automatisée des mots de passe des comptes administrateurs locaux, stockés et audités directement dans Microsoft Entra ID (Azure AD).</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Impact en entreprise :</strong> Éradication des mots de passe administrateurs génériques, limitation stricte des mouvements latéraux en cas de compromission d'un poste de travail.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag">UAC</span>
+                                <span class="project-tag">Windows LAPS</span>
+                                <span class="project-tag">Microsoft Entra ID</span>
+                                <span class="project-tag">Moindre Privilège</span>
+                                <span class="project-tag">Secure Desktop</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MACOS TCC & MDM -->
+                    <div class="project-ui-card">
+                        <div>
+                            <div class="project-badge-row">
+                                <span class="badge-cadre apple">macOS · TCC &amp; MDM</span>
+                                <span class="badge-option">Permissions Granulaires</span>
+                            </div>
+                            <h4 class="project-title">
+                                Côté macOS : Le framework TCC et la supervision par MDM
+                            </h4>
+                            <p class="project-summary">
+                                macOS privilégie un contrôle d'accès ressource par ressource via le sous-système TCC (Transparency, Consent, and Control), plutôt qu'une élévation globale de privilèges.
+                            </p>
+
+                            <div class="project-competencies">
+                                <div class="project-competencies-label">
+                                    Fonctionnement &amp; Enjeux d'administration
+                                </div>
+                                <ul class="competency-list">
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Le concept du TCC (Transparency, Consent &amp; Control) :</strong> Chaque application doit obtenir le consentement explicite de l'utilisateur pour accéder à l'Accès disque complet, la caméra, le micro, la saisie clavier ou les fichiers utilisateurs.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Gestion industrielle via MDM (Profils PPPC) :</strong> Déploiement centralisé de profils de configuration (Privacy Preferences Policy Control) pour accréditer les outils métiers (antivirus, RMM, agents de sauvegarde) sans submerger l'utilisateur de fenêtres pop-up.</span>
+                                    </li>
+                                    <li>
+                                        <span class="check-icon">✓</span>
+                                        <span><strong>Surveillance des vulnérabilités de contournement :</strong> Veille active sur les failles d'escalade de privilèges locales (TCC bypass, contournements de sudo et exploitation de liens symboliques).</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="project-tag">TCC Framework</span>
+                                <span class="project-tag">Profils PPPC</span>
+                                <span class="project-tag">MDM / Intune</span>
+                                <span class="project-tag">TCC Bypass</span>
+                                <span class="project-tag">Confidentialité</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TABLEAU COMPARATIF RÉCAPITULATIF -->
+                <div class="section-block-heading">
+                    <h3>3. Matrice Comparative de Synthèse</h3>
+                    <p>Vue d'ensemble synthétique des caractéristiques de sécurité des deux écosystèmes.</p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="comparative-table">
+                        <thead>
+                            <tr>
+                                <th>Critère d'analyse</th>
+                                <th>Windows 11 (Microsoft)</th>
+                                <th>macOS - Apple Silicon (Apple)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="table-feature">Ancrage matériel</td>
+                                <td>Puce TPM 2.0 obligatoire + processeur compatible (x86-64 / ARM64).</td>
+                                <td>SoC Apple Silicon avec coprocesseur Secure Enclave dédié intégré.</td>
+                            </tr>
+                            <tr>
+                                <td class="table-feature">Isolation de la mémoire</td>
+                                <td>VBS (Virtualization-Based Security) créant un espace sécurisé via Hyper-V.</td>
+                                <td>System Integrity Protection (SIP) + Volume système scellé en lecture seule (SSV).</td>
+                            </tr>
+                            <tr>
+                                <td class="table-feature">Contrôle d'exécution applicatif</td>
+                                <td>SmartScreen, signatures numériques Authenticode et WDAC (App Control).</td>
+                                <td>Gatekeeper strict avec validation cryptographique et notarisation obligatoire par Apple.</td>
+                            </tr>
+                            <tr>
+                                <td class="table-feature">Détection des menaces</td>
+                                <td>Microsoft Defender for Endpoint (XDR prédictif alimenté par l'IA dans le cloud).</td>
+                                <td>XProtect &amp; XProtect Remediator (moteur heuristique silencieux mis à jour en tâche de fond).</td>
+                            </tr>
+                            <tr>
+                                <td class="table-feature">Gestion des privilèges locaux</td>
+                                <td>UAC (élévation globale par jeton) + rotation automatisée avec Windows LAPS.</td>
+                                <td>TCC (autorisations granulaires ressource par ressource gérées par le démon tccd).</td>
+                            </tr>
+                            <tr>
+                                <td class="table-feature">Administration en entreprise</td>
+                                <td>Microsoft Intune, stratégie de groupe (GPO) et synchronisation Entra ID.</td>
+                                <td>Solutions MDM (Intune, Jamf, NinjaOne) via profils de configuration PPPC.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- MÉTHODOLOGIE & SOURCES DE VEILLE -->
+                <div class="section-block-heading">
+                    <h3>4. Méthodologie &amp; Outils de Veille Active</h3>
+                    <p>Démarche de collecte, qualification et exploitation de l'information technologique.</p>
+                </div>
+
+                <div class="methodo-grid">
+                    <div class="methodo-card">
+                        <h4>Flux RSS &amp; Agrégateur</h4>
+                        <p>Centralisation quotidienne des publications d'actualité et d'analyse technique via Feedly :</p>
+                        <ul>
+                            <li>• The Hacker News &amp; BleepingComputer</li>
+                            <li>• Le Monde Informatique &amp; ZDNet</li>
+                            <li>• Eclectic Light Company (expert macOS)</li>
+                            <li>• BleepingComputer Windows 11 updates</li>
                         </ul>
                     </div>
 
-                    <div style="margin-top: 35px;">
-                        <h4 style="color: var(--text-main); margin-bottom: 12px; font-size: 1.2rem; font-weight: 700;">Synthèse et axes d'analyse :</h4>
-                        <p style="color: var(--text-sub); line-height: 1.8;">
-                            Vous pourrez ajouter ici des sous-cartes ou des paragraphes listant vos dernières trouvailles, vos comptes-rendus de lecture ou une conclusion synthétique sur l'état actuel de la technologie suivie.
-                        </p>
+                    <div class="methodo-card">
+                        <h4>Publications &amp; Sources Officielles</h4>
+                        <p>Surveillance des annonces d'éditeurs et avis de sécurité institutionnels :</p>
+                        <ul>
+                            <li>• Microsoft Security Blog &amp; Tech Community</li>
+                            <li>• Guide de sécurité des plateformes Apple</li>
+                            <li>• Bulletins d'alerte du CERT-FR et de l'ANSSI</li>
+                            <li>• Dépôts CVE / NVD (NIST) pour les vulnérabilités</li>
+                        </ul>
+                    </div>
+
+                    <div class="methodo-card">
+                        <h4>Alertes &amp; Mots-clés ciblés</h4>
+                        <p>Alertes automatisées Google Alerts sur des requêtes précises :</p>
+                        <ul>
+                            <li>• <code>"Windows LAPS" "Entra ID"</code></li>
+                            <li>• <code>"macOS" "TCC bypass" CVE</code></li>
+                            <li>• <code>"Virtualization-based Security" Windows 11</code></li>
+                            <li>• <code>Apple Silicon "Secure Enclave" vulnerability</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="methodo-card">
+                        <h4>Application Métier chez Kyriba</h4>
+                        <p>Restitution directe dans mes missions d'IT Support N3 :</p>
+                        <ul>
+                            <li>• Anticipation des mises à jour OS et des compatibilités</li>
+                            <li>• Déploiement propre des profils de permissions via MDM</li>
+                            <li>• Sécurisation des comptes locaux et application du moindre privilège</li>
+                            <li>• Sensibilisation et traitement rapide des incidents de sécurité</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -64,4 +739,5 @@
     </footer>
 
 </body>
+
 </html>
