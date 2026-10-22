@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veille Technologique - Portfolio</title>
+    <title>Veille Technologique : Secure Enclave Apple - Portfolio Julie Durand</title>
     <link rel="stylesheet" href="css/style.css?v=light-2026">
     <style>
         html, body {
@@ -16,7 +16,7 @@
         .veille-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 16px;
         }
 
         /* Bannière d'introduction */
@@ -25,7 +25,7 @@
                         linear-gradient(135deg, rgba(249, 115, 22, 0.45), rgba(168, 85, 247, 0.45)) border-box;
             border: 1px solid transparent;
             border-radius: 20px;
-            padding: 30px 34px;
+            padding: 32px 36px;
             margin-bottom: 40px;
             position: relative;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
@@ -45,32 +45,49 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .synthesis-title-box h3 {
-            margin: 0 0 4px 0;
-            font-size: 1.4rem;
+            margin: 0 0 6px 0;
+            font-size: 1.5rem;
             color: #0f172a;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chip-die {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.1);
+            color: #ea580c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .synthesis-desc {
             color: #475569;
-            font-size: 0.96rem;
-            line-height: 1.65;
-            margin: 0 0 20px 0;
-            max-width: 1050px;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0 0 24px 0;
+            max-width: 1080px;
         }
 
         .synthesis-meta-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 16px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 16px 20px;
+            border-radius: 14px;
+            padding: 18px 22px;
         }
 
         .meta-item {
@@ -80,15 +97,15 @@
         }
 
         .meta-label {
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.7px;
             color: #f97316;
             font-weight: 700;
         }
 
         .meta-value {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: #1e293b;
             font-weight: 600;
         }
@@ -96,183 +113,460 @@
         /* Titres de sections */
         .section-block-heading {
             text-align: left;
-            margin: 45px 0 24px;
+            margin: 50px 0 24px;
         }
 
         .section-block-heading h3 {
             font-size: 1.45rem;
             color: #0f172a;
-            margin: 0 0 6px 0;
+            margin: 0 0 8px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            gap: 12px;
+            font-weight: 800;
         }
 
         .section-block-heading p {
             color: #64748b;
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.96rem;
+            line-height: 1.6;
         }
 
-        /* Grille des cartes comparatives */
-        .comparison-grid {
+        /* Architecture Grid */
+        .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
             margin-bottom: 35px;
         }
 
-        .project-ui-card {
-            background: linear-gradient(#ffffff, #ffffff) padding-box,
-                        linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(168, 85, 247, 0.4)) border-box;
-            border: 1px solid transparent;
-            border-radius: 20px;
-            padding: 30px;
+        .spec-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #f97316, #a855f7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 12px 25px rgba(249, 115, 22, 0.08);
+        }
+
+        .spec-card:hover::before {
+            opacity: 1;
+        }
+
+        .spec-icon-row {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .spec-icon {
+            font-size: 1.6rem;
+        }
+
+        .spec-tag {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .spec-card h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.12rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .spec-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Méthode de veille en 4 étapes */
+        .methodo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
             text-align: left;
             position: relative;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
         }
 
-        .project-ui-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.15), 0 10px 20px -5px rgba(168, 85, 247, 0.15);
-            background: linear-gradient(#ffffff, #ffffff) padding-box,
-                        linear-gradient(135deg, #f97316, #a855f7) border-box;
+        .step-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(168, 85, 247, 0.09);
         }
 
-        .project-badge-row {
+        .step-number {
+            font-family: 'Inter', monospace;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #f97316;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* FILTRES & MOTEUR DE RECHERCHE */
+        .feed-control-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .search-row {
+            display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            gap: 12px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        #q {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: all 0.2s ease;
+        }
+
+        #q:focus {
+            background: #ffffff;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .badge-cadre {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 20px;
+        .filter-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #64748b;
+            min-width: 75px;
         }
 
-        .badge-cadre.windows {
-            background: rgba(2, 132, 199, 0.1);
-            color: #0284c7;
-            border: 1px solid rgba(2, 132, 199, 0.3);
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .badge-cadre.apple {
-            background: rgba(168, 85, 247, 0.1);
-            color: #9333ea;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-
-        .badge-option {
+        .fbtn {
             background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #cbd5e1;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .fbtn:hover {
+            border-color: #f97316;
+            color: #ea580c;
+        }
+
+        .fbtn[aria-pressed="true"] {
+            background: linear-gradient(135deg, #f97316, #a855f7);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+
+        .feed-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #64748b;
+            padding-top: 4px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* FRISE & FICHES */
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 45px;
+        }
+
+        .feed-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px 28px;
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 24px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feed-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(249, 115, 22, 0.35);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .date-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 4px;
+        }
+
+        .date-year {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+        }
+
+        .date-month {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #f97316;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feed-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .theme-badge {
             font-size: 0.75rem;
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 6px;
-            letter-spacing: 0.5px;
+            background: rgba(249, 115, 22, 0.1);
+            color: #ea580c;
+            border: 1px solid rgba(249, 115, 22, 0.25);
         }
 
-        .project-title {
-            font-size: 1.25rem;
-            color: #0f172a;
-            margin: 0 0 12px 0;
+        .rel-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .rel-officielle {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .rel-presse {
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+
+        .rel-verifier {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+        }
+
+        .feed-title {
+            margin: 0;
+            font-size: 1.22rem;
             font-weight: 700;
-            line-height: 1.35;
+            color: #0f172a;
+            line-height: 1.4;
         }
 
-        .project-summary {
+        .feed-text {
+            margin: 0;
             color: #475569;
-            font-size: 0.92rem;
-            line-height: 1.6;
-            margin: 0 0 18px 0;
+            font-size: 0.94rem;
+            line-height: 1.65;
         }
 
-        /* Boîte technique détaillée */
-        .project-competencies {
+        .feed-why {
             background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-bottom: 20px;
+            border-left: 3px solid #f97316;
+            border-radius: 0 8px 8px 0;
+            padding: 10px 14px;
+            margin: 2px 0 0 0;
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.55;
         }
 
-        .project-competencies-label {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
+        .feed-why strong {
             color: #ea580c;
             font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .competency-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .competency-list li {
-            color: #334155;
-            font-size: 0.89rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
-
-        .competency-list li .check-icon {
-            color: #f97316;
-            font-weight: 800;
-            font-size: 0.95rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        /* Tags techniques */
-        .project-tags {
+        .feed-sources {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-top: 4px;
         }
 
-        .project-tag {
-            background: #f1f5f9;
+        .source-link {
+            font-size: 0.84rem;
+            color: #9333ea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .source-link:hover {
+            color: #f97316;
+            text-decoration: underline;
+        }
+
+        .empty-message {
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 36px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* TENDANCES & ANALYSE */
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+
+        .trend-card {
+            background: #ffffff;
             border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 12px 25px rgba(249, 115, 22, 0.08);
+        }
+
+        .trend-card h4 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trend-card p {
             color: #475569;
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 4px 10px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin: 0;
         }
 
-        .project-ui-card:hover .project-tag {
-            border-color: rgba(168, 85, 247, 0.35);
-            color: #1e293b;
-        }
-
-        /* Tableau comparatif récapitulatif */
+        /* TABLEAU PROFESSIONNEL SIO */
         .table-responsive {
             overflow-x: auto;
             margin: 25px 0 45px;
@@ -305,7 +599,7 @@
             border-bottom: 1px solid #f1f5f9;
             color: #334155;
             vertical-align: top;
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .comparative-table tr:hover td {
@@ -322,58 +616,61 @@
             white-space: nowrap;
         }
 
-        /* Méthodologie et outils */
-        .methodo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-            margin-bottom: 40px;
-        }
-
-        .methodo-card {
-            background: linear-gradient(#ffffff, #ffffff) padding-box,
-                        linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(168, 85, 247, 0.3)) border-box;
-            border: 1px solid transparent;
-            border-radius: 16px;
-            padding: 24px;
+        /* SOURCES BIBLIOGRAPHIQUES */
+        .sources-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 45px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
             text-align: left;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
         }
 
-        .methodo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(249, 115, 22, 0.1);
-        }
-
-        .methodo-card h4 {
-            color: #0f172a;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .methodo-card p {
-            color: #475569;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin: 0 0 12px 0;
-        }
-
-        .methodo-card ul {
+        .sources-list {
+            columns: 2 320px;
+            column-gap: 36px;
+            padding-left: 20px;
             margin: 0;
-            padding-left: 18px;
-            color: #334155;
-            font-size: 0.88rem;
-            line-height: 1.7;
         }
 
-        @media (max-width: 900px) {
-            .comparison-grid {
+        .sources-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .sources-list a {
+            color: #9333ea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .sources-list a:hover {
+            color: #f97316;
+            text-decoration: underline;
+        }
+
+        .sources-list small {
+            display: block;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .feed-card {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .date-box {
+                flex-direction: row;
+                gap: 8px;
+                align-items: baseline;
+            }
+            .synthesis-card {
+                padding: 22px;
             }
         }
     </style>
@@ -398,325 +695,266 @@
             <div class="veille-container">
                 <h2 class="section-title">Veille Technologique</h2>
                 <div class="underline-gradient"></div>
-                <p class="section-subtitle">Étude comparative des architectures de sécurité des systèmes d'exploitation modernes (BTS SIO)</p>
+                <p class="section-subtitle">Étude approfondie de la Secure Enclave d'Apple : Architecture matérielle, cryptographie et isolation système</p>
 
                 <!-- BANNIÈRE THÉMATIQUE -->
                 <div class="synthesis-card">
                     <div class="synthesis-header">
                         <div class="synthesis-title-box">
-                            <h3>Thématique : macOS (Apple Silicon) vs Windows 11 (x86/ARM)</h3>
-                            <span style="font-size: 0.82rem; color: #f97316; font-weight: 600;">Sécurité native, isolation matérielle et gestion des privilèges en entreprise</span>
+                            <h3>
+                                <span>La Secure Enclave d'Apple</span>
+                                <span class="chip-die">🔐 Isolation Matérielle &amp; Cryptographie</span>
+                            </h3>
+                            <span style="font-size: 0.88rem; color: #f97316; font-weight: 600;">Composant sécurisé, sepOS, biométrie hermétique et applications d'entreprise</span>
                         </div>
                     </div>
                     <p class="synthesis-desc">
-                        Dans le cadre de mes fonctions d'IT Support Niveau 3 chez <strong>Kyriba</strong>, la gestion quotidienne d'un parc informatique hétérogène (composé de stations Windows 11 et de MacBook sous architecture Apple Silicon) m'amène à observer et comparer les mécanismes de protection native et les modèles de gestion des privilèges mis en œuvre par Microsoft et Apple. Cette veille analyse la convergence des deux géants vers la sécurité assistée par le matériel tout en étudiant leurs divergences profondes sur l'expérience d'élévation et l'administration réseau.
+                        Dans le cadre de mon alternance chez <strong>Kyriba</strong> au sein du support informatique Niveau 3, je gère au quotidien un parc hétérogène comprenant de nombreuses stations MacBook équipées des puces Apple Silicon (M1 à M4). La <strong>Secure Enclave</strong> constitue le cœur névralgique de la sécurité des terminaux Apple : un sous-système matériel entièrement isolé doté de son propre micronoyau (<strong>sepOS</strong>) qui conserve les clés de chiffrement de stockage (FileVault), les gabarits biométriques (Touch ID / Face ID) et les clés asymétriques des applications hors de portée du système d'exploitation hôte, protégeant l'intégrité des données même en cas de compromission critique du noyau (Kernel).
                     </p>
                     <div class="synthesis-meta-grid">
                         <div class="meta-item">
                             <span class="meta-label">Périodicité</span>
-                            <span class="meta-value">Veille hebdomadaire & continue</span>
+                            <span class="meta-value">Veille continue &amp; hebdomadaire</span>
                         </div>
                         <div class="meta-item">
-                            <span class="meta-label">Cadre d'application</span>
-                            <span class="meta-value">Flotte hybride entreprise (Kyriba)</span>
+                            <span class="meta-label">Terrain d'application</span>
+                            <span class="meta-value">Flotte Apple Silicon &amp; Kyriba</span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Axes d'analyse</span>
-                            <span class="meta-value">Sécurité native · UAC vs TCC · MDM</span>
+                            <span class="meta-value">sepOS · Passkeys · Exclaves · Quantique</span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Épreuve BTS SIO</span>
-                            <span class="meta-value">Support de l'Épreuve E6</span>
+                            <span class="meta-value">Support de l'Épreuve E6 (SLAM)</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- AXE 1 : SÉCURITÉ NATIVE -->
+                <!-- 1. COMPRENDRE LE SUJET & ARCHITECTURE -->
                 <div class="section-block-heading">
-                    <h3>1. Sécurité Native : Deux Philosophies d'Architecture</h3>
-                    <p>Comparaison des couches de protection matérielle, de l'isolation mémoire et des moteurs de détection intégrés.</p>
+                    <h3>1. Architecture &amp; Fonctionnement de la Secure Enclave</h3>
+                    <p>Découplage strict entre le système d'exploitation principal (macOS/iOS) et le coprocesseur de sécurité.</p>
                 </div>
 
-                <div class="comparison-grid">
-
-                    <!-- WINDOWS 11 -->
-                    <div class="project-ui-card">
-                        <div>
-                            <div class="project-badge-row">
-                                <span class="badge-cadre windows">Microsoft · Windows 11</span>
-                                <span class="badge-option">x86 &amp; ARM</span>
-                            </div>
-                            <h4 class="project-title">
-                                L'approche Microsoft : La sécurité par le matériel et l'IA
-                            </h4>
-                            <p class="project-summary">
-                                Historiquement conçu pour une multitude de constructeurs et de matériels tiers, Windows 11 a franchi un cap strict en imposant des prérequis matériels pour créer des frontières de confiance cryptographiques et isoler les processus critiques.
-                            </p>
-
-                            <div class="project-competencies">
-                                <div class="project-competencies-label">
-                                    Mécanismes clés analysés
-                                </div>
-                                <ul class="competency-list">
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Prérequis TPM 2.0 &amp; Secure Boot :</strong> Stockage matériel inviolable des secrets, clés BitLocker et intégrité de la séquence de démarrage (Secure Launch).</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>VBS (Virtualization-Based Security) &amp; HVCI :</strong> Utilisation de l'hyperviseur Hyper-V pour créer une enclave mémoire sécurisée étanche isolant le noyau (Kernel) des attaques par injection de code.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Microsoft Defender for Endpoint &amp; Copilot for Security :</strong> Évolution d'un simple antivirus vers une plateforme XDR connectée au cloud, analysant les signaux comportementaux en temps réel via l'IA.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="project-tag">TPM 2.0</span>
-                                <span class="project-tag">VBS / HVCI</span>
-                                <span class="project-tag">Defender XDR</span>
-                                <span class="project-tag">Copilot for Security</span>
-                                <span class="project-tag">Secured-Core PC</span>
-                            </div>
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">🛡️</span>
+                            <span class="spec-tag">Matériel</span>
                         </div>
+                        <h4>Cœur Dédié &amp; Isolation</h4>
+                        <p>Cœur ARM spécifique cadencé indépendamment, isolé physiquement des cœurs de calcul applicatifs afin d'immuniser les clés contre les attaques par canaux auxiliaires et l'accès direct à la mémoire (DMA).</p>
                     </div>
 
-                    <!-- MACOS APPLE SILICON -->
-                    <div class="project-ui-card">
-                        <div>
-                            <div class="project-badge-row">
-                                <span class="badge-cadre apple">Apple · macOS</span>
-                                <span class="badge-option">Apple Silicon (M-Series)</span>
-                            </div>
-                            <h4 class="project-title">
-                                L'approche Apple : La forteresse transparente intégrée
-                            </h4>
-                            <p class="project-summary">
-                                Maîtrisant à la fois le silicium (puces M1/M2/M3/M4) et le système d'exploitation, Apple déploie une approche de sécurité silencieuse et profondément intégrée, minimisant les interruptions pour l'utilisateur final.
-                            </p>
-
-                            <div class="project-competencies">
-                                <div class="project-competencies-label">
-                                    Mécanismes clés analysés
-                                </div>
-                                <ul class="competency-list">
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Secure Enclave &amp; Architecture SoC :</strong> Coprocesseur matériel dédié à la cryptographie, au chiffrement FileVault et à l'authentification biométrique Touch ID directement au niveau de la puce.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Protection silencieuse (XProtect &amp; MRT) :</strong> Moteur de détection heuristique et de remédiation (XProtect Remediator) mis à jour en arrière-plan sans redémarrage ni sollicitation utilisateur.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Gatekeeper, Notarisation &amp; SIP :</strong> Contrôle cryptographique de chaque exécutable validé par Apple, couplé au SIP (System Integrity Protection) et au volume système scellé (SSV) empêchant même le compte root d'altérer les fichiers vitaux.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="project-tag">Apple Silicon</span>
-                                <span class="project-tag">Secure Enclave</span>
-                                <span class="project-tag">Gatekeeper</span>
-                                <span class="project-tag">Notarisation</span>
-                                <span class="project-tag">SIP &amp; SSV</span>
-                                <span class="project-tag">XProtect</span>
-                            </div>
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">⚙️</span>
+                            <span class="spec-tag">Système</span>
                         </div>
+                        <h4>Micronoyau sepOS</h4>
+                        <p>Système d'exploitation propriétaire et allégé basé sur le micronoyau L4. Il possède sa propre séquence de démarrage scellée, totalement indépendante d'iOS ou macOS.</p>
                     </div>
 
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">🔑</span>
+                            <span class="spec-tag">Chiffrement</span>
+                        </div>
+                        <h4>Moteur AES Matériel</h4>
+                        <p>Chiffrement et déchiffrement matériel transparent à la volée des blocs de stockage flash SSD (FileVault). Les clés maîtres de chiffrement ne transitent jamais dans la mémoire vive centrale (RAM).</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">💾</span>
+                            <span class="spec-tag">Mémoire</span>
+                        </div>
+                        <h4>Stockage Sécurisé &amp; Anti-rejeu</h4>
+                        <p>Composant de stockage sécurisé dédié (2e génération sur puces M) intégrant des compteurs matériels anti-rejeu et une temporisation matérielle pour neutraliser les tentatives de force brute sur les codes PIN.</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">👁️</span>
+                            <span class="spec-tag">Biométrie</span>
+                        </div>
+                        <h4>Face ID &amp; Touch ID Hermétiques</h4>
+                        <p>Les représentations mathématiques des empreintes et visages sont calculées et conservées exclusivement dans l'enclave. L'OS principal ne reçoit qu'un jeton booléen d'approbation cryptographique.</p>
+                    </div>
+
+                    <div class="spec-card">
+                        <div class="spec-icon-row">
+                            <span class="spec-icon">🧑‍💻</span>
+                            <span class="spec-tag">Développeurs</span>
+                        </div>
+                        <h4>Framework CryptoKit</h4>
+                        <p>L'API <code>SecureEnclave.P256</code> permet aux développeurs de générer des paires de clés asymétriques où la clé privée est enfermée dans la puce : les signatures s'exécutent en enclave sans que la clé ne fuite.</p>
+                    </div>
                 </div>
 
-                <!-- AXE 2 : GESTION DES PRIVILÈGES -->
+                <!-- 2. MÉTHODOLOGIE DE VEILLE -->
                 <div class="section-block-heading">
-                    <h3>2. La Gestion des Privilèges : UAC vs TCC en Environnement Professionnel</h3>
-                    <p>Divergences ergonomiques et administratives pour la limitation des droits locaux et le contrôle d'accès.</p>
+                    <h3>2. Méthodologie &amp; Outils de Veille Active</h3>
+                    <p>Démarche rigoureuse en 4 étapes pour collecter, trier, qualifier et exploiter l'information technique.</p>
                 </div>
 
-                <div class="comparison-grid">
-
-                    <!-- WINDOWS UAC & LAPS -->
-                    <div class="project-ui-card">
-                        <div>
-                            <div class="project-badge-row">
-                                <span class="badge-cadre windows">Windows · UAC &amp; LAPS</span>
-                                <span class="badge-option">Moindre Privilège</span>
-                            </div>
-                            <h4 class="project-title">
-                                Côté Windows : L'élévation contextuelle et Windows LAPS
-                            </h4>
-                            <p class="project-summary">
-                                Windows applique le principe de séparation des jetons : même lorsqu'un utilisateur appartient au groupe des Administrateurs, ses applications s'exécutent avec des droits standards par défaut.
-                            </p>
-
-                            <div class="project-competencies">
-                                <div class="project-competencies-label">
-                                    Fonctionnement &amp; Enjeux d'administration
-                                </div>
-                                <ul class="competency-list">
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Le concept de l'UAC (User Account Control) :</strong> Isolation de l'invite sur le bureau sécurisé (Secure Desktop). L'élévation n'intervient que pour les tâches critiques nécessitant le jeton administrateur complet.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Déploiement de Windows LAPS (Local Administrator Password Solution) :</strong> Gestion dynamique et rotation automatisée des mots de passe des comptes administrateurs locaux, stockés et audités directement dans Microsoft Entra ID (Azure AD).</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Impact en entreprise :</strong> Éradication des mots de passe administrateurs génériques, limitation stricte des mouvements latéraux en cas de compromission d'un poste de travail.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="project-tag">UAC</span>
-                                <span class="project-tag">Windows LAPS</span>
-                                <span class="project-tag">Microsoft Entra ID</span>
-                                <span class="project-tag">Moindre Privilège</span>
-                                <span class="project-tag">Secure Desktop</span>
-                            </div>
-                        </div>
+                <div class="methodo-steps">
+                    <div class="step-card">
+                        <span class="step-number">Étape 01</span>
+                        <h4>Collecter</h4>
+                        <p>Agrégation continue via flux RSS (Feedly / Inoreader) des flux <em>Apple Security Research</em>, <em>The Eclectic Light Company</em>, <em>TidBITS</em>, dépôts CVE et alertes Google ciblées (<code>"Secure Enclave" vulnerability</code>, <code>"Apple exclave"</code>).</p>
                     </div>
 
-                    <!-- MACOS TCC & MDM -->
-                    <div class="project-ui-card">
-                        <div>
-                            <div class="project-badge-row">
-                                <span class="badge-cadre apple">macOS · TCC &amp; MDM</span>
-                                <span class="badge-option">Permissions Granulaires</span>
-                            </div>
-                            <h4 class="project-title">
-                                Côté macOS : Le framework TCC et la supervision par MDM
-                            </h4>
-                            <p class="project-summary">
-                                macOS privilégie un contrôle d'accès ressource par ressource via le sous-système TCC (Transparency, Consent, and Control), plutôt qu'une élévation globale de privilèges.
-                            </p>
-
-                            <div class="project-competencies">
-                                <div class="project-competencies-label">
-                                    Fonctionnement &amp; Enjeux d'administration
-                                </div>
-                                <ul class="competency-list">
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Le concept du TCC (Transparency, Consent &amp; Control) :</strong> Chaque application doit obtenir le consentement explicite de l'utilisateur pour accéder à l'Accès disque complet, la caméra, le micro, la saisie clavier ou les fichiers utilisateurs.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Gestion industrielle via MDM (Profils PPPC) :</strong> Déploiement centralisé de profils de configuration (Privacy Preferences Policy Control) pour accréditer les outils métiers (antivirus, RMM, agents de sauvegarde) sans submerger l'utilisateur de fenêtres pop-up.</span>
-                                    </li>
-                                    <li>
-                                        <span class="check-icon">✓</span>
-                                        <span><strong>Surveillance des vulnérabilités de contournement :</strong> Veille active sur les failles d'escalade de privilèges locales (TCC bypass, contournements de sudo et exploitation de liens symboliques).</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="project-tag">TCC Framework</span>
-                                <span class="project-tag">Profils PPPC</span>
-                                <span class="project-tag">MDM / Intune</span>
-                                <span class="project-tag">TCC Bypass</span>
-                                <span class="project-tag">Confidentialité</span>
-                            </div>
-                        </div>
+                    <div class="step-card">
+                        <span class="step-number">Étape 02</span>
+                        <h4>Filtrer</h4>
+                        <p>Sélection stricte des publications : élimination des rumeurs sans fondement, vérification de l'existence d'une source technique primaire (CVE, bulletin Apple ou livre blanc de recherche) et analyse de la pertinence opérationnelle.</p>
                     </div>
 
+                    <div class="step-card">
+                        <span class="step-number">Étape 03</span>
+                        <h4>Qualifier</h4>
+                        <p>Classification méthodique par thématiques (Fondamentaux, Vulnérabilités, Nouveaux usages, Développeurs) et attribution d'un indice de fiabilité vérifié (Source officielle, Presse spécialisée, À vérifier).</p>
+                    </div>
+
+                    <div class="step-card">
+                        <span class="step-number">Étape 04</span>
+                        <h4>Restituer</h4>
+                        <p>Rédaction de fiches synthétiques avec contextualisation BTS SIO : retombées concrètes sur la gestion d'un parc d'entreprise, sécurité des postes clients et conformité réglementaire.</p>
+                    </div>
                 </div>
 
-                <!-- TABLEAU COMPARATIF RÉCAPITULATIF -->
+                <!-- 3. FICHES DE VEILLE DYNAMIQUES -->
                 <div class="section-block-heading">
-                    <h3>3. Matrice Comparative de Synthèse</h3>
-                    <p>Vue d'ensemble synthétique des caractéristiques de sécurité des deux écosystèmes.</p>
+                    <h3>3. Fiches de Veille &amp; Chronologie Technique</h3>
+                    <p>Journal d'actualités technologiques interactif. Utilisez la recherche instantanée ou filtrez par thématique et fiabilité.</p>
+                </div>
+
+                <div class="feed-control-box" role="group" aria-label="Filtres de veille">
+                    <div class="search-row">
+                        <span class="search-icon">🔍</span>
+                        <input id="q" type="search" placeholder="Rechercher par mot-clé (ex: Face ID, post-quantique, Pangu, passkeys, M1, sepOS)..." aria-label="Rechercher dans les fiches de veille">
+                    </div>
+
+                    <div class="filter-row">
+                        <span class="filter-label">Thème :</span>
+                        <div id="themes" class="filter-group"></div>
+                    </div>
+
+                    <div class="filter-row">
+                        <span class="filter-label">Fiabilité :</span>
+                        <div id="rels" class="filter-group"></div>
+                    </div>
+
+                    <div class="feed-status-bar">
+                        <span id="count" aria-live="polite">Chargement des fiches...</span>
+                        <span>Mise à jour : 22 octobre 2026</span>
+                    </div>
+                </div>
+
+                <div class="feed-container" id="feed">
+                    <!-- Fiches injectées dynamiquement par JavaScript -->
+                </div>
+
+                <!-- 4. ANALYSE DES GRANDES TENDANCES -->
+                <div class="section-block-heading">
+                    <h3>4. Analyse &amp; Grandes Tendances Technologiques</h3>
+                    <p>Synthèse prospective et enseignements tirés de l'évolution de la sécurité matérielle Apple.</p>
+                </div>
+
+                <div class="trends-grid">
+                    <div class="trend-card">
+                        <h4>De l'enclave aux « exclaves »</h4>
+                        <p>Apple généralise désormais l'isolation matérielle au-delà des clés cryptographiques. Avec macOS et les puces récentes (ex. voyant caméra du MacBook Neo ou Face ID sur iPhone 18 Pro), des sous-systèmes dédiés tournent dans des « exclaves » totalement autonomes du noyau.</p>
+                    </div>
+
+                    <div class="trend-card">
+                        <h4>L'enclave dans le Cloud (PCC)</h4>
+                        <p>Avec <em>Private Cloud Compute</em> (PCC), l'architecture de la Secure Enclave quitte le terminal pour sécuriser les clusters serveurs d'Apple Intelligence : clés volatiles éphémères et effacement cryptographique instantané à chaque redémarrage.</p>
+                    </div>
+
+                    <div class="trend-card">
+                        <h4>Transition Post-Quantique</h4>
+                        <p>Anticipant l'arrivée de l'ordinateur quantique, Apple introduit des algorithmes résistants (ML-KEM, ML-DSA) dans sepOS et CryptoKit, assurant que les signatures et échanges de clés restent inviolables face aux attaques de décryptage rétroactif.</p>
+                    </div>
+
+                    <div class="trend-card">
+                        <h4>Spectre des Menaces Physiques</h4>
+                        <p>L'historique démontre que les rares failles (comme l'exploit de la Team Pangu en 2020) ont ciblé d'anciennes puces (A7 à A11) et ont systématiquement exigé un accès physique direct au matériel. Aucune exploitation à distance contre l'enclave n'est répertoriée.</p>
+                    </div>
+                </div>
+
+                <!-- 5. INTÉRÊT EN BTS SIO & ENTREPRISE -->
+                <div class="section-block-heading">
+                    <h3>5. Intérêt Métier pour un Technicien BTS SIO</h3>
+                    <p>Applications concrètes dans les missions d'administration réseau, de support N3 et de développement sécurisé.</p>
                 </div>
 
                 <div class="table-responsive">
                     <table class="comparative-table">
                         <thead>
                             <tr>
-                                <th>Critère d'analyse</th>
-                                <th>Windows 11 (Microsoft)</th>
-                                <th>macOS - Apple Silicon (Apple)</th>
+                                <th>Situation Professionnelle en Entreprise</th>
+                                <th>Rôle &amp; Bénéfice de la Secure Enclave</th>
+                                <th>Impact Métier IT Support / SLAM</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="table-feature">Ancrage matériel</td>
-                                <td>Puce TPM 2.0 obligatoire + processeur compatible (x86-64 / ARM64).</td>
-                                <td>SoC Apple Silicon avec coprocesseur Secure Enclave dédié intégré.</td>
+                                <td class="table-feature">Chiffrement du parc Mac (FileVault)</td>
+                                <td>Protection inviolable des clés de déchiffrement SSD au niveau du silicium.</td>
+                                <td>Gestion centralisée des clés de secours institutionnelles via le MDM (Intune/Jamf) en cas d'oubli de mot de passe utilisateur.</td>
                             </tr>
                             <tr>
-                                <td class="table-feature">Isolation de la mémoire</td>
-                                <td>VBS (Virtualization-Based Security) créant un espace sécurisé via Hyper-V.</td>
-                                <td>System Integrity Protection (SIP) + Volume système scellé en lecture seule (SSV).</td>
+                                <td class="table-feature">Authentification FIDO2 &amp; Passkeys</td>
+                                <td>Génération de paires de clés asymétriques liées au domaine web et stockées en enclave.</td>
+                                <td>Suppression des mots de passe réutilisables, élimination drastique des attaques d'hameçonnage (phishing) et simplification du SSO.</td>
                             </tr>
                             <tr>
-                                <td class="table-feature">Contrôle d'exécution applicatif</td>
-                                <td>SmartScreen, signatures numériques Authenticode et WDAC (App Control).</td>
-                                <td>Gatekeeper strict avec validation cryptographique et notarisation obligatoire par Apple.</td>
+                                <td class="table-feature">Gestion du cycle de vie du parc</td>
+                                <td>Obsolescence avérée des terminaux basés sur les anciennes puces A7 à A11 (failles matérielles).</td>
+                                <td>Argumentaire technique solide pour justifier auprès de la DSI le renouvellement et la mise au rebut des postes et smartphones obsolètes.</td>
                             </tr>
                             <tr>
-                                <td class="table-feature">Détection des menaces</td>
-                                <td>Microsoft Defender for Endpoint (XDR prédictif alimenté par l'IA dans le cloud).</td>
-                                <td>XProtect &amp; XProtect Remediator (moteur heuristique silencieux mis à jour en tâche de fond).</td>
+                                <td class="table-feature">Développement d'applications (SLAM)</td>
+                                <td>Utilisation du framework CryptoKit pour signer des requêtes API sensibles avec une clé inaltérable.</td>
+                                <td>Garantie d'intégrité de haut niveau pour les applications métiers connectées aux plateformes critiques de l'entreprise.</td>
                             </tr>
                             <tr>
-                                <td class="table-feature">Gestion des privilèges locaux</td>
-                                <td>UAC (élévation globale par jeton) + rotation automatisée avec Windows LAPS.</td>
-                                <td>TCC (autorisations granulaires ressource par ressource gérées par le démon tccd).</td>
-                            </tr>
-                            <tr>
-                                <td class="table-feature">Administration en entreprise</td>
-                                <td>Microsoft Intune, stratégie de groupe (GPO) et synchronisation Entra ID.</td>
-                                <td>Solutions MDM (Intune, Jamf, NinjaOne) via profils de configuration PPPC.</td>
+                                <td class="table-feature">Conformité RGPD &amp; Support Utilisateur</td>
+                                <td>Traitement 100% local des données biométriques (aucun gabarit Face ID/Touch ID n'est transmis sur le Cloud).</td>
+                                <td>Capacité d'expliquer et de rassurer les utilisateurs finaux lors des formations sur la protection de la vie privée en entreprise.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- MÉTHODOLOGIE & SOURCES DE VEILLE -->
+                <!-- 6. SOURCES & RÉFÉRENCES -->
                 <div class="section-block-heading">
-                    <h3>4. Méthodologie &amp; Outils de Veille Active</h3>
-                    <p>Démarche de collecte, qualification et exploitation de l'information technologique.</p>
+                    <h3>6. Sources &amp; Références Documentaires</h3>
+                    <p>Littérature technique, guides officiels de sécurité et publications de chercheurs exploitées pour cette veille.</p>
                 </div>
 
-                <div class="methodo-grid">
-                    <div class="methodo-card">
-                        <h4>Publications &amp; Sources Officielles</h4>
-                        <p>Surveillance des annonces d'éditeurs et avis de sécurité institutionnels</p>
-                        <ul>
-                            <li>• Microsoft Security Blog &amp; Tech Community</li>
-                            <li>• Guide de sécurité des plateformes Apple</li>
-                            <li>• Bulletins d'alerte du CERT-FR et de l'ANSSI</li>
-                            <li>• Dépôts CVE / NVD (NIST) pour les vulnérabilités</li>
-                        </ul>
-                    </div>
-
-                    <div class="methodo-card">
-                        <h4>Alertes &amp; Mots-clés ciblés</h4>
-                        <p>Alertes automatisées Google Alerts sur des requêtes précises</p>
-                        <ul>
-                            <li>• <code>"Windows LAPS" "Entra ID"</code></li>
-                            <li>• <code>"macOS" "TCC bypass" CVE</code></li>
-                            <li>• <code>"Virtualization-based Security" Windows 11</code></li>
-                            <li>• <code>Apple Silicon "Secure Enclave" vulnerability</code></li>
-                        </ul>
-                    </div>
-
-                    <div class="methodo-card">
-                        <h4>Application Métier chez Kyriba</h4>
-                        <p>Restitution directe dans mes missions d'IT Support N3</p>
-                        <ul>
-                            <li>• Anticipation des mises à jour OS et des compatibilités</li>
-                            <li>• Déploiement propre des profils de permissions via MDM</li>
-                            <li>• Sécurisation des comptes locaux et application du moindre privilège</li>
-                            <li>• Sensibilisation et traitement rapide des incidents de sécurité</li>
-                        </ul>
-                    </div>
+                <div class="sources-card">
+                    <ol class="sources-list">
+                        <li><a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank" rel="noopener">Apple Platform Security – The Secure Enclave</a> <small>Apple · Guide officiel de sécurité</small></li>
+                        <li><a href="https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf" target="_blank" rel="noopener">Apple Platform Security Guide (PDF complet)</a> <small>Apple Documentation technique</small></li>
+                        <li><a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener">Private Cloud Compute : Architecture de sécurité</a> <small>Apple Security Research · Juin 2024</small></li>
+                        <li><a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank" rel="noopener">What's New in Apple's Platform Security Guide</a> <small>TidBITS · 18 mars 2026</small></li>
+                        <li><a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/" target="_blank" rel="noopener">A brief history of Mac enclaves and exclaves</a> <small>The Eclectic Light Company · Juin 2024</small></li>
+                        <li><a href="https://heise.de/-11219835" target="_blank" rel="noopener">MacBook Neo : Protection de la webcam via exclave</a> <small>heise online · Mars 2026</small></li>
+                        <li><a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank" rel="noopener">Apple enclaves and the Neo camera indicator</a> <small>Daring Fireball · Mars 2026</small></li>
+                        <li><a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro" target="_blank" rel="noopener">iPhone 18 Pro uses secure exclave in Face ID</a> <small>AppleInsider · Septembre 2026</small></li>
+                        <li><a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/" target="_blank" rel="noopener">Memory Integrity Enforcement Bolsters iPhone Security</a> <small>TidBITS · Septembre 2025</small></li>
+                        <li><a href="https://www.privacyguides.org/posts/2025/09/20/memory-integrity-enforcement-changes-the-game-on-ios/" target="_blank" rel="noopener">Memory Integrity Enforcement on iOS</a> <small>Privacy Guides · Septembre 2025</small></li>
+                        <li><a href="https://dev.to/jcaso/post-quantum-signing-keys-that-never-leave-the-secure-enclave-1g88" target="_blank" rel="noopener">Post-quantum signing keys in Secure Enclave</a> <small>DEV Community</small></li>
+                        <li><a href="https://www.atelier-socle.com/en/articles/cryptokit-quantum-secure-guide" target="_blank" rel="noopener">CryptoKit Quantum Security Guide</a> <small>Atelier Socle</small></li>
+                        <li><a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave" target="_blank" rel="noopener">Hackers spot permanent vulnerability in Secure Enclave</a> <small>Interesting Engineering · 2020</small></li>
+                        <li><a href="https://macsecurity.net/view/408-apple-s-secure-enclave-is-exposed-to-a-new-unpatchable-exploit" target="_blank" rel="noopener">Secure Enclave unpatchable exploit analysis</a> <small>MacSecurity · 2020</small></li>
+                        <li><a href="https://www.securemac.com/news/hacker-gains-access-iphone-5-secure-enclave-key-opens-door-research" target="_blank" rel="noopener">Hacker gains access to iPhone 5s SEP firmware key</a> <small>SecureMac</small></li>
+                        <li><a href="https://forums.theregister.com/forum/all/2019/12/05/membuster_secure_enclave/" target="_blank" rel="noopener">MemBuster and hardware secure enclaves</a> <small>The Register</small></li>
+                    </ol>
                 </div>
 
             </div>
@@ -724,8 +962,292 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 - Tous droits réservés</p>
+        <p>&copy; 2026 Julie Durand - Portfolio BTS SIO SLAM</p>
     </footer>
+
+    <!-- SCRIPT DE GESTION DU FLUX DE VEILLE -->
+    <script>
+        const ITEMS = [
+            {
+                y: "2013",
+                d: "Sept.",
+                theme: "Fondamentaux",
+                rel: "officielle",
+                title: "Première Secure Enclave avec la puce A7",
+                text: "L'iPhone 5s introduit Touch ID et, avec lui, un coprocesseur sécurisé qui stocke les données d'empreinte à l'écart d'iOS.",
+                why: "Point de départ de la technologie : à citer pour situer l'historique de la sécurité matérielle chez Apple.",
+                src: [["Guide sécurité Apple", "https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web"]]
+            },
+            {
+                y: "2017",
+                d: "Août",
+                theme: "Vulnérabilités",
+                rel: "presse",
+                title: "La clé de déchiffrement du firmware SEP publiée",
+                text: "Un chercheur publie la clé permettant de déchiffrer le firmware de l'enclave de l'iPhone 5s. Les chercheurs peuvent analyser sepOS, mais les données des utilisateurs ne sont pas exposées.",
+                why: "Démontre la différence fondamentale entre lire le code binaire d'un système et compromettre ses secrets cryptographiques.",
+                src: [["SecureMac", "https://www.securemac.com/news/hacker-gains-access-iphone-5-secure-enclave-key-opens-door-research"]]
+            },
+            {
+                y: "2017",
+                d: "Déc.",
+                theme: "Fondamentaux",
+                rel: "presse",
+                title: "Première Secure Enclave sur Mac avec la puce T2",
+                text: "L'iMac Pro embarque la puce T2 : enclave, sepOS, moteur AES pour le SSD interne. La plupart des Mac Intel suivants l'adoptent.",
+                why: "Utile pour identifier quels Mac Intel du parc d'entreprise bénéficient déjà de la protection matérielle.",
+                src: [["Eclectic Light Co.", "https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"]]
+            },
+            {
+                y: "2019",
+                d: "Déc.",
+                theme: "Vulnérabilités",
+                rel: "presse",
+                title: "MemBuster : espionner une enclave par le bus mémoire",
+                text: "Des chercheurs (UC Berkeley, Texas A&M, SK Hynix) décrivent une attaque qui observe les accès mémoire vers la DRAM. Travail général sur les enclaves, pas spécifique à Apple.",
+                why: "Illustre la famille complexe des attaques par canaux auxiliaires sur les architectures matérielles.",
+                src: [["The Register", "https://forums.theregister.com/forum/all/2019/12/05/membuster_secure_enclave/"]]
+            },
+            {
+                y: "2020",
+                d: "Juil.",
+                theme: "Vulnérabilités",
+                rel: "presse",
+                title: "Faille matérielle « non corrigible » (Team Pangu)",
+                text: "Présentée à Shanghai, elle touche les puces A7 à A11. Les A12 et A13 ne sont pas concernées. Un accès physique à l'appareil est nécessaire et peu de détails techniques ont été publiés.",
+                why: "Argument concret pour justifier auprès de la direction le retrait des anciens terminaux d'un parc sensible.",
+                src: [
+                    ["Interesting Engineering", "https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave"],
+                    ["MacSecurity", "https://macsecurity.net/view/408-apple-s-secure-enclave-is-exposed-to-a-new-unpatchable-exploit"]
+                ]
+            },
+            {
+                y: "2020",
+                d: "Nov.",
+                theme: "Fondamentaux",
+                rel: "presse",
+                title: "Puces M1 : enclave intégrée et améliorée",
+                text: "Toutes les puces M intègrent l'enclave, avec protection contre le rejeu et un composant de stockage sécurisé de deuxième génération.",
+                why: "Tous les Mac Apple Silicon partagent désormais le même socle de sécurité matériel inviolable.",
+                src: [["Eclectic Light Co.", "https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"]]
+            },
+            {
+                y: "2022",
+                d: "Sept.",
+                theme: "Développeurs",
+                rel: "officielle",
+                title: "Passkeys : authentification adossée au matériel",
+                text: "Arrivées avec iOS 16. Apple indique que les passkeys sont chiffrées de bout en bout, synchronisées par le trousseau iCloud et liées au site pour lequel elles ont été créées.",
+                why: "Sujet concret pour un projet BTS SIO sur l'authentification forte sans mot de passe (FIDO2).",
+                src: [["Apple Confidentialité", "https://www.apple.com/privacy/features/"]]
+            },
+            {
+                y: "2024",
+                d: "Juin",
+                theme: "Nouveaux usages",
+                rel: "officielle",
+                title: "Private Cloud Compute : l'enclave côté serveur",
+                text: "Les serveurs d'Apple Intelligence ont une Secure Enclave. Elle charge le code signé autorisé, génère des clés non persistantes et efface cryptographiquement les données à chaque redémarrage.",
+                why: "Exemple majeur de « confidential computing » appliqué à l'intelligence artificielle hébergée dans le cloud.",
+                src: [
+                    ["Apple Security Research", "https://security.apple.com/blog/private-cloud-compute/"],
+                    ["Eclectic Light Co.", "https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"]
+                ]
+            },
+            {
+                y: "2024",
+                d: "Juin",
+                theme: "Nouveaux usages",
+                rel: "presse",
+                title: "Machines virtuelles macOS liées à l'enclave",
+                text: "Depuis macOS 15, une VM macOS reçoit une identité dérivée de l'enclave de l'hôte, ce qui permet d'utiliser l'identifiant Apple et iCloud dans la VM.",
+                why: "Très pertinent pour la virtualisation sécurisée de postes de test ou d'environnements sandboxés.",
+                src: [["Eclectic Light Co.", "https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"]]
+            },
+            {
+                y: "2025",
+                d: "Sept.",
+                theme: "Nouveaux usages",
+                rel: "presse",
+                title: "Memory Integrity Enforcement sur les puces A19",
+                text: "Apple combine les défenses mémoire d'iOS et le Memory Tagging Extension d'ARM pour une protection mémoire toujours active. Fonction matérielle réservée aux iPhone 17 et iPhone Air.",
+                why: "Rappelle que la sécurité matérielle d'Apple s'étend bien au-delà de la seule Secure Enclave.",
+                src: [
+                    ["TidBITS", "https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/"],
+                    ["Privacy Guides", "https://www.privacyguides.org/posts/2025/09/20/memory-integrity-enforcement-changes-the-game-on-ios/"]
+                ]
+            },
+            {
+                y: "2025",
+                d: "Sept.",
+                theme: "Développeurs",
+                rel: "verifier",
+                title: "CryptoKit : clés post-quantiques dans l'enclave",
+                text: "Avec iOS 26, CryptoKit ajoute ML-KEM et ML-DSA. Selon des blogs développeurs, des clés ML-DSA peuvent être générées et gardées dans l'enclave (SecureEnclave.MLDSA65 / MLDSA87).",
+                why: "À confirmer dans la documentation officielle CryptoKit avant de le citer en soutenance.",
+                src: [
+                    ["DEV Community", "https://dev.to/jcaso/post-quantum-signing-keys-that-never-leave-the-secure-enclave-1g88"],
+                    ["Atelier Socle", "https://www.atelier-socle.com/en/articles/cryptokit-quantum-secure-guide"]
+                ]
+            },
+            {
+                y: "2026",
+                d: "Janv.",
+                theme: "Fondamentaux",
+                rel: "officielle",
+                title: "Mise à jour du guide de sécurité Apple",
+                text: "Nouvelles sections : cryptographie résistante au quantique, déverrouillage automatique entre appareils, communications d'urgence par satellite.",
+                why: "Le guide officiel reste la référence absolue à citer pour tout oral technique de BTS.",
+                src: [
+                    ["TidBITS", "https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/"],
+                    ["Guide Apple", "https://support.apple.com/guide/security/welcome/web"]
+                ]
+            },
+            {
+                y: "2026",
+                d: "Mars",
+                theme: "Nouveaux usages",
+                rel: "presse",
+                title: "MacBook Neo : voyant caméra protégé par une exclave",
+                text: "Sans LED matérielle, le MacBook Neo affiche un point vert à l'écran. Apple affirme qu'un logiciel, même avec un accès noyau, ne peut pas utiliser la caméra sans l'allumer. Selon un développeur cité, ce voyant tourne dans une exclave séparée du noyau.",
+                why: "Illustre l'extension du principe d'isolement au matériel sensible au-delà de la cryptographie pure.",
+                src: [
+                    ["heise", "https://heise.de/-11219835"],
+                    ["TidBITS", "https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/"],
+                    ["Daring Fireball", "https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator"]
+                ]
+            },
+            {
+                y: "2026",
+                d: "Sept.",
+                theme: "Nouveaux usages",
+                rel: "verifier",
+                title: "iPhone 18 Pro : Face ID avec une « secure exclave »",
+                text: "AppleInsider rapporte qu'une étape supplémentaire de Face ID traite des données d'image dans un compartiment matériel isolé, pour accélérer l'authentification.",
+                why: "Information récente provenant d'une seule source, à recouper lors des prochaines mises à jour de veille.",
+                src: [["AppleInsider", "https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro"]]
+            }
+        ];
+
+        const REL = {
+            officielle: "Source officielle",
+            presse: "Presse spécialisée",
+            verifier: "À vérifier"
+        };
+
+        const state = {
+            theme: "Tous",
+            rel: "Toutes",
+            q: ""
+        };
+
+        try {
+            const saved = JSON.parse(localStorage.getItem("veille-se-state") || "{}");
+            if (saved.theme) state.theme = saved.theme;
+            if (saved.rel) state.rel = saved.rel;
+        } catch(e) {}
+
+        const themes = ["Tous", ...new Set(ITEMS.map(i => i.theme))];
+        const rels = ["Toutes", ...Object.keys(REL)];
+
+        function renderButtons(el, list, stateKey, labelFn) {
+            el.innerHTML = "";
+            list.forEach(val => {
+                const btn = document.createElement("button");
+                btn.className = "fbtn";
+                btn.type = "button";
+                btn.textContent = labelFn ? labelFn(val) : val;
+                btn.setAttribute("aria-pressed", state[stateKey] === val);
+                btn.onclick = () => {
+                    state[stateKey] = val;
+                    try {
+                        localStorage.setItem("veille-se-state", JSON.stringify({ theme: state.theme, rel: state.rel }));
+                    } catch(e) {}
+                    render();
+                };
+                el.appendChild(btn);
+            });
+        }
+
+        const MOIS = ["Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."];
+        function sortKey(item) {
+            return (parseInt(item.y, 10) * 100) + MOIS.indexOf(item.d);
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag));
+        }
+
+        function render() {
+            renderButtons(document.getElementById("themes"), themes, "theme");
+            renderButtons(document.getElementById("rels"), rels, "rel", v => REL[v] || v);
+
+            const query = state.q.trim().toLowerCase();
+            const filtered = ITEMS.filter(item => {
+                const matchTheme = (state.theme === "Tous" || item.theme === state.theme);
+                const matchRel = (state.rel === "Toutes" || item.rel === state.rel);
+                const matchQuery = !query || (
+                    item.title.toLowerCase().includes(query) ||
+                    item.text.toLowerCase().includes(query) ||
+                    item.why.toLowerCase().includes(query) ||
+                    item.theme.toLowerCase().includes(query)
+                );
+                return matchTheme && matchRel && matchQuery;
+            }).sort((a, b) => sortKey(b) - sortKey(a));
+
+            const countEl = document.getElementById("count");
+            countEl.textContent = `${filtered.length} fiche${filtered.length > 1 ? 's' : ''} affichée${filtered.length > 1 ? 's' : ''} sur ${ITEMS.length}`;
+
+            const feedEl = document.getElementById("feed");
+            if (filtered.length === 0) {
+                feedEl.innerHTML = `<div class="empty-message">Aucune fiche de veille ne correspond à votre filtre ou à votre recherche « <strong>${escapeHTML(state.q)}</strong> ».<br><br>Essayez d'effacer la recherche ou de sélectionner « Tous » les thèmes.</div>`;
+                return;
+            }
+
+            feedEl.innerHTML = filtered.map(item => `
+                <article class="feed-card">
+                    <div class="date-box">
+                        <span class="date-year">${escapeHTML(item.y)}</span>
+                        <span class="date-month">${escapeHTML(item.d)}</span>
+                    </div>
+                    <div class="feed-content">
+                        <div class="badge-row">
+                            <span class="theme-badge">${escapeHTML(item.theme)}</span>
+                            <span class="rel-badge rel-${escapeHTML(item.rel)}">${escapeHTML(REL[item.rel] || item.rel)}</span>
+                        </div>
+                        <h4 class="feed-title">${escapeHTML(item.title)}</h4>
+                        <p class="feed-text">${escapeHTML(item.text)}</p>
+                        <div class="feed-why">
+                            <strong>Impact BTS SIO &amp; Entreprise :</strong> ${escapeHTML(item.why)}
+                        </div>
+                        <div class="feed-sources">
+                            ${item.src.map(s => `
+                                <a href="${escapeHTML(s[1])}" target="_blank" rel="noopener" class="source-link">
+                                    <span>${escapeHTML(s[0])}</span>
+                                    <span>↗</span>
+                                </a>
+                            `).join("")}
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        const inputQ = document.getElementById("q");
+        inputQ.addEventListener("input", e => {
+            state.q = e.target.value;
+            render();
+        });
+
+        // Premier rendu au chargement
+        render();
+    </script>
 
 </body>
 
