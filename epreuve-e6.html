@@ -1,58 +1,452 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Épreuve E6 - Portfolio</title>
- <link rel="stylesheet" href="css/style.css?v=light-2026">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epreuve E6 - Portfolio BTS SIO SLAM</title>
+    <meta name="description" content="Epreuve E6 BTS SIO SLAM - Parcours de professionnalisation, realisations et competences developpement.">
+    <link rel="stylesheet" href="css/style.css?v=light-2026">
+    <style>
+        /* ===== E6 SPECIFIC STYLES ===== */
+        .e6-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Intro card */
+        .e6-intro-card {
+            background: linear-gradient(135deg, #fff, #f8fafc);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-left: 4px solid #a855f7;
+            border-radius: 18px;
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 24px rgba(168, 85, 247, 0.07);
+        }
+
+        .e6-intro-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .e6-intro-icon {
+            width: 46px;
+            height: 46px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .e6-intro-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .e6-intro-header span {
+            font-size: 0.8rem;
+            color: #a855f7;
+            font-weight: 600;
+        }
+
+        .e6-intro-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0 0 20px 0;
+        }
+
+        /* Domain pills */
+        .domain-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .domain-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .pill-purple {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: #a855f7;
+        }
+
+        .pill-orange {
+            background: rgba(249, 115, 22, 0.08);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            color: #f97316;
+        }
+
+        .pill-blue {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: #3b82f6;
+        }
+
+        .pill-green {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #10b981;
+        }
+
+        /* Section heading */
+        .projects-heading {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .projects-heading h3 {
+            font-size: 1.35rem;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+            font-weight: 700;
+        }
+
+        .projects-heading p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.93rem;
+        }
+
+        /* Project cards grid */
+        .project-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .project-ui-card {
+            background: #fff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 20px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-ui-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .project-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 10px;
+        }
+
+        .badge-cadre {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .badge-cadre.enterprise {
+            background: rgba(249, 115, 22, 0.09);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, 0.25);
+        }
+
+        .badge-cadre.school {
+            background: rgba(168, 85, 247, 0.09);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+
+        .badge-option {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: 1.18rem;
+            color: var(--text-main);
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .project-summary {
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 18px 0;
+        }
+
+        /* Competences inside card */
+        .project-competencies {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .project-competencies-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #a855f7;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .competency-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .competency-list li {
+            color: var(--text-sub);
+            font-size: 0.86rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .competency-list li .check-icon {
+            color: #10b981;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Tech Tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 22px;
+        }
+
+        .project-tag {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.76rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .project-ui-card:hover .project-tag {
+            border-color: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        /* CTA Button */
+        .project-card-cta {
+            margin-top: auto;
+        }
+
+        .btn-view-fiche {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(249, 115, 22, 0.08));
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: #a855f7;
+            font-weight: 600;
+            font-size: 0.92rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-fiche:hover {
+            background: linear-gradient(135deg, #a855f7, #f97316);
+            border-color: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .project-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
- <header>
- <nav>
- <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
- <ul class="menu">
- <li><a href="epreuve-e5.html">Epreuve E5</a></li>
- <li><a href="epreuve-e6.html">Epreuve E6</a></li>
- <li><a href="certifications.html">Certifications</a></li> 
- <li><a href="veille-technologique.html">Veille technologique</a></li> 
- </ul>
- </nav>
- </header>
+    <header>
+    <nav>
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+        <ul class="menu">
+            <li><a href="epreuve-e5.html">Epreuve E5</a></li>
+            <li><a href="epreuve-e6.html">Epreuve E6</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="veille-technologique.html">Veille technologique</a></li>
+        </ul>
+        <a href="index.html" class="btn-nav-accueil">Accueil</a>
+    </nav>
+    </header>
 
- <main>
- <section class="skills-section">
- <div class="container">
- <h2 class="section-title">Épreuve E6</h2>
- <div class="underline-gradient"></div>
- <p class="section-subtitle">Cybersécurité, professionnalisme et éthique dans le parcours SIO</p>
+    <main>
+    <section class="skills-section">
+        <div class="e6-container">
 
- <div class="main-card">
- <div class="card-header">
- <h3>Cybersécurité & Veille Technologique</h3>
- </div>
- 
- <p style="color: var(--text-sub); line-height: 1.8; margin-top: 15px;">
- Cette page est dédiée à l'épreuve E6. Vous pouvez y présenter votre **Tableau de synthèse**, vos certifications (comme le MOOC de l'ANSSI) ainsi que les démarches de cybersécurité mises en place durant vos stages ou votre alternance.
- </p>
+            <h2 class="section-title">Epreuve E6</h2>
+            <div class="underline-gradient"></div>
+            <p class="section-subtitle">Parcours de professionnalisation et competences en developpement d'applications (BTS SIO SLAM)</p>
 
- <div style="margin-top: 30px;">
- <h4 style="color: var(--text-main); margin-bottom: 10px; font-weight: 700;">Éléments à intégrer :</h4>
- <ul style="color: var(--text-sub); padding-left: 20px; line-height: 1.8;">
- <li> Tableau de synthèse des compétences</li>
- <li> Documentation sur la RGPD</li>
- <li> Analyse éthique des solutions informatiques</li>
- <li> Veille technologique et juridique</li>
- </ul>
- </div>
- </div>
- </div>
- </section>
- </main>
+            <!-- Carte de presentation E6 -->
+            <div class="e6-intro-card">
+                <div class="e6-intro-header">
+                    <div class="e6-intro-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>E6 - Parcours de professionnalisation</h3>
+                        <span>BTS SIO - Option SLAM</span>
+                    </div>
+                </div>
+                <p class="e6-intro-desc">
+                    L'epreuve E6 evalue le parcours de professionnalisation de l'etudiant a travers ses realisations en milieu professionnel et scolaire. Elle valide les competences en <strong>developpement d'applications</strong> (SLAM : Solutions Logicielles et Applications Metiers), la capacite a concevoir, coder, tester et documenter des projets informatiques.
+                    <br><br>
+                    Ce dossier presente les situations professionnelles significatives realisees durant mon alternance chez <strong>Kyriba</strong> et mes travaux a l'ecole <strong>IRIS</strong>, couvrant la gestion de bases de donnees, le developpement web et la programmation applicative.
+                </p>
+                <div class="domain-pills">
+                    <span class="domain-pill pill-purple">Developpement d'applications</span>
+                    <span class="domain-pill pill-orange">Bases de donnees</span>
+                    <span class="domain-pill pill-blue">Programmation web</span>
+                    <span class="domain-pill pill-green">Conduite de projet</span>
+                </div>
+            </div>
 
- <footer>
- <p>&copy; 2026 - Tous droits réservés</p>
- </footer>
+            <!-- Section realisations -->
+            <div class="projects-heading">
+                <h3>Fiches de Realisations Professionnelles</h3>
+                <p>Consultez les dossiers techniques et les competences SLAM validees pour chaque situation professionnelle.</p>
+            </div>
+
+            <div class="project-cards-grid">
+
+                <!-- REALISATION 1 -->
+                <div class="project-ui-card">
+                    <div>
+                        <div class="project-badge-row">
+                            <span class="badge-cadre enterprise">Alternance - Kyriba</span>
+                            <span class="badge-option">SLAM</span>
+                        </div>
+                        <h4 class="project-title">Realisation 1 : [Titre a completer]</h4>
+                        <p class="project-summary">
+                            Description de la realisation professionnelle effectuee en entreprise chez Kyriba. Preciser l'objectif, le contexte et les travaux realises.
+                        </p>
+
+                        <div class="project-competencies">
+                            <div class="project-competencies-label">Competences cles validees</div>
+                            <ul class="competency-list">
+                                <li><span class="check-icon">&#10003;</span> Concevoir et developper une solution applicative</li>
+                                <li><span class="check-icon">&#10003;</span> Gerer les donnees et les bases de donnees</li>
+                                <li><span class="check-icon">&#10003;</span> Assurer la maintenance et l'evolution d'une application</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="project-tag">A completer</span>
+                            <span class="project-tag">A completer</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card-cta">
+                        <a href="#" class="btn-view-fiche">
+                            Voir la fiche detaillee &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- REALISATION 2 -->
+                <div class="project-ui-card">
+                    <div>
+                        <div class="project-badge-row">
+                            <span class="badge-cadre school">Ecole - IRIS</span>
+                            <span class="badge-option">SLAM</span>
+                        </div>
+                        <h4 class="project-title">Realisation 2 : [Titre a completer]</h4>
+                        <p class="project-summary">
+                            Description du projet applicatif realise en contexte scolaire a l'ecole IRIS. Preciser la problematique, la solution developpee et les resultats.
+                        </p>
+
+                        <div class="project-competencies">
+                            <div class="project-competencies-label">Competences cles validees</div>
+                            <ul class="competency-list">
+                                <li><span class="check-icon">&#10003;</span> Analyser les besoins et concevoir une solution</li>
+                                <li><span class="check-icon">&#10003;</span> Developper et tester une application</li>
+                                <li><span class="check-icon">&#10003;</span> Documenter les solutions et accompagner les utilisateurs</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="project-tag">A completer</span>
+                            <span class="project-tag">A completer</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card-cta">
+                        <a href="#" class="btn-view-fiche">
+                            Voir la fiche detaillee &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Tous droits reserves</p>
+    </footer>
 
 </body>
 </html>
