@@ -1,0 +1,678 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entreprise - Kyriba | Portfolio Julie Durand</title>
+    <meta name="description" content="Presentation de Kyriba, leader mondial des logiciels de gestion de tresorerie (TMS) en mode SaaS, et de mon role en alternance en tant qu'IT Support N3.">
+    <link rel="stylesheet" href="css/style.css?v=light-2026">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== PAGE STYLES ===== */
+        .ent-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HERO ENTREPRISE */
+        .ent-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1a0a2e 100%);
+            padding: 80px 5% 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ent-hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ent-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ent-hero-inner {
+            max-width: 1150px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ent-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 28px;
+        }
+
+        .ent-breadcrumb a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+        .ent-breadcrumb a:hover { color: #f97316; }
+        .ent-breadcrumb-sep { color: #334155; }
+        .ent-breadcrumb-active { color: #f97316; font-weight: 600; }
+
+        .ent-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249,115,22,0.12);
+            border: 1px solid rgba(249,115,22,0.3);
+            color: #fb923c;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+        }
+
+        .ent-hero-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: #f8fafc;
+            line-height: 1.15;
+            margin: 0 0 18px 0;
+            letter-spacing: -1px;
+        }
+
+        .ent-hero-title span {
+            background: linear-gradient(135deg, #f97316, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ent-hero-desc {
+            font-size: 1.08rem;
+            color: #94a3b8;
+            line-height: 1.75;
+            max-width: 680px;
+            margin: 0 0 40px 0;
+        }
+
+        /* STATS ROW */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .stat-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 16px 24px;
+            text-align: center;
+            flex: 1;
+            min-width: 130px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-pill-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #f8fafc;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-pill-value span {
+            background: linear-gradient(135deg, #f97316, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-pill-label {
+            font-size: 0.78rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* MAIN CONTENT */
+        .ent-body {
+            padding: 60px 5% 80px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* Section title */
+        .ent-section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 8px 0;
+        }
+
+        .ent-section-divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, #f97316, #a855f7);
+            border-radius: 2px;
+            margin-bottom: 28px;
+        }
+
+        /* Two-column layout */
+        .ent-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) { .ent-grid-2 { grid-template-columns: 1fr; } }
+
+        /* Info card */
+        .ent-card {
+            background: #fff;
+            border: 1px solid rgba(226,232,240,0.9);
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .ent-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(249,115,22,0.09);
+            border-color: rgba(249,115,22,0.2);
+        }
+
+        .ent-card-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f97316;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ent-card-label svg { flex-shrink: 0; }
+
+        .ent-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px 0;
+        }
+
+        .ent-card p {
+            color: #475569;
+            font-size: 0.91rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Full-width card */
+        .ent-card-full {
+            background: #fff;
+            border: 1px solid rgba(226,232,240,0.9);
+            border-radius: 18px;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #475569;
+            font-size: 0.91rem;
+            line-height: 1.5;
+        }
+
+        .feat-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #a855f7);
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        /* Clients logos section */
+        .clients-section {
+            margin-bottom: 48px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .client-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .client-card:hover {
+            border-color: rgba(249,115,22,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249,115,22,0.08);
+        }
+
+        .client-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .client-sector {
+            font-size: 0.73rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* Mon role card */
+        .role-card {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            border-radius: 20px;
+            padding: 36px 36px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+        }
+
+        .role-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .role-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(249,115,22,0.15);
+            border: 1px solid rgba(249,115,22,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .role-avatar svg { color: #f97316; }
+
+        .role-title-box h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0 0 4px 0;
+        }
+
+        .role-title-box p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .role-desc {
+            color: #94a3b8;
+            font-size: 0.93rem;
+            line-height: 1.75;
+            margin: 0 0 24px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .role-tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .role-task {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .role-task-title {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 4px;
+        }
+
+        .role-task-desc {
+            font-size: 0.78rem;
+            color: #64748b;
+            line-height: 1.45;
+        }
+
+        /* Tools used */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tool-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s ease;
+        }
+
+        .tool-tag:hover {
+            background: rgba(249,115,22,0.06);
+            border-color: rgba(249,115,22,0.25);
+            color: #f97316;
+        }
+
+        .tool-tag img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+    <nav>
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+        <ul class="menu">
+            <li><a href="epreuve-e5.html">Epreuve E5</a></li>
+            <li><a href="epreuve-e6.html">Epreuve E6</a></li>
+            <li><a href="entreprise.html">Entreprise</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="veille-technologique.html">Veille technologique</a></li>
+        </ul>
+        <a href="index.html" class="btn-nav-accueil">Accueil</a>
+    </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="ent-hero">
+        <div class="ent-hero-inner">
+            <div class="ent-breadcrumb">
+                <a href="index.html">Accueil</a>
+                <span class="ent-breadcrumb-sep">›</span>
+                <span class="ent-breadcrumb-active">Entreprise</span>
+            </div>
+
+            <div class="ent-hero-badge">
+                Mon entreprise d'alternance
+            </div>
+
+            <h1 class="ent-hero-title">
+                <span>Kyriba</span><br>Leader mondial de la<br>gestion de tresorerie SaaS
+            </h1>
+
+            <p class="ent-hero-desc">
+                Kyriba est une entreprise franco-americaine fondee en 2004, positionnee comme leader mondial des logiciels de gestion de la liquidite d'entreprise (Treasury Management Software) en mode cloud. Sa plateforme SaaS unifiee permet aux directeurs financiers de piloter en temps reel la tresorerie, les paiements et les risques financiers de leurs organisations.
+            </p>
+
+            <div class="stats-row">
+                <div class="stat-pill">
+                    <div class="stat-pill-value"><span>4 000+</span></div>
+                    <div class="stat-pill-label">Clients mondiaux</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-pill-value"><span>100 000+</span></div>
+                    <div class="stat-pill-label">Utilisateurs actifs</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-pill-value"><span>170+</span></div>
+                    <div class="stat-pill-label">Pays couverts</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-pill-value"><span>51 000 Md$</span></div>
+                    <div class="stat-pill-label">Paiements traites / an</div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-pill-value"><span>1 000+</span></div>
+                    <div class="stat-pill-label">Collaborateurs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BODY -->
+    <main>
+    <div class="ent-body">
+
+        <!-- Qu'est-ce que Kyriba -->
+        <h2 class="ent-section-title">A propos de Kyriba</h2>
+        <div class="ent-section-divider"></div>
+
+        <div class="ent-grid-2">
+            <div class="ent-card">
+                <div class="ent-card-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    Identite de l'entreprise
+                </div>
+                <h3>Une fintech franco-americaine de reference</h3>
+                <p>Fondee en <strong>2004</strong> par Jean-Luc Robert, Kyriba est aujourd'hui consideree comme le <strong>leader mondial</strong> des solutions de gestion de liquidite d'entreprise (Enterprise Liquidity Management) en mode SaaS. Son siege social est base a San Diego (Etats-Unis), avec de nombreux bureaux en Europe, dont Paris La Defense.</p>
+            </div>
+
+            <div class="ent-card">
+                <div class="ent-card-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                    Secteur et positionnement
+                </div>
+                <h3>Une plateforme SaaS 100% cloud pour les DAF</h3>
+                <p>Kyriba s'adresse aux <strong>directions financieres (DAF)</strong> des ETI et grands groupes internationaux. Sa plateforme centralise et automatise la gestion de la tresorerie, des paiements, des risques de change et de la connectivite bancaire — le tout en temps reel, depuis un unique espace cloud securise.</p>
+            </div>
+        </div>
+
+        <!-- Ce que fait Kyriba -->
+        <div class="ent-card-full">
+            <div class="ent-card-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Activites et solutions
+            </div>
+            <h3 style="font-size:1.1rem; font-weight:700; color:#0f172a; margin:0 0 12px 0;">Les grandes fonctionnalites de la plateforme</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 16px;">
+                <div>
+                    <div style="font-size:0.8rem; font-weight:700; color:#f97316; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Gestion de tresorerie</div>
+                    <ul class="feature-list">
+                        <li><span class="feat-dot"></span>Visibilite globale et en temps reel de la tresorerie</li>
+                        <li><span class="feat-dot"></span>Previsions de liquidites assistees par IA</li>
+                        <li><span class="feat-dot"></span>Connectivite avec des milliers d'etablissements bancaires</li>
+                    </ul>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; font-weight:700; color:#a855f7; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Paiements et securite</div>
+                    <ul class="feature-list">
+                        <li><span class="feat-dot"></span>Centralisation des flux de paiement mondiaux</li>
+                        <li><span class="feat-dot"></span>Detection des fraudes en temps reel</li>
+                        <li><span class="feat-dot"></span>Conformite bancaire internationale (SWIFT, SEPA)</li>
+                    </ul>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; font-weight:700; color:#3b82f6; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Gestion des risques financiers</div>
+                    <ul class="feature-list">
+                        <li><span class="feat-dot"></span>Couverture des risques de change et de taux</li>
+                        <li><span class="feat-dot"></span>Optimisation du fonds de roulement (BFR)</li>
+                        <li><span class="feat-dot"></span>Financement de chaine d'approvisionnement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients -->
+        <div class="clients-section">
+            <h2 class="ent-section-title">Quelques clients de Kyriba</h2>
+            <div class="ent-section-divider"></div>
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-name">General Electric</div>
+                    <div class="client-sector">Industrie / Energie</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Danone</div>
+                    <div class="client-sector">Agroalimentaire</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Schneider Electric</div>
+                    <div class="client-sector">Energie / Industrie</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Airbus</div>
+                    <div class="client-sector">Aeronautique</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Heineken</div>
+                    <div class="client-sector">Boissons / FMCG</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Baker Hughes</div>
+                    <div class="client-sector">Energie / Petrolier</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Publicis</div>
+                    <div class="client-sector">Communication</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Michelin</div>
+                    <div class="client-sector">Industrie / Auto</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mon role -->
+        <div class="role-card">
+            <div class="role-card-header">
+                <div class="role-avatar">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="role-title-box">
+                    <h3>Mon role : IT Support Niveau 3</h3>
+                    <p>Kyriba &middot; Alternance BTS SIO &middot; Paris La Defense</p>
+                </div>
+            </div>
+
+            <p class="role-desc">
+                En tant qu'alternante IT Support Niveau 3 chez Kyriba, j'interviens directement au sein de l'equipe Global IT. Mon role couvre un perimetre technique etendu : de la gestion des postes de travail (Windows et macOS) au support des applications metiers, en passant par l'administration des identites et des acces. Je traite les incidents complexes (N3), redige des procedures et contribue a l'amelioration continue des outils et processus IT internes.
+            </p>
+
+            <div class="role-tasks-grid">
+                <div class="role-task">
+                    <div class="role-task-title">Support utilisateurs N3</div>
+                    <div class="role-task-desc">Traitement des incidents complexes et demandes avancees des collaborateurs via JIRA.</div>
+                </div>
+                <div class="role-task">
+                    <div class="role-task-title">Gestion du parc</div>
+                    <div class="role-task-desc">Deploiement et maintenance des postes Windows / macOS avec NinjaOne (RMM).</div>
+                </div>
+                <div class="role-task">
+                    <div class="role-task-title">Administration IAM</div>
+                    <div class="role-task-desc">Gestion des identites et des acces via Okta (SSO, provisioning, deprovisioning).</div>
+                </div>
+                <div class="role-task">
+                    <div class="role-task-title">Onboarding IT</div>
+                    <div class="role-task-desc">Preparation et integration des nouveaux collaborateurs : comptes AD, droits, postes.</div>
+                </div>
+                <div class="role-task">
+                    <div class="role-task-title">Documentation</div>
+                    <div class="role-task-desc">Redaction de procedures et de guides techniques pour le service IT.</div>
+                </div>
+                <div class="role-task">
+                    <div class="role-task-title">Active Directory</div>
+                    <div class="role-task-desc">Administration des comptes utilisateurs, groupes et GPO dans l'environnement AD.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outils utilises -->
+        <h2 class="ent-section-title">Outils et technologies utilises</h2>
+        <div class="ent-section-divider"></div>
+        <div class="tools-grid">
+            <span class="tool-tag">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Jira_Logo.svg" alt="JIRA">
+                JIRA
+            </span>
+            <span class="tool-tag">
+                <img src="https://www.vectorlogo.zone/logos/okta/okta-icon.svg" alt="Okta">
+                Okta
+            </span>
+            <span class="tool-tag">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/NinjaOne_logo.svg" alt="NinjaOne" style="filter:brightness(0)">
+                NinjaOne
+            </span>
+            <span class="tool-tag">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="Windows">
+                Windows 11/10
+            </span>
+            <span class="tool-tag">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" alt="macOS" style="filter:brightness(0)">
+                macOS
+            </span>
+            <span class="tool-tag">Active Directory</span>
+            <span class="tool-tag">Microsoft 365</span>
+            <span class="tool-tag">GPO</span>
+            <span class="tool-tag">ITIL</span>
+            <span class="tool-tag">Confluence</span>
+            <span class="tool-tag">ServiceNow</span>
+        </div>
+
+    </div>
+    </main>
+
+    <footer>
+        <p style="text-align:center; padding:16px;">&copy; 2026 - Tous droits reserves</p>
+    </footer>
+
+</body>
+</html>
