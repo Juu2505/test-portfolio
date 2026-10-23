@@ -1,396 +1,396 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css?v=light-2026">
-    <style>
-        html, body {
-            background-color: #f8fafc !important;
-            background: #f8fafc !important;
-            color: #0f172a !important;
-        }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Certifications - Portfolio</title>
+ <link rel="stylesheet" href="css/style.css?v=light-2026">
+ <style>
+ html, body {
+ background-color: #f8fafc !important;
+ background: #f8fafc !important;
+ color: #0f172a !important;
+ }
 
-        .cert-container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+ .cert-container {
+ max-width: 860px;
+ margin: 0 auto;
+ padding: 0 15px;
+ }
 
-        /* Project UI Card */
-        .project-ui-card {
-            background: linear-gradient(#ffffff, #ffffff) padding-box,
-                        linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(168, 85, 247, 0.4)) border-box;
-            border: 1px solid transparent;
-            border-radius: 20px;
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: left;
-            position: relative;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-            margin: 0 auto 40px;
-        }
+ /* Project UI Card */
+ .project-ui-card {
+ background: linear-gradient(#ffffff, #ffffff) padding-box,
+ linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(168, 85, 247, 0.4)) border-box;
+ border: 1px solid transparent;
+ border-radius: 20px;
+ padding: 32px;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ text-align: left;
+ position: relative;
+ transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+ margin: 0 auto 40px;
+ }
 
-        .project-ui-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.15), 0 10px 20px -5px rgba(168, 85, 247, 0.15);
-            background: linear-gradient(#ffffff, #ffffff) padding-box,
-                        linear-gradient(135deg, #f97316, #a855f7) border-box;
-        }
+ .project-ui-card:hover {
+ transform: translateY(-6px);
+ box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.15), 0 10px 20px -5px rgba(168, 85, 247, 0.15);
+ background: linear-gradient(#ffffff, #ffffff) padding-box,
+ linear-gradient(135deg, #f97316, #a855f7) border-box;
+ }
 
-        .project-badge-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            gap: 10px;
-        }
+ .project-badge-row {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 16px;
+ gap: 10px;
+ }
 
-        .badge-cadre {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
+ .badge-cadre {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ font-size: 0.82rem;
+ font-weight: 600;
+ padding: 4px 12px;
+ border-radius: 20px;
+ }
 
-        .badge-cadre.anssi {
-            background: rgba(249, 115, 22, 0.1);
-            color: #ea580c;
-            border: 1px solid rgba(249, 115, 22, 0.3);
-        }
+ .badge-cadre.anssi {
+ background: rgba(249, 115, 22, 0.1);
+ color: #ea580c;
+ border: 1px solid rgba(249, 115, 22, 0.3);
+ }
 
-        .badge-cadre.okta {
-            background: rgba(14, 116, 244, 0.1);
-            color: #0e74f4;
-            border: 1px solid rgba(14, 116, 244, 0.3);
-        }
+ .badge-cadre.okta {
+ background: rgba(14, 116, 244, 0.1);
+ color: #0e74f4;
+ border: 1px solid rgba(14, 116, 244, 0.3);
+ }
 
-        .badge-status-progress {
-            background: #fef3c7;
-            color: #b45309;
-            border: 1px solid #fde68a;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 6px;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
+ .badge-status-progress {
+ background: #fef3c7;
+ color: #b45309;
+ border: 1px solid #fde68a;
+ font-size: 0.75rem;
+ font-weight: 700;
+ padding: 3px 10px;
+ border-radius: 6px;
+ letter-spacing: 0.5px;
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ }
 
-        .badge-status-validated {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 6px;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
+ .badge-status-validated {
+ background: #dcfce7;
+ color: #15803d;
+ border: 1px solid #bbf7d0;
+ font-size: 0.75rem;
+ font-weight: 700;
+ padding: 3px 10px;
+ border-radius: 6px;
+ letter-spacing: 0.5px;
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ }
 
-        .btn-view-fiche.btn-okta {
-            color: #0e74f4;
-            border-color: rgba(14, 116, 244, 0.35);
-            background: linear-gradient(135deg, rgba(14, 116, 244, 0.08), rgba(168, 85, 247, 0.08));
-        }
+ .btn-view-fiche.btn-okta {
+ color: #0e74f4;
+ border-color: rgba(14, 116, 244, 0.35);
+ background: linear-gradient(135deg, rgba(14, 116, 244, 0.08), rgba(168, 85, 247, 0.08));
+ }
 
-        .btn-view-fiche.btn-okta:hover {
-            background: linear-gradient(135deg, #0e74f4, #a855f7);
-            border-color: transparent;
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(14, 116, 244, 0.28);
-        }
+ .btn-view-fiche.btn-okta:hover {
+ background: linear-gradient(135deg, #0e74f4, #a855f7);
+ border-color: transparent;
+ color: #fff;
+ box-shadow: 0 6px 20px rgba(14, 116, 244, 0.28);
+ }
 
-        .badge-option {
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #cbd5e1;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 6px;
-            letter-spacing: 0.5px;
-        }
+ .badge-option {
+ background: #f1f5f9;
+ color: #475569;
+ border: 1px solid #cbd5e1;
+ font-size: 0.75rem;
+ font-weight: 700;
+ padding: 3px 10px;
+ border-radius: 6px;
+ letter-spacing: 0.5px;
+ }
 
-        .project-title {
-            font-size: 1.35rem;
-            color: #0f172a;
-            margin: 0 0 12px 0;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            line-height: 1.35;
-        }
+ .project-title {
+ font-size: 1.35rem;
+ color: #0f172a;
+ margin: 0 0 12px 0;
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ line-height: 1.35;
+ }
 
-        .project-summary {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0 0 20px 0;
-        }
+ .project-summary {
+ color: #475569;
+ font-size: 0.95rem;
+ line-height: 1.6;
+ margin: 0 0 20px 0;
+ }
 
-        /* Compétences Section inside card */
-        .project-competencies {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-bottom: 22px;
-        }
+ /* Compétences Section inside card */
+ .project-competencies {
+ background: #f8fafc;
+ border: 1px solid #e2e8f0;
+ border-radius: 12px;
+ padding: 16px 18px;
+ margin-bottom: 22px;
+ }
 
-        .project-competencies-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: #ea580c;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+ .project-competencies-label {
+ font-size: 0.8rem;
+ text-transform: uppercase;
+ letter-spacing: 0.6px;
+ color: #ea580c;
+ font-weight: 700;
+ margin-bottom: 12px;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ }
 
-        .competency-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+ .competency-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ }
 
-        .competency-list li {
-            color: #334155;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.45;
-        }
+ .competency-list li {
+ color: #334155;
+ font-size: 0.9rem;
+ display: flex;
+ align-items: flex-start;
+ gap: 10px;
+ line-height: 1.45;
+ }
 
-        .competency-list li .check-icon {
-            color: #059669;
-            font-weight: 800;
-            font-size: 0.95rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
+ .competency-list li .check-icon {
+ color: #059669;
+ font-weight: 800;
+ font-size: 0.95rem;
+ flex-shrink: 0;
+ margin-top: 1px;
+ }
 
-        /* Tech Tags */
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
+ /* Tech Tags */
+ .project-tags {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ margin-bottom: 24px;
+ }
 
-        .project-tag {
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 4px 10px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
+ .project-tag {
+ background: #f1f5f9;
+ border: 1px solid #e2e8f0;
+ color: #475569;
+ font-size: 0.78rem;
+ font-weight: 500;
+ padding: 4px 10px;
+ border-radius: 6px;
+ transition: all 0.2s ease;
+ }
 
-        .project-ui-card:hover .project-tag {
-            border-color: rgba(168, 85, 247, 0.35);
-            color: #1e293b;
-        }
+ .project-ui-card:hover .project-tag {
+ border-color: rgba(168, 85, 247, 0.35);
+ color: #1e293b;
+ }
 
-        /* Action button */
-        .project-card-cta {
-            margin-top: auto;
-        }
+ /* Action button */
+ .project-card-cta {
+ margin-top: auto;
+ }
 
-        .btn-view-fiche {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 13px 20px;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(168, 85, 247, 0.08));
-            border: 1px solid rgba(249, 115, 22, 0.35);
-            color: #ea580c;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+ .btn-view-fiche {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+ width: 100%;
+ padding: 13px 20px;
+ background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(168, 85, 247, 0.08));
+ border: 1px solid rgba(249, 115, 22, 0.35);
+ color: #ea580c;
+ font-weight: 600;
+ font-size: 0.95rem;
+ border-radius: 12px;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ }
 
-        .btn-view-fiche:hover {
-            background: linear-gradient(135deg, #f97316, #a855f7);
-            border-color: transparent;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.28);
-        }
+ .btn-view-fiche:hover {
+ background: linear-gradient(135deg, #f97316, #a855f7);
+ border-color: transparent;
+ color: #fff;
+ transform: translateY(-2px);
+ box-shadow: 0 6px 20px rgba(249, 115, 22, 0.28);
+ }
 
-        @media (max-width: 768px) {
-            .project-ui-card {
-                padding: 22px 18px;
-            }
-        }
-    </style>
+ @media (max-width: 768px) {
+ .project-ui-card {
+ padding: 22px 18px;
+ }
+ }
+ </style>
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
-            <ul class="menu">
-                <li><a href="epreuve-e5.html">Epreuve E5</a></li>
-                <li><a href="epreuve-e6.html">Epreuve E6</a></li>
-                <li><a href="certifications.html">Certifications</a></li>
-                <li><a href="veille-technologique.html">Veille technologique</a></li>
-            </ul>
-        </nav>
-    </header>
+ <header>
+ <nav>
+ <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+ <ul class="menu">
+ <li><a href="epreuve-e5.html">Epreuve E5</a></li>
+ <li><a href="epreuve-e6.html">Epreuve E6</a></li>
+ <li><a href="certifications.html">Certifications</a></li>
+ <li><a href="veille-technologique.html">Veille technologique</a></li>
+ </ul>
+ </nav>
+ </header>
 
-    <main>
-        <section class="skills-section">
-            <div class="cert-container">
-                <h2 class="section-title">Certifications</h2>
-                <div class="underline-gradient"></div>
-                <p class="section-subtitle">Attestations officielles, certifications éditeurs et compétences en cybersécurité &amp; IAM</p>
+ <main>
+ <section class="skills-section">
+ <div class="cert-container">
+ <h2 class="section-title">Certifications</h2>
+ <div class="underline-gradient"></div>
+ <p class="section-subtitle">Attestations officielles, certifications éditeurs et compétences en cybersécurité &amp; IAM</p>
 
-                <!-- CARD UNIQUE DU MOOC SECNUMACADEMIE (VALIDÉE) -->
-                <div class="project-ui-card">
-                    <div>
-                        <div class="project-badge-row">
-                            <span class="badge-cadre anssi">Certification officielle · ANSSI</span>
-                            <span class="badge-status-validated">✓ Obtenue (Score 86%)</span>
-                        </div>
-                        <h3 class="project-title">
-                            MOOC SecNumacadémie – Sécurité du Numérique
-                        </h3>
-                        <p class="project-summary">
-                            Formation certifiante d'initiation et de sensibilisation à la cybersécurité délivrée par l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI). Validation complète des 4 modules avec une moyenne générale de 86%.
-                        </p>
+ <!-- CARD UNIQUE DU MOOC SECNUMACADEMIE (VALIDÉE) -->
+ <div class="project-ui-card">
+ <div>
+ <div class="project-badge-row">
+ <span class="badge-cadre anssi">Certification officielle · ANSSI</span>
+ <span class="badge-status-validated"> Obtenue (Score 86%)</span>
+ </div>
+ <h3 class="project-title">
+ MOOC SecNumacadémie Sécurité du Numérique
+ </h3>
+ <p class="project-summary">
+ Formation certifiante d'initiation et de sensibilisation à la cybersécurité délivrée par l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI). Validation complète des 4 modules avec une moyenne générale de 86%.
+ </p>
 
-                        <div class="project-competencies">
-                            <div class="project-competencies-label">
-                                Modules &amp; Scores officiels validés (22 Février 2026)
-                            </div>
-                            <ul class="competency-list">
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span><strong>Panorama de la SSI</strong> : Enjeux, menaces et principes de la sécurité informatique (Score : 86%)</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span><strong>Sécurité de l'authentification</strong> : Mots de passe robustes, coffres-forts et 2FA (Score : 84%)</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span><strong>Sécurité sur Internet</strong> : Navigation sécurisée, phishing et réseaux sociaux (Score : 88%)</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span><strong>Poste de travail et nomadisme</strong> : Protection des équipements, sauvegardes et chiffrement (Score : 86%)</span>
-                                </li>
-                            </ul>
-                        </div>
+ <div class="project-competencies">
+ <div class="project-competencies-label">
+ Modules &amp; Scores officiels validés (22 Février 2026)
+ </div>
+ <ul class="competency-list">
+ <li>
+ <span class="check-icon"></span>
+ <span><strong>Panorama de la SSI</strong> : Enjeux, menaces et principes de la sécurité informatique (Score : 86%)</span>
+ </li>
+ <li>
+ <span class="check-icon"></span>
+ <span><strong>Sécurité de l'authentification</strong> : Mots de passe robustes, coffres-forts et 2FA (Score : 84%)</span>
+ </li>
+ <li>
+ <span class="check-icon"></span>
+ <span><strong>Sécurité sur Internet</strong> : Navigation sécurisée, phishing et réseaux sociaux (Score : 88%)</span>
+ </li>
+ <li>
+ <span class="check-icon"></span>
+ <span><strong>Poste de travail et nomadisme</strong> : Protection des équipements, sauvegardes et chiffrement (Score : 86%)</span>
+ </li>
+ </ul>
+ </div>
 
-                        <div class="project-tags">
-                            <span class="project-tag">ANSSI</span>
-                            <span class="project-tag">SecNumacadémie</span>
-                            <span class="project-tag">Cybersécurité</span>
-                            <span class="project-tag">Hygiène informatique</span>
-                            <span class="project-tag">Authentification &amp; 2FA</span>
-                            <span class="project-tag">Protection des données</span>
-                        </div>
-                    </div>
+ <div class="project-tags">
+ <span class="project-tag">ANSSI</span>
+ <span class="project-tag">SecNumacadémie</span>
+ <span class="project-tag">Cybersécurité</span>
+ <span class="project-tag">Hygiène informatique</span>
+ <span class="project-tag">Authentification &amp; 2FA</span>
+ <span class="project-tag">Protection des données</span>
+ </div>
+ </div>
 
-                    <div class="project-card-cta">
-                        <a href="documentation/MOOC Secnum.pdf" target="_blank" class="btn-view-fiche">
-                            Consulter l'attestation de réussite (PDF) →
-                        </a>
-                    </div>
-                </div>
+ <div class="project-card-cta">
+ <a href="documentation/MOOC Secnum.pdf" target="_blank" class="btn-view-fiche">
+ Consulter l'attestation de réussite (PDF) 
+ </a>
+ </div>
+ </div>
 
-                <!-- CARD OKTA CERTIFIED PROFESSIONAL (EN COURS) -->
-                <div class="project-ui-card">
-                    <div>
-                        <div class="project-badge-row">
-                            <span class="badge-cadre okta">Certification Éditeur · Okta</span>
-                            <span class="badge-status-progress">⏳ En cours de préparation</span>
-                        </div>
-                        <h3 class="project-title">
-                            Okta Certified Professional – Identity &amp; Access Management (IAM)
-                        </h3>
-                        <p class="project-summary">
-                            Certification professionnelle internationale délivrée par Okta, leader mondial de la gestion des identités et des accès. Elle valide les compétences techniques d'administration du cycle de vie des identités, le déploiement de l'authentification unique (SSO), les politiques d'authentification multifacteur (MFA) et la sécurisation des flux applicatifs en entreprise. Préparation active en lien direct avec mes missions d'IT Support N3 chez <strong>Kyriba</strong>.
-                        </p>
+ <!-- CARD OKTA CERTIFIED PROFESSIONAL (EN COURS) -->
+ <div class="project-ui-card">
+ <div>
+ <div class="project-badge-row">
+ <span class="badge-cadre okta">Certification Éditeur · Okta</span>
+ <span class="badge-status-progress"> En cours de préparation</span>
+ </div>
+ <h3 class="project-title">
+ Okta Certified Professional Identity &amp; Access Management (IAM)
+ </h3>
+ <p class="project-summary">
+ Certification professionnelle internationale délivrée par Okta, leader mondial de la gestion des identités et des accès. Elle valide les compétences techniques d'administration du cycle de vie des identités, le déploiement de l'authentification unique (SSO), les politiques d'authentification multifacteur (MFA) et la sécurisation des flux applicatifs en entreprise. Préparation active en lien direct avec mes missions d'IT Support N3 chez <strong>Kyriba</strong>.
+ </p>
 
-                        <div class="project-competencies">
-                            <div class="project-competencies-label" style="color: #0e74f4;">
-                                Domaines de compétences &amp; Référentiel préparé
-                            </div>
-                            <ul class="competency-list">
-                                <li>
-                                    <span class="check-icon" style="color: #0e74f4;">🎯</span>
-                                    <span><strong>Gestion des Identités &amp; Cycle de vie (JML)</strong> : Provisioning et deprovisioning automatisé des comptes (Joiner, Mover, Leaver), règles d'attribution dynamiques et annuaire universel Okta.</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon" style="color: #0e74f4;">🎯</span>
-                                    <span><strong>Authentification Unique (SSO) &amp; Fédérations</strong> : Configuration et administration des intégrations sous protocoles standardisés SAML 2.0 et OIDC (OpenID Connect).</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon" style="color: #0e74f4;">🎯</span>
-                                    <span><strong>Sécurisation des Accès &amp; MFA Adaptatif</strong> : Politiques de mots de passe, enrôlement et déploiement d'Okta Verify (FastPass), clés de sécurité FIDO2 / WebAuthn et règles contextuelles.</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon" style="color: #0e74f4;">🎯</span>
-                                    <span><strong>Intégration Applicative &amp; Audit</strong> : Connexion des applications SaaS métiers (SCIM), synchronisation avec Active Directory / LDAP et analyse des journaux de sécurité (System Log).</span>
-                                </li>
-                            </ul>
-                        </div>
+ <div class="project-competencies">
+ <div class="project-competencies-label" style="color: #0e74f4;">
+ Domaines de compétences &amp; Référentiel préparé
+ </div>
+ <ul class="competency-list">
+ <li>
+ <span class="check-icon" style="color: #0e74f4;"></span>
+ <span><strong>Gestion des Identités &amp; Cycle de vie (JML)</strong> : Provisioning et deprovisioning automatisé des comptes (Joiner, Mover, Leaver), règles d'attribution dynamiques et annuaire universel Okta.</span>
+ </li>
+ <li>
+ <span class="check-icon" style="color: #0e74f4;"></span>
+ <span><strong>Authentification Unique (SSO) &amp; Fédérations</strong> : Configuration et administration des intégrations sous protocoles standardisés SAML 2.0 et OIDC (OpenID Connect).</span>
+ </li>
+ <li>
+ <span class="check-icon" style="color: #0e74f4;"></span>
+ <span><strong>Sécurisation des Accès &amp; MFA Adaptatif</strong> : Politiques de mots de passe, enrôlement et déploiement d'Okta Verify (FastPass), clés de sécurité FIDO2 / WebAuthn et règles contextuelles.</span>
+ </li>
+ <li>
+ <span class="check-icon" style="color: #0e74f4;"></span>
+ <span><strong>Intégration Applicative &amp; Audit</strong> : Connexion des applications SaaS métiers (SCIM), synchronisation avec Active Directory / LDAP et analyse des journaux de sécurité (System Log).</span>
+ </li>
+ </ul>
+ </div>
 
-                        <div class="project-tags">
-                            <span class="project-tag">Okta</span>
-                            <span class="project-tag">Okta Certified Professional</span>
-                            <span class="project-tag">IAM / IGA</span>
-                            <span class="project-tag">Single Sign-On (SSO)</span>
-                            <span class="project-tag">Multi-Factor Authentication (MFA)</span>
-                            <span class="project-tag">SAML 2.0 / OIDC</span>
-                            <span class="project-tag">Gestion des accès Kyriba</span>
-                        </div>
-                    </div>
+ <div class="project-tags">
+ <span class="project-tag">Okta</span>
+ <span class="project-tag">Okta Certified Professional</span>
+ <span class="project-tag">IAM / IGA</span>
+ <span class="project-tag">Single Sign-On (SSO)</span>
+ <span class="project-tag">Multi-Factor Authentication (MFA)</span>
+ <span class="project-tag">SAML 2.0 / OIDC</span>
+ <span class="project-tag">Gestion des accès Kyriba</span>
+ </div>
+ </div>
 
-                    <div class="project-card-cta">
-                        <a href="https://www.okta.com/services/certification/" target="_blank" rel="noopener" class="btn-view-fiche btn-okta">
-                            Consulter le référentiel officiel Okta (Examen en préparation) ↗
-                        </a>
-                    </div>
-                </div>
+ <div class="project-card-cta">
+ <a href="https://www.okta.com/services/certification/" target="_blank" rel="noopener" class="btn-view-fiche btn-okta">
+ Consulter le référentiel officiel Okta (Examen en préparation) 
+ </a>
+ </div>
+ </div>
 
-            </div>
-        </section>
-    </main>
+ </div>
+ </section>
+ </main>
 
-    <footer>
-        <p>&copy; 2026 - Tous droits réservés</p>
-    </footer>
+ <footer>
+ <p>&copy; 2026 - Tous droits réservés</p>
+ </footer>
 
 </body>
 

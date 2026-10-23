@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2 OCS &amp; GLPI Gestion de parc | École IRIS | E5 Portfolio</title>
+ <meta name="description" content="Fiche de réalisation TP OCS Inventory NG et GLPI pour la gestion de parc informatique et helpdesk (BTS SIO SISR, École IRIS).">
+ <link rel="stylesheet" href="css/style.css">
+ <style>
+ html, body {
+ background-color: #0b1120 !important;
+ background: #0b1120 !important;
+ color: #e2e8f0 !important;
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ }
+ header {
+ background: rgba(11, 17, 32, 0.92) !important;
+ border-bottom: 1px solid rgba(168, 85, 247, 0.15) !important;
+ backdrop-filter: blur(14px);
+ }
+ .logo { color: #e2e8f0 !important; }
+ .menu {
+ background: rgba(21, 30, 50, 0.95) !important;
+ border: 1px solid rgba(255,255,255,0.08) !important;
+ }
+ .menu a { color: #94a3b8 !important; }
+ .menu a:hover { color: #a855f7 !important; }
+ footer { background: #080e1c; border-top: 1px solid rgba(255,255,255,0.06); }
+
+ /* Accent violet pour ce projet scolaire */
+ :root {
+ --accent: #a855f7;
+ --accent-light: #c084fc;
+ --accent-dark: #9333ea;
+ }
+
+ .proj-hero {
+ padding: 70px 5% 50px;
+ max-width: 1100px;
+ margin: 0 auto;
+ }
+ .breadcrumb {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-size: 0.83rem;
+ color: #64748b;
+ margin-bottom: 30px;
+ }
+ .breadcrumb a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+ .breadcrumb a:hover { color: var(--accent); }
+ .breadcrumb-active { color: var(--accent); font-weight: 600; }
+
+ .proj-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+ .badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ font-size: 0.8rem;
+ font-weight: 600;
+ padding: 5px 14px;
+ border-radius: 20px;
+ }
+ .badge-purple { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+ .badge-green { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+ .badge-gray { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
+
+ .proj-title {
+ font-size: clamp(1.8rem, 4vw, 2.8rem);
+ font-weight: 800;
+ color: #f8fafc;
+ line-height: 1.2;
+ margin: 0 0 16px 0;
+ letter-spacing: -0.5px;
+ }
+ .proj-subtitle {
+ font-size: 1.05rem;
+ color: #94a3b8;
+ line-height: 1.7;
+ max-width: 720px;
+ margin: 0 0 32px 0;
+ }
+
+ .proj-content {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 0 5% 80px;
+ display: grid;
+ grid-template-columns: 1fr 340px;
+ gap: 40px;
+ }
+ @media (max-width: 900px) { .proj-content { grid-template-columns: 1fr; } }
+
+ .info-card {
+ background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(21,30,50,0.8));
+ border: 1px solid rgba(255,255,255,0.07);
+ border-radius: 18px;
+ padding: 28px;
+ margin-bottom: 28px;
+ }
+ .info-card-title {
+ font-size: 0.75rem;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ color: var(--accent);
+ font-weight: 700;
+ margin-bottom: 16px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+ .info-card p { color: #94a3b8; font-size: 0.93rem; line-height: 1.7; margin: 0; }
+
+ .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+ .step-list li { display: flex; align-items: flex-start; gap: 14px; color: #cbd5e1; font-size: 0.92rem; line-height: 1.5; }
+ .step-num {
+ flex-shrink: 0;
+ width: 28px;
+ height: 28px;
+ border-radius: 50%;
+ background: linear-gradient(135deg, #a855f7, #9333ea);
+ color: #fff;
+ font-size: 0.75rem;
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
+
+ .comp-grid { display: flex; flex-direction: column; gap: 12px; }
+ .comp-item {
+ background: rgba(255,255,255,0.03);
+ border: 1px solid rgba(255,255,255,0.06);
+ border-left: 3px solid var(--accent);
+ border-radius: 10px;
+ padding: 14px 16px;
+ }
+ .comp-item-title { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+ .comp-item-desc { font-size: 0.82rem; color: #64748b; margin: 0; }
+
+ .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+ .tech-tag {
+ background: rgba(168,85,247,0.08);
+ border: 1px solid rgba(168,85,247,0.2);
+ color: #c084fc;
+ font-size: 0.78rem;
+ font-weight: 600;
+ padding: 5px 12px;
+ border-radius: 8px;
+ }
+
+ /* Archi diagram simple */
+ .arch-box {
+ background: rgba(168,85,247,0.05);
+ border: 1px dashed rgba(168,85,247,0.25);
+ border-radius: 12px;
+ padding: 20px;
+ text-align: center;
+ margin-top: 16px;
+ }
+ .arch-flow {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 12px;
+ flex-wrap: wrap;
+ }
+ .arch-node {
+ background: rgba(168,85,247,0.12);
+ border: 1px solid rgba(168,85,247,0.3);
+ border-radius: 10px;
+ padding: 10px 16px;
+ font-size: 0.83rem;
+ font-weight: 600;
+ color: #c084fc;
+ }
+ .arch-arrow { color: #475569; font-size: 1.2rem; }
+
+ .sidebar-card {
+ background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(21,30,50,0.9));
+ border: 1px solid rgba(168,85,247,0.2);
+ border-radius: 18px;
+ padding: 26px;
+ position: sticky;
+ top: 90px;
+ height: fit-content;
+ }
+ .sidebar-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
+ .sidebar-info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+ .sidebar-info-row:last-of-type { border-bottom: none; }
+ .sidebar-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+ .sidebar-info-label { font-size: 0.75rem; color: #64748b; margin-bottom: 2px; }
+ .sidebar-info-value { font-size: 0.88rem; color: #e2e8f0; font-weight: 600; }
+
+ .btn-pdf {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+ width: 100%;
+ padding: 13px 20px;
+ background: linear-gradient(135deg, #a855f7, #9333ea);
+ color: #fff;
+ font-weight: 700;
+ font-size: 0.9rem;
+ border-radius: 12px;
+ text-decoration: none;
+ margin-top: 22px;
+ transition: all 0.3s ease;
+ box-shadow: 0 6px 20px rgba(168,85,247,0.35);
+ }
+ .btn-pdf:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(168,85,247,0.5); color: #fff; }
+ .btn-back {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ width: 100%;
+ padding: 11px 20px;
+ background: rgba(255,255,255,0.04);
+ border: 1px solid rgba(255,255,255,0.1);
+ color: #94a3b8;
+ font-weight: 600;
+ font-size: 0.88rem;
+ border-radius: 12px;
+ text-decoration: none;
+ margin-top: 10px;
+ transition: all 0.3s ease;
+ }
+ .btn-back:hover { background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.3); color: #fb923c; }
+
+ .pdf-section { max-width: 1100px; margin: 0 auto; padding: 0 5% 80px; }
+ .pdf-section-title { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+ .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(168,85,247,0.35), transparent); margin: 0 0 28px; }
+ .pdf-embed-wrapper {
+ background: rgba(15,23,42,0.9);
+ border: 1px solid rgba(168,85,247,0.2);
+ border-radius: 18px;
+ overflow: hidden;
+ box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+ }
+ .pdf-embed-wrapper iframe { width: 100%; height: 800px; border: none; display: block; }
+ </style>
+</head>
+
+<body>
+ <header>
+ <nav>
+ <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+ <ul class="menu">
+ <li><a href="epreuve-e5.html">Epreuve E5</a></li>
+ <li><a href="epreuve-e6.html">Epreuve E6</a></li>
+ <li><a href="index.html#Formation">Formation</a></li>
+ <li><a href="documentation/Tableau%20de%20synth%C3%A8se%20E5.xlsx" target="_blank">Projets</a></li>
+ <li><a href="documentation/MOOC Secnum.pdf" target="_blank">Certifications</a></li>
+ <li><a href="veille-technologique.html">Veille technologique</a></li>
+ </ul>
+ </nav>
+ </header>
+
+ <!-- HERO -->
+ <section class="proj-hero">
+ <div class="breadcrumb">
+ <a href="index.html">Accueil</a>
+ <span></span>
+ <a href="epreuve-e5.html">Épreuve E5</a>
+ <span></span>
+ <span class="breadcrumb-active">Projet 2 OCS &amp; GLPI</span>
+ </div>
+
+ <div class="proj-hero-badges">
+ <span class="badge badge-purple"> École · IRIS</span>
+ <span class="badge badge-green"> Gestion de parc</span>
+ <span class="badge badge-gray">SISR</span>
+ </div>
+
+ <h1 class="proj-title">TP OCS &amp; GLPI <br>Gestion du parc informatique</h1>
+ <p class="proj-subtitle">
+ Déploiement et interconnexion de la solution de télédistribution et d'inventaire OCS Inventory NG avec la plateforme GLPI pour le suivi des actifs, la gestion de parc et le traitement des tickets d'assistance.
+ </p>
+ </section>
+
+ <!-- CONTENT + SIDEBAR -->
+ <div class="proj-content">
+ <div>
+ <!-- Contexte -->
+ <div class="info-card">
+ <div class="info-card-title"> Contexte de la réalisation</div>
+ <p>
+ Dans le cadre d'un travail pratique réalisé à l'<strong style="color:#e2e8f0;">École IRIS</strong>, l'objectif était de mettre en place une solution complète de gestion de parc informatique combinant deux outils open source complémentaires : <strong style="color:#e2e8f0;">OCS Inventory NG</strong> pour la collecte automatique des inventaires, et <strong style="color:#e2e8f0;">GLPI</strong> (Gestionnaire Libre de Parc Informatique) pour la supervision, le helpdesk et la gestion des actifs.
+ <br><br>
+ Ce TP visait à reproduire les conditions réelles d'un service informatique en entreprise, avec une infrastructure de suivi des équipements et de traitement des incidents.
+ </p>
+ </div>
+
+ <!-- Architecture -->
+ <div class="info-card">
+ <div class="info-card-title"> Architecture de la solution</div>
+ <div class="arch-box">
+ <div class="arch-flow">
+ <div class="arch-node"> Postes clients<br><small style="color:#64748b;">Agent OCS</small></div>
+ <span class="arch-arrow"></span>
+ <div class="arch-node"> Serveur OCS<br><small style="color:#64748b;">Inventory NG</small></div>
+ <span class="arch-arrow"></span>
+ <div class="arch-node"> Plugin GLPI<br><small style="color:#64748b;">Synchronisation</small></div>
+ <span class="arch-arrow"></span>
+ <div class="arch-node"> GLPI<br><small style="color:#64748b;">Helpdesk & Assets</small></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Étapes -->
+ <div class="info-card">
+ <div class="info-card-title"> Étapes de la réalisation</div>
+ <ul class="step-list">
+ <li>
+ <span class="step-num">1</span>
+ <div>Installation et configuration du serveur <strong style="color:#e2e8f0;">OCS Inventory NG</strong> sur Linux (Apache, MySQL, PHP) et test de la connectivité.</div>
+ </li>
+ <li>
+ <span class="step-num">2</span>
+ <div>Déploiement des agents OCS sur les postes clients Windows : collecte automatique des informations matérielles et logicielles.</div>
+ </li>
+ <li>
+ <span class="step-num">3</span>
+ <div>Installation de <strong style="color:#e2e8f0;">GLPI</strong> avec le plugin officiel d'interconnexion OCS-GLPI et configuration de la synchronisation des inventaires.</div>
+ </li>
+ <li>
+ <span class="step-num">4</span>
+ <div>Paramétrage du module <strong style="color:#e2e8f0;">Helpdesk</strong> dans GLPI : catégories d'incidents, workflows de tickets, attribution aux techniciens.</div>
+ </li>
+ <li>
+ <span class="step-num">5</span>
+ <div>Tests fonctionnels : création et traitement de tickets d'assistance, vérification de l'inventaire synchronisé et génération de rapports.</div>
+ </li>
+ <li>
+ <span class="step-num">6</span>
+ <div>Rédaction du compte-rendu détaillé avec captures d'écran de chaque étape de configuration et des résultats obtenus.</div>
+ </li>
+ </ul>
+ </div>
+
+ <!-- Compétences -->
+ <div class="info-card">
+ <div class="info-card-title"> Compétences BTS SIO validées</div>
+ <div class="comp-grid">
+ <div class="comp-item">
+ <div class="comp-item-title">B1.1 Gérer le patrimoine informatique</div>
+ <p class="comp-item-desc">Inventaire automatisé du matériel et des logiciels via OCS Inventory, suivi des actifs dans GLPI.</p>
+ </div>
+ <div class="comp-item">
+ <div class="comp-item-title">B1.3 Répondre aux incidents et demandes d'assistance</div>
+ <p class="comp-item-desc">Mise en place et utilisation du module helpdesk de GLPI pour la gestion du cycle de vie des tickets.</p>
+ </div>
+ <div class="comp-item">
+ <div class="comp-item-title">B2.1 Installer et configurer des éléments d'infrastructure</div>
+ <p class="comp-item-desc">Déploiement de serveurs OCS et GLPI, configuration des agents et des plugins d'interconnexion.</p>
+ </div>
+ <div class="comp-item">
+ <div class="comp-item-title">B2.3 Faire évoluer et adapter les services réseaux</div>
+ <p class="comp-item-desc">Synchronisation bidirectionnelle OCS GLPI et automatisation des remontées d'inventaire.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Technologies -->
+ <div class="info-card">
+ <div class="info-card-title"> Technologies &amp; outils utilisés</div>
+ <div class="tech-tags">
+ <span class="tech-tag">GLPI</span>
+ <span class="tech-tag">OCS Inventory NG</span>
+ <span class="tech-tag">Linux (Debian)</span>
+ <span class="tech-tag">Apache / MySQL</span>
+ <span class="tech-tag">PHP</span>
+ <span class="tech-tag">Helpdesk &amp; Tickets</span>
+ <span class="tech-tag">Gestion de parc</span>
+ <span class="tech-tag">ITIL</span>
+ <span class="tech-tag">Open Source</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- SIDEBAR -->
+ <div>
+ <div class="sidebar-card">
+ <div class="sidebar-title"> Informations du projet</div>
+
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Établissement</div>
+ <div class="sidebar-info-value">École IRIS</div>
+ </div>
+ </div>
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Contexte</div>
+ <div class="sidebar-info-value">Travail Pratique (TP)</div>
+ </div>
+ </div>
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Option BTS SIO</div>
+ <div class="sidebar-info-value">SISR</div>
+ </div>
+ </div>
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Domaine</div>
+ <div class="sidebar-info-value">Gestion de parc &amp; Helpdesk</div>
+ </div>
+ </div>
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Outils principaux</div>
+ <div class="sidebar-info-value">GLPI + OCS Inventory NG</div>
+ </div>
+ </div>
+ <div class="sidebar-info-row">
+ <span class="sidebar-icon"></span>
+ <div>
+ <div class="sidebar-info-label">Document</div>
+ <div class="sidebar-info-value">TPOCSGLPIJulieDurand2.pdf</div>
+ </div>
+ </div>
+
+ <a href="documentation/TPOCSGLPIJulieDurand2.pdf" target="_blank" class="btn-pdf">
+ Télécharger le PDF
+ </a>
+ <a href="epreuve-e5.html" class="btn-back">
+ Retour à l'E5
+ </a>
+ </div>
+ </div>
+ </div>
+
+ <!-- PDF EMBED -->
+ <div class="pdf-section">
+ <div class="pdf-section-title"> Compte-rendu TP OCS Inventory &amp; GLPI</div>
+ <div class="section-divider"></div>
+ <div class="pdf-embed-wrapper">
+ <iframe
+ src="documentation/TPOCSGLPIJulieDurand2.pdf"
+ title="TP OCS GLPI Gestion de parc"
+ loading="lazy">
+ <p>Votre navigateur ne supporte pas l'affichage PDF intégré.
+ <a href="documentation/TPOCSGLPIJulieDurand2.pdf" target="_blank">Téléchargez le document</a>.
+ </p>
+ </iframe>
+ </div>
+ </div>
+
+ <footer>
+ <p style="text-align:center; padding: 20px; color: #475569;">© 2026 Tous droits réservés</p>
+ </footer>
+</body>
+</html>
