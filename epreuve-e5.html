@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Épreuve E5 - Portfolio</title>
+  <title>Epreuve E5 - Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .e5-container {
@@ -13,7 +13,7 @@
       padding: 0 15px;
     }
 
-    /* Synthèse Banner */
+    /* Synthese Banner */
     .synthesis-card {
       background: linear-gradient(#ffffff, #ffffff) padding-box,
         linear-gradient(135deg, rgba(249, 115, 22, 0.45), rgba(168, 85, 247, 0.45)) border-box;
@@ -45,18 +45,6 @@
       display: flex;
       align-items: center;
       gap: 14px;
-    }
-
-    .synthesis-icon {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(249, 115, 22, 0.1);
-      border: 1px solid rgba(249, 115, 22, 0.25);
-      border-radius: 12px;
-      font-size: 1.4rem;
     }
 
     .synthesis-title-box h3 {
@@ -133,9 +121,6 @@
       font-size: 1.45rem;
       color: #0f172a;
       margin: 0 0 6px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .projects-heading p {
@@ -144,7 +129,7 @@
       font-size: 0.95rem;
     }
 
-    /* Responsive Project Cards Grid */
+    /* Project Cards Grid */
     .project-cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -160,7 +145,6 @@
       padding: 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       text-align: left;
       position: relative;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -216,13 +200,10 @@
     }
 
     .project-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: #0f172a;
-      margin: 0 0 12px 0;
+      margin: 0 0 10px 0;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       line-height: 1.35;
     }
 
@@ -233,7 +214,7 @@
       margin: 0 0 18px 0;
     }
 
-    /* Compétences Section inside card */
+    /* Competences */
     .project-competencies {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -243,15 +224,12 @@
     }
 
     .project-competencies-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.6px;
       color: #f97316;
       font-weight: 700;
       margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .competency-list {
@@ -260,7 +238,7 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .competency-list li {
@@ -275,17 +253,17 @@
     .competency-list li .check-icon {
       color: #10b981;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    /* Tech Tags */
+    /* Tags */
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 0;
     }
 
     .project-tag {
@@ -304,41 +282,10 @@
       color: #7c3aed;
     }
 
-    /* Action button */
-    .project-card-cta {
-      margin-top: auto;
-    }
-
-    .btn-view-fiche {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 20px;
-      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(168, 85, 247, 0.08));
-      border: 1px solid rgba(249, 115, 22, 0.35);
-      color: #ea580c;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-view-fiche:hover {
-      background: linear-gradient(135deg, #f97316, #a855f7);
-      border-color: transparent;
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
-    }
-
     @media (max-width: 768px) {
       .project-cards-grid {
         grid-template-columns: 1fr;
       }
-
       .synthesis-header {
         flex-direction: column;
         align-items: flex-start;
@@ -356,9 +303,7 @@
         <li><a href="epreuve-e5.html">Epreuve E5</a></li>
         <li><a href="epreuve-e6.html">Epreuve E6</a></li>
         <li><a href="entreprise.html">Entreprise</a></li>
-        <li><a href="index.html#Formation">Formation</a></li>
-        <li><a href="documentation/Tableau%20de%20synth%C3%A8se%20E5.xlsx" target="_blank">Projets</a></li>
-        <li><a href="documentation/MOOC Secnum.pdf" target="_blank">Certifications</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
         <li><a href="veille-technologique.html">Veille technologique</a></li>
       </ul>
       <a href="index.html" class="btn-nav-accueil">Accueil</a>
@@ -368,136 +313,93 @@
   <main>
     <section class="skills-section">
       <div class="e5-container">
-        <h2 class="section-title">Épreuve E5</h2>
+        <h2 class="section-title">Epreuve E5</h2>
         <div class="underline-gradient"></div>
-        <p class="section-subtitle">Dossier de réalisations informatiques et compétences professionnelles (BTS
-          SIO)</p>
+        <p class="section-subtitle">Dossier de realisations informatiques et competences professionnelles (BTS SIO)</p>
 
-        <!-- 1. CARTE TABLEAU DE SYNTHÈSE DES COMPÉTENCES -->
+        <!-- CARTE TABLEAU DE SYNTHESE -->
         <div class="synthesis-card">
           <div class="synthesis-header">
             <div class="synthesis-title-box">
               <div>
-                <h3>Tableau de synthèse des compétences</h3>
-                <span style="font-size: 0.8rem; color: #f97316; font-weight: 600;">Document officiel BTS
-                  SIO</span>
+                <h3>Tableau de synthese des competences</h3>
+                <span style="font-size: 0.8rem; color: #f97316; font-weight: 600;">Document officiel BTS SIO</span>
               </div>
             </div>
           </div>
           <p class="synthesis-desc">
-            Ce tableau récapitule l'ensemble des compétences du référentiel BTS SIO validées lors de mes
-            réalisations professionnelles (en alternance et en milieu scolaire), classées par domaines
-            d'activités.
+            Ce tableau recapitule l'ensemble des competences du referentiel BTS SIO validees lors de mes
+            realisations professionnelles (en alternance et en milieu scolaire), classees par domaines d'activites.
           </p>
           <div class="synthesis-actions">
-            <a href="documentation/Tableau%20de%20synth%C3%A8se%20E5.xlsx" target="_blank"
-              class="btn-synthesis-primary">
-              Télécharger le tableau (.xlsx)
+            <a href="documentation/Tableau%20de%20synth%C3%A8se%20E5.xlsx" target="_blank" class="btn-synthesis-primary">
+              Telecharger le tableau (.xlsx)
             </a>
-            <a href="documentation/Tableau%20de%20synth%C3%A8se.pdf" target="_blank"
-              class="btn-synthesis-secondary">
-              Aperçu direct PDF
+            <a href="documentation/Tableau%20de%20synth%C3%A8se.pdf" target="_blank" class="btn-synthesis-secondary">
+              Apercu direct PDF
             </a>
           </div>
         </div>
 
-        <!-- 2. SECTION RÉALISATIONS PROFESSIONNELLES (CARDS UI DESIGN) -->
+        <!-- REALISATIONS PROFESSIONNELLES -->
         <div class="projects-heading">
-          <h3>Fiches de Réalisations Professionnelles</h3>
-          <p>Consultez le dossier technique complet et les compétences validées pour chaque situation
-            professionnelle.</p>
+          <h3>Fiches de Realisations Professionnelles</h3>
+          <p>Competences validees pour chaque situation professionnelle.</p>
         </div>
 
         <div class="project-cards-grid">
 
           <!-- PROJET 1 : KYRIBA -->
           <div class="project-ui-card">
-            <div>
-              <div class="project-badge-row">
-                <span class="badge-cadre enterprise">Alternance · Kyriba</span>
-                <span class="badge-option">SISR</span>
-              </div>
-              <h4 class="project-title">
-                Projet 1 : Procédure création d'un utilisateur
-              </h4>
-              <p class="project-summary">
-                Rédaction et standardisation de la procédure complète d'intégration (onboarding) et de
-                création de compte utilisateur, attribution des droits et configuration des postes de
-                travail.
-              </p>
-
-              <div class="project-competencies">
-                <div class="project-competencies-label">
-                  Compétences clés validées
-                </div>
-                <ul class="competency-list">
-                  <li><span class="check-icon">✓</span> Gérer le patrimoine informatique et les postes
-                    utilisateurs</li>
-                  <li><span class="check-icon">✓</span> Répondre aux incidents et aux demandes
-                    d'assistance</li>
-                  <li><span class="check-icon">✓</span> Configurer et sécuriser les accès aux services
-                    du SI</li>
-                </ul>
-              </div>
-
-              <div class="project-tags">
-                <span class="project-tag">Active Directory</span>
-                <span class="project-tag">Gestion des accès</span>
-                <span class="project-tag">IT Support N3</span>
-                <span class="project-tag">Procédure</span>
-              </div>
+            <div class="project-badge-row">
+              <span class="badge-cadre enterprise">Alternance · Kyriba</span>
+              <span class="badge-option">SISR</span>
             </div>
-
-            <div class="project-card-cta">
-              <a href="projet-kyriba-utilisateur.html"
-                class="btn-view-fiche">
-                Voir la fiche détaillée →
-              </a>
+            <h4 class="project-title">Projet 1 : Procedure creation d'un utilisateur</h4>
+            <p class="project-summary">
+              Redaction et standardisation de la procedure complete d'integration (onboarding) et de
+              creation de compte utilisateur, attribution des droits et configuration des postes de travail.
+            </p>
+            <div class="project-competencies">
+              <div class="project-competencies-label">Competences cles validees</div>
+              <ul class="competency-list">
+                <li><span class="check-icon">+</span> Gerer le patrimoine informatique et les postes utilisateurs</li>
+                <li><span class="check-icon">+</span> Repondre aux incidents et aux demandes d'assistance</li>
+                <li><span class="check-icon">+</span> Configurer et securiser les acces aux services du SI</li>
+              </ul>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Active Directory</span>
+              <span class="project-tag">Gestion des acces</span>
+              <span class="project-tag">IT Support N3</span>
+              <span class="project-tag">Procedure</span>
             </div>
           </div>
 
           <!-- PROJET 2 : OCS & GLPI -->
           <div class="project-ui-card">
-            <div>
-              <div class="project-badge-row">
-                <span class="badge-cadre school">École · IRIS</span>
-                <span class="badge-option">SISR</span>
-              </div>
-              <h4 class="project-title">
-                Projet 2 : TP OCS &amp; GLPI Gestion du parc
-              </h4>
-              <p class="project-summary">
-                Déploiement et interconnexion de la solution de télédistribution et d'inventaire OCS
-                Inventory NG avec la plateforme GLPI pour le suivi des actifs, la gestion de parc et le
-                traitement des tickets d'assistance.
-              </p>
-
-              <div class="project-competencies">
-                <div class="project-competencies-label">
-                  Compétences clés validées
-                </div>
-                <ul class="competency-list">
-                  <li><span class="check-icon">✓</span> Gérer le patrimoine informatique (inventaire
-                    matériel &amp; logiciel)</li>
-                  <li><span class="check-icon">✓</span> Répondre aux incidents et traiter les demandes
-                    d'assistance</li>
-                  <li><span class="check-icon">✓</span> Déployer un agent d'inventaire et synchroniser
-                    la base GLPI</li>
-                </ul>
-              </div>
-
-              <div class="project-tags">
-                <span class="project-tag">GLPI</span>
-                <span class="project-tag">OCS Inventory</span>
-                <span class="project-tag">Helpdesk &amp; Tickets</span>
-                <span class="project-tag">Gestion de parc</span>
-              </div>
+            <div class="project-badge-row">
+              <span class="badge-cadre school">Ecole · IRIS</span>
+              <span class="badge-option">SISR</span>
             </div>
-
-            <div class="project-card-cta">
-              <a href="projet-ocs-glpi.html" class="btn-view-fiche">
-                Voir la fiche détaillée →
-              </a>
+            <h4 class="project-title">Projet 2 : TP OCS &amp; GLPI Gestion du parc</h4>
+            <p class="project-summary">
+              Deploiement et interconnexion de la solution de teledistribution et d'inventaire OCS
+              Inventory NG avec la plateforme GLPI pour le suivi des actifs et le traitement des tickets d'assistance.
+            </p>
+            <div class="project-competencies">
+              <div class="project-competencies-label">Competences cles validees</div>
+              <ul class="competency-list">
+                <li><span class="check-icon">+</span> Gerer le patrimoine informatique (inventaire materiel &amp; logiciel)</li>
+                <li><span class="check-icon">+</span> Repondre aux incidents et traiter les demandes d'assistance</li>
+                <li><span class="check-icon">+</span> Deployer un agent d'inventaire et synchroniser la base GLPI</li>
+              </ul>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">GLPI</span>
+              <span class="project-tag">OCS Inventory</span>
+              <span class="project-tag">Helpdesk &amp; Tickets</span>
+              <span class="project-tag">Gestion de parc</span>
             </div>
           </div>
 
@@ -508,7 +410,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 - Tous droits réservés</p>
+    <p>&copy; 2026 - Tous droits reserves</p>
   </footer>
 
 </body>

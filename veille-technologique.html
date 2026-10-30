@@ -14,12 +14,12 @@
     }
 
     .veille-container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    /* ===== VEILLE CARD CLIQUABLE ===== */
+    /* ===== CARD PRINCIPALE ===== */
     .veille-topic-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -27,20 +27,19 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       overflow: hidden;
       transition: box-shadow 0.3s ease, border-color 0.3s ease;
-      margin-bottom: 24px;
     }
 
     .veille-topic-card:hover {
-      border-color: rgba(249, 115, 22, 0.4);
-      box-shadow: 0 8px 30px rgba(249, 115, 22, 0.08);
+      border-color: rgba(249, 115, 22, 0.35);
+      box-shadow: 0 8px 30px rgba(249, 115, 22, 0.07);
     }
 
-    /* En-tête cliquable */
+    /* EN-TETE CLIQUABLE */
     .veille-card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 32px;
+      padding: 26px 30px;
       cursor: pointer;
       user-select: none;
       gap: 16px;
@@ -49,85 +48,99 @@
     .veille-card-left {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
+      flex: 1;
     }
 
     .veille-card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(168, 85, 247, 0.12));
-      border: 1px solid rgba(249, 115, 22, 0.25);
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(168, 85, 247, 0.1));
+      border: 1px solid rgba(249, 115, 22, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       flex-shrink: 0;
+    }
+
+    .veille-card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #ea580c;
+      fill: none;
+      stroke-width: 1.8;
     }
 
     .veille-card-meta {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .veille-card-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
       background: rgba(249, 115, 22, 0.1);
       color: #ea580c;
-      padding: 3px 10px;
+      padding: 2px 10px;
       border-radius: 20px;
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       width: fit-content;
-      margin-bottom: 2px;
     }
 
     .veille-card-title {
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #0f172a;
       line-height: 1.3;
     }
 
     .veille-card-subtitle {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: #64748b;
+      margin: 0;
+    }
+
+    /* RESUME VISIBLE (toujours affiche) */
+    .veille-card-preview {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.6;
+      padding: 0 30px 22px 92px;
       margin: 0;
     }
 
     .veille-card-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-shrink: 0;
     }
 
     .veille-period-badge {
-      font-size: 0.8rem;
-      color: #64748b;
+      font-size: 0.78rem;
+      color: #94a3b8;
       font-weight: 500;
       white-space: nowrap;
     }
 
     .veille-toggle-btn {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: #f1f5f9;
       border: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
       color: #64748b;
       transition: all 0.3s ease;
       flex-shrink: 0;
+      font-size: 0.75rem;
     }
 
     .veille-topic-card.open .veille-toggle-btn {
@@ -137,11 +150,11 @@
       transform: rotate(180deg);
     }
 
-    /* Séparateur */
+    /* SEPARATEUR */
     .veille-card-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
-      margin: 0 32px;
+      background: linear-gradient(90deg, transparent, #e2e8f0 15%, #e2e8f0 85%, transparent);
+      margin: 0 30px;
       display: none;
     }
 
@@ -149,7 +162,7 @@
       display: block;
     }
 
-    /* Contenu expansible */
+    /* CONTENU EXPANSIBLE */
     .veille-card-body {
       max-height: 0;
       overflow: hidden;
@@ -157,21 +170,21 @@
     }
 
     .veille-topic-card.open .veille-card-body {
-      max-height: 2000px;
+      max-height: 3000px;
     }
 
     .veille-card-inner {
-      padding: 28px 32px 32px;
+      padding: 26px 30px 30px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
     }
 
-    /* Description courte */
-    .veille-desc {
+    /* CONTEXTE */
+    .veille-context {
       color: #334155;
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.93rem;
+      line-height: 1.75;
       margin: 0;
       padding: 16px 18px;
       background: #f8fafc;
@@ -179,30 +192,27 @@
       border-left: 3px solid #f97316;
     }
 
-    /* Timeline des dates */
+    /* SECTION LABEL */
+    .veille-section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #f97316;
+      margin-bottom: 14px;
+    }
+
+    /* TIMELINE */
     .veille-timeline {
       display: flex;
       flex-direction: column;
-      gap: 0;
-    }
-
-    .veille-timeline-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #f97316;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .timeline-item {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       position: relative;
-      padding-bottom: 18px;
+      padding-bottom: 20px;
     }
 
     .timeline-item:last-child {
@@ -212,8 +222,8 @@
     .timeline-item:not(:last-child)::before {
       content: '';
       position: absolute;
-      left: 39px;
-      top: 32px;
+      left: 75px;
+      top: 28px;
       bottom: 0;
       width: 1px;
       background: #e2e8f0;
@@ -221,34 +231,34 @@
 
     .timeline-date {
       flex-shrink: 0;
-      width: 80px;
+      width: 68px;
       text-align: right;
     }
 
     .timeline-date .t-year {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: #0f172a;
       display: block;
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .timeline-date .t-month {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: #f97316;
       text-transform: uppercase;
     }
 
     .timeline-dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: #f97316;
       border: 2px solid #fff;
-      box-shadow: 0 0 0 2px #f97316;
+      box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4);
       flex-shrink: 0;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     .timeline-content {
@@ -256,8 +266,8 @@
     }
 
     .timeline-content h5 {
-      margin: 0 0 4px 0;
-      font-size: 0.93rem;
+      margin: 0 0 5px 0;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #1e293b;
       line-height: 1.3;
@@ -265,27 +275,43 @@
 
     .timeline-content p {
       margin: 0;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* ANALYSE */
+    .veille-analysis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .analysis-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .analysis-item h6 {
+      margin: 0 0 6px 0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .analysis-item p {
+      margin: 0;
+      font-size: 0.82rem;
       color: #475569;
       line-height: 1.55;
     }
 
-    /* Sources */
+    /* SOURCES */
     .veille-sources-block {
       border-top: 1px solid #f1f5f9;
-      padding-top: 20px;
-    }
-
-    .veille-sources-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #9333ea;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      padding-top: 18px;
     }
 
     .veille-sources-grid {
@@ -299,11 +325,11 @@
       align-items: center;
       gap: 5px;
       background: #faf5ff;
-      border: 1px solid rgba(147, 51, 234, 0.2);
+      border: 1px solid rgba(147, 51, 234, 0.18);
       color: #7c3aed;
       padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.81rem;
+      font-size: 0.79rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
@@ -315,40 +341,59 @@
       color: #fff;
     }
 
-    /* Hint "Cliquer pour lire" */
-    .veille-hint {
-      text-align: center;
-      font-size: 0.82rem;
-      color: #94a3b8;
-      margin-top: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
+    .source-pill .pill-arrow {
+      font-size: 0.65rem;
+      opacity: 0.6;
     }
 
-    .veille-topic-card.open .veille-hint {
-      display: none;
+    /* METHODO */
+    .veille-methodo {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    .methodo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .methodo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .methodo-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #f97316;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .methodo-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .methodo-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.5;
     }
 
     @media (max-width: 640px) {
-      .veille-card-header {
-        padding: 20px;
-        flex-wrap: wrap;
-      }
-      .veille-card-inner {
-        padding: 20px;
-      }
-      .veille-card-divider {
-        margin: 0 20px;
-      }
-      .veille-card-right {
-        width: 100%;
-        justify-content: flex-end;
-      }
-      .veille-card-title {
-        font-size: 1.1rem;
-      }
+      .veille-card-header { padding: 18px 20px; }
+      .veille-card-preview { padding: 0 20px 18px 20px; }
+      .veille-card-inner { padding: 20px; }
+      .veille-card-divider { margin: 0 20px; }
+      .veille-analysis { grid-template-columns: 1fr; }
+      .veille-card-title { font-size: 1rem; }
     }
   </style>
 </head>
@@ -374,44 +419,60 @@
       <div class="veille-container">
         <h2 class="section-title">Veille Technologique</h2>
         <div class="underline-gradient"></div>
-        <p class="section-subtitle">Suivi régulier des évolutions en sécurité matérielle Apple — cliquez sur le thème pour lire la veille.</p>
+        <p class="section-subtitle">Suivi regulier des evolutions en securite materielle Apple — cliquez sur la card pour derouler la veille.</p>
 
         <!-- CARD VEILLE -->
         <div class="veille-topic-card" id="veilleCard">
 
-          <!-- EN-TÊTE CLIQUABLE -->
+          <!-- EN-TETE -->
           <div class="veille-card-header" onclick="toggleVeille()">
             <div class="veille-card-left">
-              <div class="veille-card-icon">🔐</div>
+              <div class="veille-card-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
               <div class="veille-card-meta">
-                <span class="veille-card-tag">Sécurité matérielle · Apple Silicon</span>
+                <span class="veille-card-tag">Securite materielle · Apple Silicon</span>
                 <h3 class="veille-card-title">La Secure Enclave d'Apple</h3>
-                <p class="veille-card-subtitle">Cryptographie, biométrie et isolation matérielle dans les appareils Apple</p>
+                <p class="veille-card-subtitle">Cryptographie, biometrie et isolation dans les appareils Apple</p>
               </div>
             </div>
             <div class="veille-card-right">
-              <span class="veille-period-badge">2013 → 2026</span>
-              <div class="veille-toggle-btn" aria-label="Afficher / masquer la veille">▼</div>
+              <span class="veille-period-badge">2013 — 2026</span>
+              <div class="veille-toggle-btn" aria-label="Afficher / masquer la veille">&#9660;</div>
             </div>
           </div>
 
-          <p class="veille-hint">👆 Cliquer pour lire la veille</p>
+          <!-- RESUME VISIBLE AVANT EXPANSION -->
+          <p class="veille-card-preview">
+            Dans le cadre de mon alternance chez Kyriba, je gere quotidiennement un parc de MacBooks sous puces Apple Silicon (M1 a M4).
+            La Secure Enclave est le coeur de la securite de ces terminaux : un coprocesseur isole qui stocke cles de chiffrement et donnees biometriques 
+            hors de portee du systeme principal, meme en cas de compromission du noyau.
+            <br><span style="color: #94a3b8; font-size: 0.82rem;">&#9660; Cliquer pour lire la veille complete</span>
+          </p>
 
-          <!-- SÉPARATEUR (visible uniquement ouvert) -->
+          <!-- SEPARATEUR -->
           <div class="veille-card-divider"></div>
 
           <!-- CONTENU EXPANSIBLE -->
           <div class="veille-card-body">
             <div class="veille-card-inner">
 
-              <!-- Description -->
-              <p class="veille-desc">
-                Dans le cadre de mon alternance chez <strong>Kyriba</strong>, je gère un parc de MacBooks Apple Silicon (M1 à M4). La <strong>Secure Enclave</strong> est un coprocesseur isolé intégré à chaque puce Apple : il possède son propre micro-OS (<strong>sepOS</strong>) et stocke clés de chiffrement, empreintes et données biométriques hors de portée du système principal — même en cas de compromission du noyau.
+              <!-- CONTEXTE -->
+              <p class="veille-context">
+                La <strong>Secure Enclave</strong> est un sous-systeme materiel presente sur toutes les puces Apple (A-series et M-series) depuis 2013.
+                Dote de son propre micro-OS (<strong>sepOS</strong>, derive du micronoyau L4), elle gere de facon autonome le chiffrement du stockage (FileVault),
+                les gabarits biometriques Touch ID et Face ID, ainsi que les cles cryptographiques des applications.
+                Aucune donnee sensible ne transite par le processeur principal ni par la memoire vive centrale — meme un acces root au noyau macOS
+                ne suffit pas a compromettre l'enclave. Cette architecture est directement pertinente dans mon contexte professionnel, 
+                ou la securite des postes MacBook du parc Kyriba repose en grande partie sur cette technologie.
               </p>
 
-              <!-- Timeline -->
+              <!-- CHRONOLOGIE -->
               <div>
-                <div class="veille-timeline-title">📅 Chronologie clé</div>
+                <div class="veille-section-label">Chronologie des evenements cles</div>
                 <div class="veille-timeline">
 
                   <div class="timeline-item">
@@ -421,8 +482,8 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Première Secure Enclave — puce A7 (iPhone 5s)</h5>
-                      <p>Lancement de Touch ID avec un coprocesseur dédié stockant les gabarits d'empreinte isolément d'iOS.</p>
+                      <h5>Premiere Secure Enclave — puce A7 (iPhone 5s)</h5>
+                      <p>Lancement de Touch ID avec un coprocesseur dedie. Les gabarits d'empreinte sont calcules et conserves uniquement dans l'enclave, sans jamais etre transmis a iOS ni au cloud Apple.</p>
                     </div>
                   </div>
 
@@ -433,8 +494,8 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Faille matérielle non-corrigible — Team Pangu</h5>
-                      <p>Touche uniquement les puces A7 à A11. Nécessite un accès physique. Les puces A12+ et toutes les puces M sont non affectées.</p>
+                      <h5>Faille materielle non-corrigible — Team Pangu (MOSEC 2020)</h5>
+                      <p>Un exploit presentee a Shanghai cible les puces A7 a A11. La faille exige un acces physique direct a l'appareil et ne permet pas de lire les donnees chiffrees, seulement de contourner certaines protections. Les puces A12+ et toutes les puces M sont immunisees. C'est un argument solide pour justifier le renouvellement des terminaux anciens en entreprise.</p>
                     </div>
                   </div>
 
@@ -445,8 +506,8 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Passkeys — authentification sans mot de passe (iOS 16)</h5>
-                      <p>Les clés FIDO2 sont générées et stockées en enclave, liées au site web. Supprime le risque de phishing sur les mots de passe.</p>
+                      <h5>Passkeys — authentification sans mot de passe (iOS 16 / macOS Ventura)</h5>
+                      <p>Les cles FIDO2 (Passkeys) sont generees dans l'enclave et liees au domaine web pour lequel elles ont ete creees. Meme en cas de vol de la base de donnees d'un site, ces cles sont inutilisables ailleurs. Cela elimine pratiquement le risque de phishing sur les mots de passe — un sujet direct pour les projets d'authentification forte en BTS SIO.</p>
                     </div>
                   </div>
 
@@ -457,8 +518,8 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Private Cloud Compute — l'enclave côté serveur</h5>
-                      <p>Les serveurs d'Apple Intelligence embarquent une Secure Enclave : clés éphémères, effacement cryptographique à chaque redémarrage.</p>
+                      <h5>Private Cloud Compute (PCC) — l'enclave cote serveur</h5>
+                      <p>Les serveurs d'Apple Intelligence embarquent une Secure Enclave : les cles de session sont ephemeres et effacees cryptographiquement a chaque redemarrage. Meme Apple ne peut pas acceder aux requetes traitees. C'est une extension du principe d'isolation au "confidential computing" dans le cloud.</p>
                     </div>
                   </div>
 
@@ -470,7 +531,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                       <h5>Memory Integrity Enforcement — puces A19 (iPhone 17 / Air)</h5>
-                      <p>Protection mémoire matérielle toujours active combinant ARM Memory Tagging Extension et les défenses iOS.</p>
+                      <p>Apple combine les defenses memoire d'iOS avec ARM Memory Tagging Extension (MTE) pour une protection active et permanente contre les attaques par corruption memoire. Cette fonction est reservee aux nouveaux terminaux et illustre l'extension de la securite materielle au-dela de la seule enclave.</p>
                     </div>
                   </div>
 
@@ -481,8 +542,8 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>MacBook Neo — voyant caméra via exclave isolée</h5>
-                      <p>Sans LED physique, le témoin vert est géré par une exclave indépendante du noyau : aucun logiciel ne peut activer la caméra en silence.</p>
+                      <h5>MacBook Neo — voyant camera protege par une exclave</h5>
+                      <p>Sans LED physique, le MacBook Neo affiche un indicateur vert gere par une exclave isolee du noyau. Meme avec un acces root, aucun logiciel ne peut activer la camera sans declencher cet indicateur. Le principe d'isolement s'etend desormais aux peripheriques sensibles, pas seulement a la cryptographie.</p>
                     </div>
                   </div>
 
@@ -493,26 +554,90 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>iPhone 18 Pro — Face ID avec secure exclave dédiée</h5>
-                      <p>Une exclave matérielle traite une partie du calcul biométrique de Face ID, accélérant l'authentification tout en renforçant l'isolation des données.</p>
+                      <h5>iPhone 18 Pro &amp; iPhone Duo — secure exclave pour Face ID et nouvelles formes</h5>
+                      <p>L'iPhone 18 Pro introduit une exclave materielle dediee au traitement biometrique de Face ID, separee de l'enclave principale. L'iPhone Duo (double ecran pliable), attendu en 2026, etend ces mecanismes de securite a un facteur de forme inedi avec deux zones d'affichage independantes — la gestion des acces et du dechiffrement doit s'adapter a cette nouvelle architecture.</p>
                     </div>
                   </div>
 
                 </div>
               </div>
 
-              <!-- Sources -->
+              <!-- ANALYSE -->
+              <div>
+                <div class="veille-section-label">Points cles pour le BTS SIO &amp; l'entreprise</div>
+                <div class="veille-analysis">
+                  <div class="analysis-item">
+                    <h6>Gestion du parc Mac</h6>
+                    <p>Les cles FileVault sont gees par l'enclave. En cas d'oubli de mot de passe, la cle de secours institutionnelle est recuperable via MDM (Jamf / Intune) sans jamais exposer la cle de chiffrement.</p>
+                  </div>
+                  <div class="analysis-item">
+                    <h6>Authentification forte (SLAM)</h6>
+                    <p>CryptoKit et l'API SecureEnclave.P256 permettent de signer des requetes API avec une cle privee qui ne quitte jamais la puce — pertinent pour tout projet de developpement securise.</p>
+                  </div>
+                  <div class="analysis-item">
+                    <h6>Renouvellement du parc</h6>
+                    <p>Les terminaux anciens (A7-A11) sont vulnerables a des exploits physiques. L'enclave justifie techniquement le retrait des postes obsoletes aupres de la DSI.</p>
+                  </div>
+                  <div class="analysis-item">
+                    <h6>Conformite RGPD</h6>
+                    <p>Les donnees biometriques (Face ID, Touch ID) ne quittent jamais le terminal et ne sont jamais transmises a Apple. Ce point est essentiel pour rassurer les utilisateurs et les DPO.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- METHODOLOGIE -->
+              <div class="veille-methodo">
+                <div class="veille-section-label">Methode de veille</div>
+                <div class="methodo-grid">
+                  <div class="methodo-item">
+                    <span class="methodo-num">Collecte</span>
+                    <span class="methodo-label">Flux RSS &amp; alertes</span>
+                    <span class="methodo-desc">Feedly sur les flux Apple Security Research, TidBITS, Eclectic Light Co., alertes Google "Secure Enclave"</span>
+                  </div>
+                  <div class="methodo-item">
+                    <span class="methodo-num">Filtrage</span>
+                    <span class="methodo-label">Sources fiables</span>
+                    <span class="methodo-desc">Verification systematique : CVE officiel, bulletin Apple ou publication de recherche avant toute citation</span>
+                  </div>
+                  <div class="methodo-item">
+                    <span class="methodo-num">Exploitation</span>
+                    <span class="methodo-label">Application metier</span>
+                    <span class="methodo-desc">Chaque information est contextualise a la gestion du parc Kyriba et aux projets BTS SIO (SLAM/SISR)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SOURCES -->
               <div class="veille-sources-block">
-                <div class="veille-sources-title">🔗 Sources</div>
+                <div class="veille-section-label">Sources documentaires</div>
                 <div class="veille-sources-grid">
-                  <a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank" rel="noopener" class="source-pill">Guide Apple (officiel)</a>
-                  <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener" class="source-pill">Apple Security Research — PCC</a>
-                  <a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/" target="_blank" rel="noopener" class="source-pill">Eclectic Light Co. — Historique</a>
-                  <a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank" rel="noopener" class="source-pill">TidBITS — Mars 2026</a>
-                  <a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro" target="_blank" rel="noopener" class="source-pill">AppleInsider — iPhone 18 Pro</a>
-                  <a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/" target="_blank" rel="noopener" class="source-pill">TidBITS — Mémoire intégrité 2025</a>
-                  <a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave" target="_blank" rel="noopener" class="source-pill">Interesting Engineering — Faille Pangu</a>
-                  <a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank" rel="noopener" class="source-pill">Daring Fireball — MacBook Neo</a>
+                  <a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank" rel="noopener" class="source-pill">
+                    Guide Apple (officiel) <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener" class="source-pill">
+                    Apple Security Research — PCC <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/" target="_blank" rel="noopener" class="source-pill">
+                    Eclectic Light Co. — Historique <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank" rel="noopener" class="source-pill">
+                    TidBITS — Mars 2026 <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro" target="_blank" rel="noopener" class="source-pill">
+                    AppleInsider — iPhone 18 Pro <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/" target="_blank" rel="noopener" class="source-pill">
+                    TidBITS — Memory Integrity 2025 <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank" rel="noopener" class="source-pill">
+                    Daring Fireball — MacBook Neo <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave" target="_blank" rel="noopener" class="source-pill">
+                    Interesting Engineering — Faille Pangu <span class="pill-arrow">&#8599;</span>
+                  </a>
+                  <a href="https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf" target="_blank" rel="noopener" class="source-pill">
+                    Apple Platform Security Guide (PDF) <span class="pill-arrow">&#8599;</span>
+                  </a>
                 </div>
               </div>
 
@@ -520,7 +645,6 @@
           </div>
 
         </div>
-        <!-- FIN CARD VEILLE -->
 
       </div>
     </section>
