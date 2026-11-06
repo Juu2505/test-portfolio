@@ -7,7 +7,8 @@
   <title>Veille Technologique - Portfolio Julie Durand</title>
   <link rel="stylesheet" href="css/style.css?v=light-2026">
   <style>
-    html, body {
+    html,
+    body {
       background-color: #f8fafc !important;
       background: #f8fafc !important;
       color: #0f172a !important;
@@ -388,12 +389,29 @@
     }
 
     @media (max-width: 640px) {
-      .veille-card-header { padding: 18px 20px; }
-      .veille-card-preview { padding: 0 20px 18px 20px; }
-      .veille-card-inner { padding: 20px; }
-      .veille-card-divider { margin: 0 20px; }
-      .veille-analysis { grid-template-columns: 1fr; }
-      .veille-card-title { font-size: 1rem; }
+      .veille-card-header {
+        padding: 18px 20px;
+      }
+
+      .veille-card-preview {
+        padding: 0 20px 18px 20px;
+      }
+
+      .veille-card-inner {
+        padding: 20px;
+      }
+
+      .veille-card-divider {
+        margin: 0 20px;
+      }
+
+      .veille-analysis {
+        grid-template-columns: 1fr;
+      }
+
+      .veille-card-title {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -419,7 +437,8 @@
       <div class="veille-container">
         <h2 class="section-title">Veille Technologique</h2>
         <div class="underline-gradient"></div>
-        <p class="section-subtitle">Suivi regulier des evolutions en securite materielle Apple — cliquez sur la card pour derouler la veille.</p>
+        <p class="section-subtitle">Suivi régulier des évolutions en sécurité matérielle Apple — cliquez sur la card
+          pour dérouler la veille.</p>
 
         <!-- CARD VEILLE -->
         <div class="veille-topic-card" id="veilleCard">
@@ -434,9 +453,9 @@
                 </svg>
               </div>
               <div class="veille-card-meta">
-                <span class="veille-card-tag">Securite materielle · Apple Silicon</span>
+                <span class="veille-card-tag">Sécurité matérielle · Apple Silicon</span>
                 <h3 class="veille-card-title">La Secure Enclave d'Apple</h3>
-                <p class="veille-card-subtitle">Cryptographie, biometrie et isolation dans les appareils Apple</p>
+                <p class="veille-card-subtitle">Cryptographie, biométrie et isolation dans les appareils Apple</p>
               </div>
             </div>
             <div class="veille-card-right">
@@ -447,9 +466,11 @@
 
           <!-- RESUME VISIBLE AVANT EXPANSION -->
           <p class="veille-card-preview">
-            Dans le cadre de mon alternance chez Kyriba, je gere quotidiennement un parc de MacBooks sous puces Apple Silicon (M1 a M4).
-            La Secure Enclave est le coeur de la securite de ces terminaux : un coprocesseur isole qui stocke cles de chiffrement et donnees biometriques 
-            hors de portee du systeme principal, meme en cas de compromission du noyau.
+            Dans le cadre de mon alternance chez Kyriba, je gère quotidiennement un parc de MacBooks sous puces Apple
+            Silicon (M1 à M4).
+            La Secure Enclave est le cœur de la sécurité de ces terminaux : un coprocesseur isolé qui stocke clés de
+            chiffrement et données biométriques
+            hors de portée du système principal, même en cas de compromission du noyau.
             <br><span style="color: #94a3b8; font-size: 0.82rem;">&#9660; Cliquer pour lire la veille complete</span>
           </p>
 
@@ -462,17 +483,21 @@
 
               <!-- CONTEXTE -->
               <p class="veille-context">
-                La <strong>Secure Enclave</strong> est un sous-systeme materiel presente sur toutes les puces Apple (A-series et M-series) depuis 2013.
-                Dote de son propre micro-OS (<strong>sepOS</strong>, derive du micronoyau L4), elle gere de facon autonome le chiffrement du stockage (FileVault),
-                les gabarits biometriques Touch ID et Face ID, ainsi que les cles cryptographiques des applications.
-                Aucune donnee sensible ne transite par le processeur principal ni par la memoire vive centrale — meme un acces root au noyau macOS
-                ne suffit pas a compromettre l'enclave. Cette architecture est directement pertinente dans mon contexte professionnel, 
-                ou la securite des postes MacBook du parc Kyriba repose en grande partie sur cette technologie.
+                La <strong>Secure Enclave</strong> est un sous-système matériel présent sur toutes les puces Apple
+                (A-series et M-series) depuis 2013.
+                Doté de son propre micro-OS (<strong>sepOS</strong>, dérivé du micronoyau L4), elle gère de façon
+                autonome le chiffrement du stockage (FileVault),
+                les gabarits biométriques Touch ID et Face ID, ainsi que les clés cryptographiques des applications.
+                Aucune donnée sensible ne transite par le processeur principal ni par la mémoire vive centrale — même un
+                accès root au noyau macOS
+                ne suffit pas à compromettre l'enclave. Cette architecture est directement pertinente dans mon contexte
+                professionnel,
+                où la sécurité des postes MacBook du parc Kyriba repose en grande partie sur cette technologie.
               </p>
 
               <!-- CHRONOLOGIE -->
               <div>
-                <div class="veille-section-label">Chronologie des evenements cles</div>
+                <div class="veille-section-label">Chronologie des événements clés</div>
                 <div class="veille-timeline">
 
                   <div class="timeline-item">
@@ -482,8 +507,9 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Premiere Secure Enclave — puce A7 (iPhone 5s)</h5>
-                      <p>Lancement de Touch ID avec un coprocesseur dedie. Les gabarits d'empreinte sont calcules et conserves uniquement dans l'enclave, sans jamais etre transmis a iOS ni au cloud Apple.</p>
+                      <h5>Première Secure Enclave — puce A7 (iPhone 5s)</h5>
+                      <p>Lancement de Touch ID avec un coprocesseur dédié. Les gabarits d'empreinte sont calculés et
+                        conservés uniquement dans l'enclave, sans jamais être transmis à iOS ni au cloud Apple.</p>
                     </div>
                   </div>
 
@@ -494,8 +520,11 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Faille materielle non-corrigible — Team Pangu (MOSEC 2020)</h5>
-                      <p>Un exploit presentee a Shanghai cible les puces A7 a A11. La faille exige un acces physique direct a l'appareil et ne permet pas de lire les donnees chiffrees, seulement de contourner certaines protections. Les puces A12+ et toutes les puces M sont immunisees. C'est un argument solide pour justifier le renouvellement des terminaux anciens en entreprise.</p>
+                      <h5>Faille matérielle non-corrigible — Team Pangu (MOSEC 2020)</h5>
+                      <p>Un exploit présenté à Shanghai cible les puces A7 à A11. La faille exige un accès physique
+                        direct à l'appareil et ne permet pas de lire les données chiffrées, seulement de contourner
+                        certaines protections. Les puces A12+ et toutes les puces M sont immunisées. C'est un argument
+                        solide pour justifier le renouvellement des terminaux anciens en entreprise.</p>
                     </div>
                   </div>
 
@@ -507,7 +536,10 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                       <h5>Passkeys — authentification sans mot de passe (iOS 16 / macOS Ventura)</h5>
-                      <p>Les cles FIDO2 (Passkeys) sont generees dans l'enclave et liees au domaine web pour lequel elles ont ete creees. Meme en cas de vol de la base de donnees d'un site, ces cles sont inutilisables ailleurs. Cela elimine pratiquement le risque de phishing sur les mots de passe — un sujet direct pour les projets d'authentification forte en BTS SIO.</p>
+                      <p>Les clés FIDO2 (Passkeys) sont générées dans l'enclave et liées au domaine web pour lequel
+                        elles ont été créées. Même en cas de vol de la base de données d'un site, ces clés sont
+                        inutilisables ailleurs. Cela élimine pratiquement le risque de phishing sur les mots de passe —
+                        un sujet direct pour les projets d'authentification forte en BTS SIO.</p>
                     </div>
                   </div>
 
@@ -518,8 +550,11 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>Private Cloud Compute (PCC) — l'enclave cote serveur</h5>
-                      <p>Les serveurs d'Apple Intelligence embarquent une Secure Enclave : les cles de session sont ephemeres et effacees cryptographiquement a chaque redemarrage. Meme Apple ne peut pas acceder aux requetes traitees. C'est une extension du principe d'isolation au "confidential computing" dans le cloud.</p>
+                      <h5>Private Cloud Compute (PCC) — l'enclave côté serveur</h5>
+                      <p>Les serveurs d'Apple Intelligence embarquent une Secure Enclave : les clés de session sont
+                        éphémères et effacées cryptographiquement à chaque redémarrage. Même Apple ne peut pas accéder
+                        aux requêtes traitées. C'est une extension du principe d'isolation au "confidential computing"
+                        dans le cloud.</p>
                     </div>
                   </div>
 
@@ -531,7 +566,10 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                       <h5>Memory Integrity Enforcement — puces A19 (iPhone 17 / Air)</h5>
-                      <p>Apple combine les defenses memoire d'iOS avec ARM Memory Tagging Extension (MTE) pour une protection active et permanente contre les attaques par corruption memoire. Cette fonction est reservee aux nouveaux terminaux et illustre l'extension de la securite materielle au-dela de la seule enclave.</p>
+                      <p>Apple combine les défenses mémoire d'iOS avec ARM Memory Tagging Extension (MTE) pour une
+                        protection active et permanente contre les attaques par corruption mémoire. Cette fonction est
+                        réservée aux nouveaux terminaux et illustre l'extension de la sécurité matérielle au-delà de la
+                        seule enclave.</p>
                     </div>
                   </div>
 
@@ -542,8 +580,11 @@
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                      <h5>MacBook Neo — voyant camera protege par une exclave</h5>
-                      <p>Sans LED physique, le MacBook Neo affiche un indicateur vert gere par une exclave isolee du noyau. Meme avec un acces root, aucun logiciel ne peut activer la camera sans declencher cet indicateur. Le principe d'isolement s'etend desormais aux peripheriques sensibles, pas seulement a la cryptographie.</p>
+                      <h5>MacBook Neo — voyant caméra protégé par une exclave</h5>
+                      <p>Sans LED physique, le MacBook Neo affiche un indicateur vert géré par une exclave isolée du
+                        noyau. Même avec un accès root, aucun logiciel ne peut activer la caméra sans déclencher cet
+                        indicateur. Le principe d'isolement s'étend désormais aux périphériques sensibles, pas seulement
+                        à la cryptographie.</p>
                     </div>
                   </div>
 
@@ -555,7 +596,10 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                       <h5>iPhone 18 Pro &amp; iPhone Duo — secure exclave pour Face ID et nouvelles formes</h5>
-                      <p>L'iPhone 18 Pro introduit une exclave materielle dediee au traitement biometrique de Face ID, separee de l'enclave principale. L'iPhone Duo (double ecran pliable), attendu en 2026, etend ces mecanismes de securite a un facteur de forme inedi avec deux zones d'affichage independantes — la gestion des acces et du dechiffrement doit s'adapter a cette nouvelle architecture.</p>
+                      <p>L'iPhone 18 Pro introduit une exclave matérielle dédiée au traitement biométrique de Face ID,
+                        séparée de l'enclave principale. L'iPhone Duo (double écran pliable), attendu en 2026, étend ces
+                        mécanismes de sécurité à un facteur de forme inédit avec deux zones d'affichage indépendantes —
+                        la gestion des accès et du déchiffrement doit s'adapter à cette nouvelle architecture.</p>
                     </div>
                   </div>
 
@@ -564,78 +608,94 @@
 
               <!-- ANALYSE -->
               <div>
-                <div class="veille-section-label">Points cles pour le BTS SIO &amp; l'entreprise</div>
+                <div class="veille-section-label">Points clés pour le BTS SIO &amp; l'entreprise</div>
                 <div class="veille-analysis">
                   <div class="analysis-item">
                     <h6>Gestion du parc Mac</h6>
-                    <p>Les cles FileVault sont gees par l'enclave. En cas d'oubli de mot de passe, la cle de secours institutionnelle est recuperable via MDM (Jamf / Intune) sans jamais exposer la cle de chiffrement.</p>
+                    <p>Les clés FileVault sont gérées par l'enclave. En cas d'oubli de mot de passe, la clé de secours
+                      institutionnelle est récupérable via MDM (Jamf / Intune) sans jamais exposer la clé de
+                      chiffrement.</p>
                   </div>
                   <div class="analysis-item">
                     <h6>Authentification forte (SLAM)</h6>
-                    <p>CryptoKit et l'API SecureEnclave.P256 permettent de signer des requetes API avec une cle privee qui ne quitte jamais la puce — pertinent pour tout projet de developpement securise.</p>
+                    <p>CryptoKit et l'API SecureEnclave.P256 permettent de signer des requêtes API avec une clé privée
+                      qui ne quitte jamais la puce — pertinent pour tout projet de développement sécurisé.</p>
                   </div>
                   <div class="analysis-item">
                     <h6>Renouvellement du parc</h6>
-                    <p>Les terminaux anciens (A7-A11) sont vulnerables a des exploits physiques. L'enclave justifie techniquement le retrait des postes obsoletes aupres de la DSI.</p>
+                    <p>Les terminaux anciens (A7-A11) sont vulnérables à des exploits physiques. L'enclave justifie
+                      techniquement le retrait des postes obsolètes auprès de la DSI.</p>
                   </div>
                   <div class="analysis-item">
-                    <h6>Conformite RGPD</h6>
-                    <p>Les donnees biometriques (Face ID, Touch ID) ne quittent jamais le terminal et ne sont jamais transmises a Apple. Ce point est essentiel pour rassurer les utilisateurs et les DPO.</p>
+                    <h6>Conformité RGPD</h6>
+                    <p>Les données biométriques (Face ID, Touch ID) ne quittent jamais le terminal et ne sont jamais
+                      transmises à Apple. Ce point est essentiel pour rassurer les utilisateurs et les DPO.</p>
                   </div>
                 </div>
               </div>
 
               <!-- METHODOLOGIE -->
               <div class="veille-methodo">
-                <div class="veille-section-label">Methode de veille</div>
+                <div class="veille-section-label">Méthode de veille</div>
                 <div class="methodo-grid">
                   <div class="methodo-item">
                     <span class="methodo-num">Collecte</span>
                     <span class="methodo-label">Flux RSS &amp; alertes</span>
-                    <span class="methodo-desc">Feedly sur les flux Apple Security Research, TidBITS, Eclectic Light Co., alertes Google "Secure Enclave"</span>
+                    <span class="methodo-desc">Feedly sur les flux Apple Security Research, TidBITS, Eclectic Light Co.,
+                      alertes Google "Secure Enclave"</span>
                   </div>
                   <div class="methodo-item">
                     <span class="methodo-num">Filtrage</span>
                     <span class="methodo-label">Sources fiables</span>
-                    <span class="methodo-desc">Verification systematique : CVE officiel, bulletin Apple ou publication de recherche avant toute citation</span>
+                    <span class="methodo-desc">Vérification systématique : CVE officiel, bulletin Apple ou publication
+                      de recherche avant toute citation</span>
                   </div>
                   <div class="methodo-item">
                     <span class="methodo-num">Exploitation</span>
-                    <span class="methodo-label">Application metier</span>
-                    <span class="methodo-desc">Chaque information est contextualise a la gestion du parc Kyriba et aux projets BTS SIO (SLAM/SISR)</span>
+                    <span class="methodo-label">Application métier</span>
+                    <span class="methodo-desc">Chaque information est contextualisée à la gestion du parc Kyriba et aux
+                      projets BTS SIO (SLAM/SISR)</span>
                   </div>
                 </div>
               </div>
 
               <!-- SOURCES -->
               <div class="veille-sources-block">
-                <div class="veille-section-label">Sources documentaires</div>
-                <div class="veille-sources-grid">
-                  <a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank" rel="noopener" class="source-pill">
+                <div class="veille-section-label">Sources documentaires</div>                <div class="veille-sources-grid">
+                  <a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank"
+                    rel="noopener" class="source-pill">
                     Guide Apple (officiel) <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener"
+                    class="source-pill">
                     Apple Security Research — PCC <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"
+                    target="_blank" rel="noopener" class="source-pill">
                     Eclectic Light Co. — Historique <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank"
+                    rel="noopener" class="source-pill">
                     TidBITS — Mars 2026 <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro"
+                    target="_blank" rel="noopener" class="source-pill">
                     AppleInsider — iPhone 18 Pro <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/"
+                    target="_blank" rel="noopener" class="source-pill">
                     TidBITS — Memory Integrity 2025 <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank"
+                    rel="noopener" class="source-pill">
                     Daring Fireball — MacBook Neo <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave"
+                    target="_blank" rel="noopener" class="source-pill">
                     Interesting Engineering — Faille Pangu <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf" target="_blank" rel="noopener" class="source-pill">
+                  <a href="https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf" target="_blank"
+                    rel="noopener" class="source-pill">
                     Apple Platform Security Guide (PDF) <span class="pill-arrow">&#8599;</span>
                   </a>
                 </div>
