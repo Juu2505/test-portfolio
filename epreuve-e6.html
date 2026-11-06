@@ -277,6 +277,53 @@
             background: rgba(168, 85, 247, 0.05);
         }
 
+        /* CTA Bouton documentation */
+        .project-card-cta {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-doc-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 11px 18px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(249, 115, 22, 0.08));
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: #a855f7;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-doc-download:hover {
+            background: linear-gradient(135deg, #a855f7, #f97316);
+            border-color: transparent;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-doc-pending {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            color: #64748b;
+            cursor: default;
+        }
+
+        .btn-doc-pending:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #64748b;
+            transform: none;
+            box-shadow: none;
+        }
+
         @media (max-width: 768px) {
             .project-cards-grid {
                 grid-template-columns: 1fr;
@@ -322,13 +369,13 @@
                 <p class="e6-intro-desc">
                     L'épreuve E6 évalue le parcours de professionnalisation de l'étudiant à travers ses réalisations en milieu professionnel et scolaire. Elle valide les compétences en <strong>développement d'applications</strong> (SLAM : Solutions Logicielles et Applications Métiers), la capacité à concevoir, coder, tester et documenter des projets informatiques.
                     <br><br>
-                    Ce dossier présente les situations professionnelles significatives réalisées durant mon alternance chez <strong>Kyriba</strong> et mes travaux à l'école <strong>IRIS</strong>, couvrant la gestion de bases de données, le développement web et la programmation applicative.
+                    Ce dossier présente les situations professionnelles significatives réalisées à l'école <strong>IRIS</strong> et en entreprise, couvrant la modélisation de bases de données, le développement web applicatif et la programmation d'un client lourd.
                 </p>
                 <div class="domain-pills">
                     <span class="domain-pill pill-purple">Développement d'applications</span>
                     <span class="domain-pill pill-orange">Bases de données</span>
                     <span class="domain-pill pill-blue">Programmation web</span>
-                    <span class="domain-pill pill-green">Conduite de projet</span>
+                    <span class="domain-pill pill-green">Client lourd</span>
                 </div>
             </div>
 
@@ -340,39 +387,13 @@
 
             <div class="project-cards-grid">
 
-                <!-- RÉALISATION 1 : ALTERNANCE KYRIBA -->
-                <div class="project-ui-card">
-                    <div class="project-badge-row">
-                        <span class="badge-cadre enterprise">Alternance · Kyriba</span>
-                        <span class="badge-option">SLAM</span>
-                    </div>
-                    <h4 class="project-title">Réalisation 1 : [Titre à compléter]</h4>
-                    <p class="project-summary">
-                        Description de la réalisation professionnelle effectuée en entreprise chez Kyriba. Préciser l'objectif, le contexte et les travaux réalisés.
-                    </p>
-
-                    <div class="project-competencies">
-                        <div class="project-competencies-label">Compétences clés validées</div>
-                        <ul class="competency-list">
-                            <li><span class="check-icon">+</span> Concevoir et développer une solution applicative</li>
-                            <li><span class="check-icon">+</span> Gérer les données et les bases de données</li>
-                            <li><span class="check-icon">+</span> Assurer la maintenance et l'évolution d'une application</li>
-                        </ul>
-                    </div>
-
-                    <div class="project-tags">
-                        <span class="project-tag">À compléter</span>
-                        <span class="project-tag">À compléter</span>
-                    </div>
-                </div>
-
-                <!-- RÉALISATION 2 : PROJET ITMS SUPPORTDESK (ÉCOLE IRIS) -->
+                <!-- RÉALISATION 1 : APPLICATION WEB ITMS (ÉCOLE IRIS) -->
                 <div class="project-ui-card">
                     <div class="project-badge-row">
                         <span class="badge-cadre school">École · IRIS</span>
                         <span class="badge-option">SLAM</span>
                     </div>
-                    <h4 class="project-title">Projet : Application ITMS SupportDesk</h4>
+                    <h4 class="project-title">Projet 1 : Application web ITMS SupportDesk</h4>
                     <p class="project-summary">
                         Conception et développement d'une application web légère de gestion des incidents et ticketing (ITMS) inspirée de GLPI. Déploiement d'une architecture PHP/MySQL avec séparation des fonctions métier, gestion des utilisateurs, typage strict et sécurisation contre les injections SQL via requêtes préparées (PDO).
                     </p>
@@ -392,6 +413,49 @@
                         <span class="project-tag">PDO / Sécurité SQL</span>
                         <span class="project-tag">ITMS / Ticketing</span>
                         <span class="project-tag">Apache</span>
+                    </div>
+
+                    <div class="project-card-cta">
+                        <a href="documentation/Documentation-Technique-ITMS-SupportDesk.pdf" target="_blank" class="btn-doc-download">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                            Consulter la documentation technique (PDF)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RÉALISATION 2 : CLIENT LOURD ITMS (ÉCOLE IRIS) -->
+                <div class="project-ui-card">
+                    <div class="project-badge-row">
+                        <span class="badge-cadre school">École · IRIS</span>
+                        <span class="badge-option">SLAM</span>
+                    </div>
+                    <h4 class="project-title">Projet 2 : Client lourd ITMS SupportDesk</h4>
+                    <p class="project-summary">
+                        Développement d'une application bureau (client lourd) interconnectée à la base de données centrale de l'ITMS SupportDesk. Conçue pour les techniciens de support, elle permet la supervision en direct des incidents, l'attribution, le traitement et la clôture assistée des tickets.
+                    </p>
+
+                    <div class="project-competencies">
+                        <div class="project-competencies-label">Compétences clés visées</div>
+                        <ul class="competency-list">
+                            <li><span class="check-icon">+</span> Concevoir et développer une interface graphique applicative (Client lourd / POO)</li>
+                            <li><span class="check-icon">+</span> Interconnecter l'application bureau à la base de données relationnelle MySQL</li>
+                            <li><span class="check-icon">+</span> Gérer le cycle de vie, les statuts et l'attribution des tickets pour les techniciens</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Client lourd</span>
+                        <span class="project-tag">Programmation Objet</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Support ITMS</span>
+                        <span class="project-tag">Interface Graphique</span>
+                    </div>
+
+                    <div class="project-card-cta">
+                        <span class="btn-doc-download btn-doc-pending">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Documentation technique en cours de finalisation
+                        </span>
                     </div>
                 </div>
 

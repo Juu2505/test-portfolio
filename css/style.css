@@ -309,7 +309,31 @@ nav {
     font-weight: 600;
     padding: 4px 14px;
     border-radius: 20px;
-    margin: 0 0 18px;
+    margin: 0 0 12px;
+}
+
+.btn-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 18px;
+    background: #0a66c2;
+    color: #ffffff !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(10, 102, 194, 0.2);
+    margin-bottom: 8px;
+}
+
+.btn-linkedin:hover {
+    background: #004182;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(10, 102, 194, 0.35);
+    color: #ffffff !important;
 }
 
 .contact-list {
