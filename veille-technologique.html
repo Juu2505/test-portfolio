@@ -113,6 +113,7 @@
       line-height: 1.6;
       padding: 0 30px 22px 92px;
       margin: 0;
+      cursor: pointer;
     }
 
     .veille-card-right {
@@ -465,13 +466,12 @@
           </div>
 
           <!-- RESUME VISIBLE AVANT EXPANSION -->
-          <p class="veille-card-preview">
+          <p class="veille-card-preview" onclick="toggleVeille()">
             Dans le cadre de mon alternance chez Kyriba, je gère quotidiennement un parc de MacBooks sous puces Apple
             Silicon (M1 à M4).
             La Secure Enclave est le cœur de la sécurité de ces terminaux : un coprocesseur isolé qui stocke clés de
             chiffrement et données biométriques
             hors de portée du système principal, même en cas de compromission du noyau.
-            <br><span style="color: #94a3b8; font-size: 0.82rem;">&#9660; Cliquer pour lire la veille complete</span>
           </p>
 
           <!-- SEPARATEUR -->
@@ -639,64 +639,37 @@
                 <div class="veille-section-label">Méthode de veille</div>
                 <div class="methodo-grid">
                   <div class="methodo-item">
-                    <span class="methodo-num">Collecte</span>
-                    <span class="methodo-label">Flux RSS &amp; alertes</span>
-                    <span class="methodo-desc">Feedly sur les flux Apple Security Research, TidBITS, Eclectic Light Co.,
-                      alertes Google "Secure Enclave"</span>
+                    <span class="methodo-num">Collecte mensuelle</span>
+                    <span class="methodo-label">Documentation officielle Apple</span>
+                    <span class="methodo-desc">Consultation mensuelle des guides techniques et de sécurité Apple (Platform Security Guide, CryptoKit / Developer Documentation).</span>
                   </div>
                   <div class="methodo-item">
-                    <span class="methodo-num">Filtrage</span>
-                    <span class="methodo-label">Sources fiables</span>
-                    <span class="methodo-desc">Vérification systématique : CVE officiel, bulletin Apple ou publication
-                      de recherche avant toute citation</span>
+                    <span class="methodo-num">Collecte quotidienne</span>
+                    <span class="methodo-label">Réseaux sociaux &amp; Tech</span>
+                    <span class="methodo-desc">Suivi quotidien de comptes et vidéos spécialisés sur Instagram (ex: @estherium, @tffintech) pour capter les tendances et actualités hardware/tech.</span>
                   </div>
                   <div class="methodo-item">
                     <span class="methodo-num">Exploitation</span>
                     <span class="methodo-label">Application métier</span>
-                    <span class="methodo-desc">Chaque information est contextualisée à la gestion du parc Kyriba et aux
-                      projets BTS SIO (SLAM/SISR)</span>
+                    <span class="methodo-desc">Mise en pratique sur le parc Mac chez Kyriba et application aux projets informatiques en BTS SIO.</span>
                   </div>
                 </div>
               </div>
 
               <!-- SOURCES -->
               <div class="veille-sources-block">
-                <div class="veille-section-label">Sources documentaires</div>                <div class="veille-sources-grid">
-                  <a href="https://support.apple.com/guide/security/the-secure-enclave-sec59b0b31ff/web" target="_blank"
-                    rel="noopener" class="source-pill">
-                    Guide Apple (officiel) <span class="pill-arrow">&#8599;</span>
+                <div class="veille-section-label">Sources documentaires &amp; Références</div>
+                <div class="veille-sources-grid">
+                  <a href="https://support.apple.com/en-euro/guide/security/sec59b0b31ff/web" target="_blank"
+                    rel="noopener" class="source-pill" style="background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.35); color: #ea580c; font-weight: 700; padding: 7px 16px;">
+                    Apple Platform Security Guide (Secure Enclave) <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener"
-                    class="source-pill">
-                    Apple Security Research — PCC <span class="pill-arrow">&#8599;</span>
+                  <a href="https://developer.apple.com/documentation/cryptokit/secureenclave" target="_blank"
+                    rel="noopener" class="source-pill" style="background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.35); color: #9333ea; font-weight: 700; padding: 7px 16px;">
+                    Apple Developer — CryptoKit SecureEnclave <span class="pill-arrow">&#8599;</span>
                   </a>
-                  <a href="https://eclecticlight.co/2024/06/15/a-brief-history-of-mac-enclaves-and-exclaves/"
-                    target="_blank" rel="noopener" class="source-pill">
-                    Eclectic Light Co. — Historique <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://tidbits.com/2026/03/18/whats-new-in-apples-platform-security-guide/" target="_blank"
-                    rel="noopener" class="source-pill">
-                    TidBITS — Mars 2026 <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://appleinsider.com/articles/26/09/22/supplemental-image-data-used-in-face-id-authentication-on-iphone-18-pro"
-                    target="_blank" rel="noopener" class="source-pill">
-                    AppleInsider — iPhone 18 Pro <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://tidbits.com/2025/09/12/memory-integrity-enforcement-bolsters-iphone-security/"
-                    target="_blank" rel="noopener" class="source-pill">
-                    TidBITS — Memory Integrity 2025 <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator" target="_blank"
-                    rel="noopener" class="source-pill">
-                    Daring Fireball — MacBook Neo <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://interestingengineering.com/hackers-spot-permanent-vulnerability-in-apples-secure-enclave"
-                    target="_blank" rel="noopener" class="source-pill">
-                    Interesting Engineering — Faille Pangu <span class="pill-arrow">&#8599;</span>
-                  </a>
-                  <a href="https://help.apple.com/pdf/security/en_US/apple-platform-security-guide.pdf" target="_blank"
-                    rel="noopener" class="source-pill">
-                    Apple Platform Security Guide (PDF) <span class="pill-arrow">&#8599;</span>
+                  <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="source-pill">
+                    Instagram Tech (quotidien : @estherium, @tffintech) <span class="pill-arrow">&#8599;</span>
                   </a>
                 </div>
               </div>
