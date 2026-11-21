@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet Calculatrice Web PHP - BTS SIO | École IRIS | E5 Portfolio</title>
+  <meta name="description"
+    content="Fiche explicative du projet Calculatrice Web développée en PHP, HTML5 et CSS3 (BTS SIO 1re année, École IRIS).">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    html,
+    body {
+      background-color: #0b1120 !important;
+      background: #0b1120 !important;
+      color: #e2e8f0 !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    header {
+      background: rgba(11, 17, 32, 0.92) !important;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.15) !important;
+      backdrop-filter: blur(14px);
+    }
+
+    .logo {
+      color: #e2e8f0 !important;
+    }
+
+    .menu {
+      background: rgba(21, 30, 50, 0.95) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .menu a {
+      color: #94a3b8 !important;
+    }
+
+    .menu a:hover {
+      color: #f97316 !important;
+    }
+
+    footer {
+      background: #080e1c;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    :root {
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+    }
+
+    .proj-detail-container {
+      padding: 40px 20px 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+
+    .breadcrumb a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    .breadcrumb-active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .proj-hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    .badge-orange {
+      background: rgba(249, 115, 22, 0.12);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+
+    .badge-blue {
+      background: rgba(59, 130, 246, 0.12);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .badge-gray {
+      background: rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .proj-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .proj-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-bottom: 35px;
+    }
+
+    .proj-content {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .proj-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(21, 30, 50, 0.8));
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #f97316, transparent);
+    }
+
+    .info-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .step-num {
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(249, 115, 22, 0.15);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .code-block {
+      background: #080d1a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin: 14px 0;
+      line-height: 1.5;
+    }
+
+    .code-block .kw {
+      color: #f43f5e;
+      font-weight: 600;
+    }
+
+    .code-block .fn {
+      color: #38bdf8;
+    }
+
+    .code-block .str {
+      color: #34d399;
+    }
+
+    .code-block .comment {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .img-showcase {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0;
+      background: #080d1a;
+    }
+
+    .img-showcase img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .img-caption {
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      color: #64748b;
+      background: rgba(15, 23, 42, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .sidebar-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(21, 30, 50, 0.85));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.88rem;
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-label {
+      color: #64748b;
+    }
+
+    .meta-val {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .btn-pdf {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-top: 20px;
+      transition: all 0.25s;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.35);
+      box-sizing: border-box;
+    }
+
+    .btn-pdf:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+    }
+
+    .btn-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+    }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .comp-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .comp-item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fb923c;
+      margin-bottom: 4px;
+    }
+
+    .comp-item-desc {
+      font-size: 0.83rem;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    .tech-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      margin: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+      <ul class="menu">
+        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+        <li><a href="epreuve-e6.html">Épreuve E6</a></li>
+        <li><a href="entreprise.html">Entreprise</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+      </ul>
+      <a href="index.html" class="btn-nav-accueil">Accueil</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="proj-detail-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a> &rsaquo;
+        <a href="epreuve-e5.html">Épreuve E5</a> &rsaquo;
+        <span class="breadcrumb-active">Calculatrice Web PHP</span>
+      </div>
+
+      <div class="proj-hero-badges">
+        <span class="badge badge-orange">BTS SIO – 1re année</span>
+        <span class="badge badge-blue">École IRIS</span>
+        <span class="badge badge-gray">Option SLAM</span>
+        <span class="badge badge-orange">Développement Web</span>
+      </div>
+
+      <h1 class="proj-title">Calculatrice Web Dynamique (PHP, HTML5, CSS3)</h1>
+      <p class="proj-subtitle">
+        Conception et implémentation d'une calculatrice web en PHP avec transmission par formulaire HTTP POST, gestion des opérations arithmétiques via structure conditionnelle <code>switch</code>, traitement des exceptions (division par zéro) et design responsive en CSS personnalisé.
+      </p>
+
+      <div class="proj-content">
+
+        <div>
+
+          <!-- 1. PRÉSENTATION -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              1. Présentation &amp; Objectifs du Projet
+            </div>
+            <p>
+              Ce projet réalisé en première année de BTS SIO a pour but d'assimiler les fondamentaux de la communication client-serveur en environnement web dynamique : la saisie de données utilisateur via un formulaire HTML, leur transmission sécurisée vers le serveur applicatif PHP et le retour dynamique du résultat calculé dans la page.
+            </p>
+            <div class="img-showcase">
+              <img src="images/calculatrice/image1.png" alt="Interface web de la calculatrice dans le navigateur" style="object-fit: cover; max-height: 240px;">
+              <div class="img-caption">Figure 1 – Interface utilisateur de la calculatrice déployée sur serveur local Apache</div>
+            </div>
+            <ul class="step-list">
+              <li>
+                <div class="step-num">1</div>
+                <div><strong>Traitement des 4 opérations arithmétiques fondamentales :</strong> Addition (+), Soustraction (-), Multiplication (x) et Division (/).</div>
+              </li>
+              <li>
+                <div class="step-num">2</div>
+                <div><strong>Gestion des nombres décimaux :</strong> Prise en charge des valeurs à virgule flottante via l'attribut <code>step="any"</code> et le cast <code>(float)</code>.</div>
+              </li>
+              <li>
+                <div class="step-num">3</div>
+                <div><strong>Sécurisation et contrôle des exceptions :</strong> Détection et interception des divisions par zéro pour empêcher les erreurs d'exécution serveur.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 2. FORMULAIRE HTML -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              2. Conception du formulaire HTTP POST
+            </div>
+            <p>
+              Le formulaire interactif est intégré dans la page <code>CalculatriceC.php</code>. Il utilise la méthode <code>POST</code> pour transmettre les valeurs au serveur de manière discrète sans encombrer la chaîne de requête (URL) :
+            </p>
+            <div class="code-block">
+<span class="kw">&lt;form</span> <span class="fn">method</span>=<span class="str">"post"</span> <span class="fn">action</span>=<span class="str">""</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;input</span> <span class="fn">type</span>=<span class="str">"number"</span> <span class="fn">name</span>=<span class="str">"num1"</span> <span class="fn">step</span>=<span class="str">"any"</span> <span class="fn">required</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;select</span> <span class="fn">name</span>=<span class="str">"operateur"</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;option</span> <span class="fn">value</span>=<span class="str">"addition"</span><span class="kw">&gt;</span>+<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span> <span class="fn">value</span>=<span class="str">"soustraction"</span><span class="kw">&gt;</span>-<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span> <span class="fn">value</span>=<span class="str">"multiplication"</span><span class="kw">&gt;</span>x<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span> <span class="fn">value</span>=<span class="str">"division"</span><span class="kw">&gt;</span>/<span class="kw">&lt;/option&gt;</span>
+    <span class="kw">&lt;/select&gt;</span>
+    <span class="kw">&lt;input</span> <span class="fn">type</span>=<span class="str">"number"</span> <span class="fn">name</span>=<span class="str">"num2"</span> <span class="fn">step</span>=<span class="str">"any"</span> <span class="fn">required</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;button</span> <span class="fn">class</span>=<span class="str">"testbtn"</span> <span class="fn">name</span>=<span class="str">"calculer"</span><span class="kw">&gt;</span>Go !<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;/form&gt;</span></div>
+            <ul style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; padding-left: 20px;">
+              <li><code>type="number"</code> et <code>step="any"</code> : Validation native côté navigateur pour obliger la saisie numérique entière ou décimale.</li>
+              <li><code>required</code> : Empêche la soumission du formulaire lorsque l'un des opérandes est vide.</li>
+              <li><code>name="operateur"</code> : Transmet la clé textuelle de l'opérateur arithmétique sélectionné dans la liste déroulante.</li>
+            </ul>
+          </div>
+
+          <!-- 3. TRAITEMENT PHP -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              3. Traitement algorithmique en PHP &amp; Sécurisation
+            </div>
+            <p>
+              Le script PHP réceptionne les paramètres superglobaux <code>$_POST</code> et exécute les calculs de façon structurée grâce à l'instruction conditionnelle <code>switch</code> :
+            </p>
+            <div class="code-block">
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="str">$_POST</span>[<span class="str">'calculer'</span>])) {
+    <span class="comment">// 1. Récupération et conversion des opérandes</span>
+    <span class="fn">$num1</span> = (<span class="kw">float</span>)(<span class="str">$_POST</span>[<span class="str">'num1'</span>] ?? <span class="str">0</span>);
+    <span class="fn">$num2</span> = (<span class="kw">float</span>)(<span class="str">$_POST</span>[<span class="str">'num2'</span>] ?? <span class="str">0</span>);
+    <span class="fn">$operateur</span> = <span class="str">$_POST</span>[<span class="str">'operateur'</span>];
+
+    <span class="comment">// 2. Aiguillage arithmétique avec protection anti-division par zéro</span>
+    <span class="kw">switch</span> (<span class="fn">$operateur</span>) {
+        <span class="kw">case</span> <span class="str">"addition"</span>:
+            <span class="fn">$resultat</span> = <span class="fn">$num1</span> + <span class="fn">$num2</span>;
+            <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="str">"soustraction"</span>:
+            <span class="fn">$resultat</span> = <span class="fn">$num1</span> - <span class="fn">$num2</span>;
+            <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="str">"multiplication"</span>:
+            <span class="fn">$resultat</span> = <span class="fn">$num1</span> * <span class="fn">$num2</span>;
+            <span class="kw">break</span>;
+        <span class="kw">case</span> <span class="str">"division"</span>:
+            <span class="kw">if</span> (<span class="fn">$num2</span> != <span class="str">0</span>) {
+                <span class="fn">$resultat</span> = <span class="fn">$num1</span> / <span class="fn">$num2</span>;
+            } <span class="kw">else</span> {
+                <span class="fn">$resultat</span> = <span class="str">"&lt;b style='color:LightSalmon'&gt;Erreur : Division par zéro c'est non !&lt;/b&gt;"</span>;
+            }
+            <span class="kw">break</span>;
+        <span class="kw">default</span>:
+            <span class="fn">$resultat</span> = <span class="str">"Opération non valide"</span>;
+    }
+}</div>
+            <div class="img-showcase">
+              <img src="images/calculatrice/image2.png" alt="Gestion de l'erreur de division par zéro" style="max-height: 220px; object-fit: contain; margin: 0 auto;">
+              <div class="img-caption">Figure 2 – Affichage du message d'alerte lors d'une tentative de division par zéro</div>
+            </div>
+          </div>
+
+          <!-- 4. DESIGN CSS -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              4. Charte graphique &amp; Ergonomie CSS
+            </div>
+            <p>
+              L'habillage graphique a été pensé pour offrir une interface utilisateur chaleureuse et lisible, avec la police monospace <code>Consolas</code> inspirée des afficheurs digitaux :
+            </p>
+            <ul style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; padding-left: 20px;">
+              <li><strong>Palette chromatique :</strong> Teintes pastel <code>PapayaWhip</code> (#FFEFD5) pour le conteneur principal, <code>LightSalmon</code> (#FFA07A) pour le titre et le bouton d'action, et <code>Tomato</code> (#FF6347) pour l'effet de survol.</li>
+              <li><strong>Transitions fluides :</strong> <code>transition: background-color 0.3s ease</code> pour animer en douceur l'interaction de clic et de survol.</li>
+              <li><strong>Coins arrondis :</strong> Utilisation de <code>border-radius</code> pour adoucir les angles des champs et des conteneurs.</li>
+            </ul>
+          </div>
+
+          <!-- 5. BILAN & COMPÉTENCES -->
+          <div class="info-card">
+            <div class="info-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              5. Compétences BTS SIO Validées
+            </div>
+            <div class="comp-grid">
+              <div class="comp-item">
+                <div class="comp-item-title">Concevoir et développer une application web dynamique</div>
+                <div class="comp-item-desc">Mise en œuvre du cycle requête/réponse HTTP en PHP, récupération des paramètres <code>$_POST</code> et structuration logique avec <code>switch</code>.</div>
+              </div>
+              <div class="comp-item">
+                <div class="comp-item-title">Contrôler la validité des données et gérer les erreurs</div>
+                <div class="comp-item-desc">Validation des types d'entrées utilisateur, gestion des exceptions arithmétiques et communication claire des messages d'erreur à l'utilisateur.</div>
+              </div>
+              <div class="comp-item">
+                <div class="comp-item-title">Développer la présence en ligne et soigner l'ergonomie</div>
+                <div class="comp-item-desc">Création d'une interface responsive et soignée en CSS3, optimisation des micro-interactions de l'utilisateur.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <div>
+          <div class="sidebar-card">
+            <div class="sidebar-title">Détails du projet</div>
+
+            <div class="meta-row">
+              <span class="meta-label">Cadre</span>
+              <span class="meta-val">École IRIS</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Formation</span>
+              <span class="meta-val">BTS SIO (1re année)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Spécialisation</span>
+              <span class="meta-val">SLAM &amp; SISR</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Serveur local</span>
+              <span class="meta-val">Apache / XAMPP</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Technologies</span>
+              <span class="meta-val">PHP, HTML5, CSS3</span>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <span class="meta-label" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #f97316; font-weight: 700;">Technologies utilisées</span>
+              <div style="margin-top: 8px;">
+                <span class="tech-pill">PHP 8</span>
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">HTTP POST</span>
+                <span class="tech-pill">Apache</span>
+                <span class="tech-pill">XAMPP</span>
+              </div>
+            </div>
+
+            <a href="documentation/Projet_Calculatrice.pdf" target="_blank" class="btn-pdf">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+              Consulter le PDF
+            </a>
+
+            <a href="documentation/Projet_Calculatrice.docx" download class="btn-back" style="background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.3); color: #fb923c;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Télécharger le DOCX
+            </a>
+
+            <a href="epreuve-e5.html" class="btn-back">
+              &larr; Retour à l'Épreuve E5
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUALISEUR DU DOCUMENT PDF -->
+      <div style="margin-top: 50px;">
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+            Documentation Technique Complète (PDF)
+          </div>
+          <p>
+            Vous pouvez feuilleter directement le dossier explicatif du projet ci-dessous ou le télécharger au format PDF.
+          </p>
+          <div style="width: 100%; height: 750px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #1e293b;">
+            <iframe
+              src="documentation/Projet_Calculatrice.pdf"
+              width="100%"
+              height="100%"
+              style="border: none;"
+              title="Documentation Technique Projet Calculatrice">
+              Votre navigateur ne prend pas en charge l'affichage direct des PDF.
+              <a href="documentation/Projet_Calculatrice.pdf" target="_blank">Téléchargez le document</a>.
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Tous droits réservés</p>
+  </footer>
+
+</body>
+
+</html>
