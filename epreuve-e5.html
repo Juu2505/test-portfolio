@@ -314,6 +314,80 @@
       box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
     }
 
+    /* Section Category Header */
+    .e5-category-section {
+      margin-bottom: 50px;
+    }
+
+    .category-header-banner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .category-header-banner.sys-reseau {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(249, 115, 22, 0.03));
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      border-left: 5px solid #f97316;
+    }
+
+    .category-header-banner.dev-app {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(168, 85, 247, 0.03));
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-left: 5px solid #a855f7;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .category-header-banner.sys-reseau .category-icon {
+      background: rgba(249, 115, 22, 0.15);
+      color: #ea580c;
+    }
+
+    .category-header-banner.dev-app .category-icon {
+      background: rgba(168, 85, 247, 0.15);
+      color: #9333ea;
+    }
+
+    .category-title-box h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .category-title-box p {
+      margin: 2px 0 0;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .btn-doc-download.secondary {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .btn-doc-download.secondary:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
     @media (max-width: 768px) {
       .project-cards-grid {
         grid-template-columns: 1fr;
@@ -379,118 +453,181 @@
           <p>Compétences validées pour chaque situation professionnelle.</p>
         </div>
 
-        <div class="project-cards-grid">
-
-          <!-- PROJET : HAPROXY & HEARTBEAT -->
-          <div class="project-ui-card">
-            <div class="project-badge-row">
-              <span class="badge-cadre school">École · IRIS</span>
-              <span class="badge-option">SISR</span>
+        <!-- PARTIE 1 : RÉSEAU, SUPPORT & SYSTÈME -->
+        <div class="e5-category-section">
+          <div class="category-header-banner sys-reseau">
+            <div class="category-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
             </div>
-            <h4 class="project-title">Projet : Cluster HAProxy &amp; Heartbeat – Haute Disponibilité</h4>
-            <p class="project-summary">
-              Mise en place d'une infrastructure web résiliente à tolérance de panne avec répartition de charge HTTP (Load Balancing en round-robin avec health-check) et basculement automatique via IP virtuelle (VIP / Failover actif-passif).
-            </p>
-            <div class="project-competencies">
-              <div class="project-competencies-label">Compétences clés validées</div>
-              <ul class="competency-list">
-                <li><span class="check-icon">+</span> Mettre à disposition des utilisateurs un service informatique</li>
-                <li><span class="check-icon">+</span> Assurer la continuité de service et la résilience du SI (VIP, Failover &amp; Failback)</li>
-                <li><span class="check-icon">+</span> Gérer le patrimoine informatique et superviser les infrastructures (health-check)</li>
-              </ul>
-            </div>
-            <div class="project-tags">
-              <span class="project-tag">HAProxy</span>
-              <span class="project-tag">Heartbeat</span>
-              <span class="project-tag">Load Balancing</span>
-              <span class="project-tag">Haute Disponibilité</span>
-              <span class="project-tag">VIP / Failover</span>
-              <span class="project-tag">Apache2 / PHP</span>
-              <span class="project-tag">VMware</span>
-            </div>
-            <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
-              <a href="projet-haproxy-cluster.html" class="btn-doc-download">
-                Voir la fiche détaillée du projet &rarr;
-              </a>
-              <a href="documentation/ProjetHAProxyHeartbeat.pdf" target="_blank" class="btn-doc-download secondary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
-                Consulter la documentation technique (PDF)
-              </a>
+            <div class="category-title-box">
+              <h3>Réseau, Support &amp; Système</h3>
+              <p>Infrastructures serveurs, haute disponibilité, gestion de parc informatique et procédures d'accès.</p>
             </div>
           </div>
 
-          <!-- PROJET : OCS & GLPI -->
-          <div class="project-ui-card">
-            <div class="project-badge-row">
-              <span class="badge-cadre school">École · IRIS</span>
-              <span class="badge-option">SISR</span>
+          <div class="project-cards-grid">
+
+            <!-- PROJET : HAPROXY & HEARTBEAT -->
+            <div class="project-ui-card">
+              <div class="project-badge-row">
+                <span class="badge-cadre school">École · IRIS</span>
+                <span class="badge-option">SISR</span>
+              </div>
+              <h4 class="project-title">Projet : Cluster HAProxy &amp; Heartbeat – Haute Disponibilité</h4>
+              <p class="project-summary">
+                Mise en place d'une infrastructure web résiliente à tolérance de panne avec répartition de charge HTTP (Load Balancing en round-robin avec health-check) et basculement automatique via IP virtuelle (VIP / Failover actif-passif).
+              </p>
+              <div class="project-competencies">
+                <div class="project-competencies-label">Compétences clés validées</div>
+                <ul class="competency-list">
+                  <li><span class="check-icon">+</span> Mettre à disposition des utilisateurs un service informatique</li>
+                  <li><span class="check-icon">+</span> Assurer la continuité de service et la résilience du SI (VIP, Failover &amp; Failback)</li>
+                  <li><span class="check-icon">+</span> Gérer le patrimoine informatique et superviser les infrastructures (health-check)</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">HAProxy</span>
+                <span class="project-tag">Heartbeat</span>
+                <span class="project-tag">Load Balancing</span>
+                <span class="project-tag">Haute Disponibilité</span>
+                <span class="project-tag">VIP / Failover</span>
+                <span class="project-tag">Apache2 / PHP</span>
+                <span class="project-tag">VMware</span>
+              </div>
+              <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="projet-haproxy-cluster.html" class="btn-doc-download">
+                  Voir la fiche détaillée du projet &rarr;
+                </a>
+                <a href="documentation/ProjetHAProxyHeartbeat.pdf" target="_blank" class="btn-doc-download secondary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                  Consulter la documentation technique (PDF)
+                </a>
+              </div>
             </div>
-            <h4 class="project-title">Projet : OCS &amp; GLPI - Gestion du parc</h4>
-            <p class="project-summary">
-              Déploiement et interconnexion de la solution de télédistribution et d'inventaire OCS
-              Inventory NG avec la plateforme GLPI pour le suivi des actifs et le traitement des tickets d'assistance.
-            </p>
-            <div class="project-competencies">
-              <div class="project-competencies-label">Compétences clés validées</div>
-              <ul class="competency-list">
-                <li><span class="check-icon">+</span> Gérer le patrimoine informatique (inventaire matériel &amp; logiciel)</li>
-                <li><span class="check-icon">+</span> Répondre aux incidents et traiter les demandes d'assistance</li>
-                <li><span class="check-icon">+</span> Déployer un agent d'inventaire et synchroniser la base GLPI</li>
-              </ul>
+
+            <!-- PROJET : OCS & GLPI -->
+            <div class="project-ui-card">
+              <div class="project-badge-row">
+                <span class="badge-cadre school">École · IRIS</span>
+                <span class="badge-option">SISR</span>
+              </div>
+              <h4 class="project-title">Projet : OCS &amp; GLPI - Gestion du parc</h4>
+              <p class="project-summary">
+                Déploiement et interconnexion de la solution de télédistribution et d'inventaire OCS
+                Inventory NG avec la plateforme GLPI pour le suivi des actifs et le traitement des tickets d'assistance.
+              </p>
+              <div class="project-competencies">
+                <div class="project-competencies-label">Compétences clés validées</div>
+                <ul class="competency-list">
+                  <li><span class="check-icon">+</span> Gérer le patrimoine informatique (inventaire matériel &amp; logiciel)</li>
+                  <li><span class="check-icon">+</span> Répondre aux incidents et traiter les demandes d'assistance</li>
+                  <li><span class="check-icon">+</span> Déployer un agent d'inventaire et synchroniser la base GLPI</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">GLPI</span>
+                <span class="project-tag">OCS Inventory</span>
+                <span class="project-tag">Helpdesk &amp; Tickets</span>
+                <span class="project-tag">Gestion de parc</span>
+              </div>
+              <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="projet-ocs-glpi.html" class="btn-doc-download">
+                  Voir la fiche détaillée du projet &rarr;
+                </a>
+                <a href="documentation/TPOCSGLPIJulieDurand2.pdf" target="_blank" class="btn-doc-download secondary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                  Consulter la documentation technique (PDF)
+                </a>
+              </div>
             </div>
-            <div class="project-tags">
-              <span class="project-tag">GLPI</span>
-              <span class="project-tag">OCS Inventory</span>
-              <span class="project-tag">Helpdesk &amp; Tickets</span>
-              <span class="project-tag">Gestion de parc</span>
+
+            <!-- PROJET : KYRIBA (PROCÉDURE ONBOARDING) -->
+            <div class="project-ui-card">
+              <div class="project-badge-row">
+                <span class="badge-cadre enterprise">Alternance · Kyriba</span>
+                <span class="badge-option">SISR</span>
+              </div>
+              <h4 class="project-title">Projet : Procédure création d'un utilisateur</h4>
+              <p class="project-summary">
+                Rédaction et standardisation de la procédure complète d'intégration (onboarding) et de
+                création de compte utilisateur, attribution des droits et configuration des postes de travail.
+              </p>
+              <div class="project-competencies">
+                <div class="project-competencies-label">Compétences clés validées</div>
+                <ul class="competency-list">
+                  <li><span class="check-icon">+</span> Gérer le patrimoine informatique et les postes utilisateurs</li>
+                  <li><span class="check-icon">+</span> Répondre aux incidents et aux demandes d'assistance</li>
+                  <li><span class="check-icon">+</span> Configurer et sécuriser les accès aux services du SI</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Active Directory</span>
+                <span class="project-tag">Gestion des accès</span>
+                <span class="project-tag">IT Support N3</span>
+                <span class="project-tag">Procédure</span>
+              </div>
+              <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="projet-kyriba-utilisateur.html" class="btn-doc-download">
+                  Voir la fiche détaillée du projet &rarr;
+                </a>
+                <a href="documentation/New%20Hire%20Account%20Creation.pdf" target="_blank" class="btn-doc-download secondary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                  Consulter la documentation technique (PDF)
+                </a>
+              </div>
             </div>
-            <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
-              <a href="projet-ocs-glpi.html" class="btn-doc-download">
-                Voir la fiche détaillée du projet &rarr;
-              </a>
-              <a href="documentation/TPOCSGLPIJulieDurand2.pdf" target="_blank" class="btn-doc-download secondary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
-                Consulter la documentation technique (PDF)
-              </a>
+
+          </div>
+        </div>
+
+        <!-- PARTIE 2 : DÉVELOPPEMENT WEB & APPLICATIF -->
+        <div class="e5-category-section">
+          <div class="category-header-banner dev-app">
+            <div class="category-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="category-title-box">
+              <h3>Développement Web &amp; Applicatif</h3>
+              <p>Conception d'applications web dynamiques, gestion de bases de données relationnelles et modèle CRUD.</p>
             </div>
           </div>
 
-          <!-- PROJET : KYRIBA (PROCÉDURE ONBOARDING) -->
-          <div class="project-ui-card">
-            <div class="project-badge-row">
-              <span class="badge-cadre enterprise">Alternance · Kyriba</span>
-              <span class="badge-option">SISR</span>
-            </div>
-            <h4 class="project-title">Projet : Procédure création d'un utilisateur</h4>
-            <p class="project-summary">
-              Rédaction et standardisation de la procédure complète d'intégration (onboarding) et de
-              création de compte utilisateur, attribution des droits et configuration des postes de travail.
-            </p>
-            <div class="project-competencies">
-              <div class="project-competencies-label">Compétences clés validées</div>
-              <ul class="competency-list">
-                <li><span class="check-icon">+</span> Gérer le patrimoine informatique et les postes utilisateurs</li>
-                <li><span class="check-icon">+</span> Répondre aux incidents et aux demandes d'assistance</li>
-                <li><span class="check-icon">+</span> Configurer et sécuriser les accès aux services du SI</li>
-              </ul>
-            </div>
-            <div class="project-tags">
-              <span class="project-tag">Active Directory</span>
-              <span class="project-tag">Gestion des accès</span>
-              <span class="project-tag">IT Support N3</span>
-              <span class="project-tag">Procédure</span>
-            </div>
-            <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
-              <a href="projet-kyriba-utilisateur.html" class="btn-doc-download">
-                Voir la fiche détaillée du projet &rarr;
-              </a>
-              <a href="documentation/New%20Hire%20Account%20Creation.pdf" target="_blank" class="btn-doc-download secondary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
-                Consulter la documentation technique (PDF)
-              </a>
-            </div>
-          </div>
+          <div class="project-cards-grid">
 
+            <!-- PROJET : IRIS DATE (PHP / MYSQL) -->
+            <div class="project-ui-card">
+              <div class="project-badge-row">
+                <span class="badge-cadre school">École · IRIS</span>
+                <span class="badge-option">SLAM</span>
+              </div>
+              <h4 class="project-title">Projet : IRIS DATE – Site de rencontre étudiant</h4>
+              <p class="project-summary">
+                Développement d'une application web dynamique complète en PHP/MySQL mettant en œuvre l'architecture CRUD (Create, Read, Update, Delete) avec requêtes préparées <code>mysqli</code>, gestion de l'upload de photos de profil et modélisation relationnelle avec clés étrangères.
+              </p>
+              <div class="project-competencies">
+                <div class="project-competencies-label">Compétences clés validées</div>
+                <ul class="competency-list">
+                  <li><span class="check-icon">+</span> Concevoir et développer une solution applicative web dynamique (PHP, HTML5, CSS3)</li>
+                  <li><span class="check-icon">+</span> Modéliser et administrer la base de données relationnelle MySQL (tables user, message)</li>
+                  <li><span class="check-icon">+</span> Sécuriser les requêtes SQL (requêtes préparées, bind_param) et gérer l'upload de fichiers</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">PHP</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">CRUD</span>
+                <span class="project-tag">Requêtes préparées</span>
+                <span class="project-tag">Upload fichiers</span>
+                <span class="project-tag">Apache</span>
+              </div>
+              <div class="project-card-cta" style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="projet-iris-date.html" class="btn-doc-download">
+                  Voir la fiche détaillée du projet &rarr;
+                </a>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>

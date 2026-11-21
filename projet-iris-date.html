@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet IRIS DATE - Application Web PHP/MySQL | École IRIS | E5 Portfolio</title>
+  <meta name="description" content="Développement d'une application web dynamique de rencontre étudiante en PHP et MySQL avec opérations CRUD complètes et gestion d'upload (BTS SIO, École IRIS).">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    html, body {
+      background-color: #0b1120 !important;
+      background: #0b1120 !important;
+      color: #e2e8f0 !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    header {
+      background: rgba(11, 17, 32, 0.92) !important;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.15) !important;
+      backdrop-filter: blur(14px);
+    }
+    .logo { color: #e2e8f0 !important; }
+    .menu {
+      background: rgba(21, 30, 50, 0.95) !important;
+      border: 1px solid rgba(255,255,255,0.08) !important;
+    }
+    .menu a { color: #94a3b8 !important; }
+    .menu a:hover { color: #a855f7 !important; }
+    footer { background: #080e1c; border-top: 1px solid rgba(255,255,255,0.06); }
+
+    :root {
+      --accent: #a855f7;
+      --accent-light: #c084fc;
+      --accent-dark: #9333ea;
+      --accent-orange: #f97316;
+    }
+
+    .proj-hero {
+      padding: 70px 5% 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.83rem;
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+    .breadcrumb a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-active { color: var(--accent); font-weight: 600; }
+
+    .proj-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+    .badge-purple { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .badge-blue { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .badge-gray { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
+
+    .proj-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.2;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.5px;
+    }
+    .proj-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 0 32px 0;
+    }
+
+    .proj-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 5% 60px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+    }
+    @media (max-width: 900px) { .proj-content { grid-template-columns: 1fr; } }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(21,30,50,0.8));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+    .info-card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card p { color: #94a3b8; font-size: 0.93rem; line-height: 1.7; margin: 0 0 14px 0; }
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .code-block {
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.84rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 14px 0;
+      line-height: 1.5;
+    }
+
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.85rem;
+    }
+    .table-custom th {
+      background: rgba(168,85,247,0.15);
+      color: #f8fafc;
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .table-custom td {
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #cbd5e1;
+    }
+    .table-custom tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .step-list li { display: flex; align-items: flex-start; gap: 14px; color: #cbd5e1; font-size: 0.92rem; line-height: 1.5; }
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a855f7, #9333ea);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comp-grid { display: flex; flex-direction: column; gap: 12px; }
+    .comp-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .comp-item-title { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+    .comp-item-desc { font-size: 0.82rem; color: #64748b; margin: 0; }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      background: rgba(168,85,247,0.08);
+      border: 1px solid rgba(168,85,247,0.2);
+      color: #c084fc;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    /* SIDEBAR */
+    .sidebar-card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(21,30,50,0.85));
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 18px;
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .sidebar-info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .sidebar-info-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar-info-value { font-size: 0.88rem; font-weight: 600; color: #e2e8f0; }
+
+    .btn-back {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      background: linear-gradient(135deg, #a855f7, #9333ea);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+    }
+    .btn-back:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+      <ul class="menu">
+        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+        <li><a href="epreuve-e6.html">Épreuve E6</a></li>
+        <li><a href="entreprise.html">Entreprise</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+      </ul>
+      <a href="index.html" class="btn-nav-accueil">Accueil</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="proj-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <a href="epreuve-e5.html">Épreuve E5</a>
+        <span>/</span>
+        <span class="breadcrumb-active">Projet Web IRIS DATE (PHP / MySQL)</span>
+      </div>
+
+      <div class="proj-hero-badges">
+        <span class="badge badge-purple">École · IRIS</span>
+        <span class="badge badge-blue">Développement Web</span>
+        <span class="badge badge-gray">BTS SIO – 1re année</span>
+        <span class="badge badge-gray">PHP / MySQL (CRUD)</span>
+      </div>
+
+      <h1 class="proj-title">IRIS DATE : Site de rencontre étudiant (PHP &amp; MySQL)</h1>
+      <p class="proj-subtitle">
+        Conception et réalisation d'une application web dynamique complète mettant en œuvre le modèle CRUD, l'extension <code>mysqli</code> avec requêtes préparées, et le téléversement de photos de profil.
+      </p>
+    </div>
+
+    <div class="proj-content">
+      <div>
+
+        <!-- 1. CONTEXTE & OBJECTIFS -->
+        <div class="info-card">
+          <div class="info-card-title">1. Contexte &amp; Objectifs du projet</div>
+          <p>
+            Dans le cadre de ma formation en BTS SIO à l'école IRIS, j'ai développé <strong>IRIS DATE</strong>, une plateforme web dynamique destinée aux étudiants. Ce projet a pour but de consolider la conception et le développement d'une application web connectée à une base de données relationnelle.
+          </p>
+          <p>
+            Le site permet aux étudiants de s'inscrire avec un pseudo et une photo de profil, de visualiser la liste complète des membres enregistrés, d'éditer leur profil et de supprimer un compte. Ces actions couvrent l'intégralité du cycle <strong>CRUD (Create, Read, Update, Delete)</strong> fondamental en ingénierie logicielle.
+          </p>
+        </div>
+
+        <!-- 2. ARCHITECTURE APPLICATIVE -->
+        <div class="info-card">
+          <div class="info-card-title">2. Organisation du code &amp; Arborescence</div>
+          <p>
+            L'application est hébergée sur un environnement local Apache/PHP/MySQL et s'articule autour des composants suivants :
+          </p>
+          <div class="code-block">
+iris_date/
+├── bdd.sql          → Script SQL de création de la BDD et insertion des données de test
+├── index.php        → Accueil : liste des membres, formulaire d'inscription et suppression
+├── profil.php       → Formulaire de modification complète d'un profil membre
+├── style.css        → Feuille de style CSS
+└── images/          → Répertoire de stockage des photos téléversées et icônes d'action
+    ├── modifier.png
+    └── supprimer.png
+          </div>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Action utilisateur</th>
+                <th>Page</th>
+                <th>Traitement PHP</th>
+                <th>Requête SQL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Consulter les membres (Read)</td>
+                <td><code>index.php</code></td>
+                <td>Parcours des résultats en boucle HTML</td>
+                <td><code>SELECT * FROM user</code></td>
+              </tr>
+              <tr>
+                <td>Inscription + photo (Create)</td>
+                <td><code>index.php</code></td>
+                <td>Upload sécurisé avec <code>move_uploaded_file()</code></td>
+                <td><code>INSERT INTO user ...</code></td>
+              </tr>
+              <tr>
+                <td>Suppression de compte (Delete)</td>
+                <td><code>index.php?action=suppr&amp;id=...</code></td>
+                <td>Récupération de l'identifiant et suppression</td>
+                <td><code>DELETE FROM user WHERE iduser=?</code></td>
+              </tr>
+              <tr>
+                <td>Modification profil (Update)</td>
+                <td><code>profil.php?action=modif&amp;id=...</code></td>
+                <td>Pré-remplissage dynamique et mise à jour</td>
+                <td><code>UPDATE user SET ... WHERE iduser=?</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3. BASE DE DONNÉES -->
+        <div class="info-card">
+          <div class="info-card-title">3. Modélisation de la base de données (MySQL)</div>
+          <p>
+            La base relationnelle <code>iris_date</code> est modélisée avec deux tables principales reliées par clés étrangères :
+          </p>
+          <ul style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0 0 14px 0;">
+            <li><strong>Table <code>user</code> :</strong> Stocke les coordonnées, identifiants, bio, genre et le chemin d'accès relatif vers la photo (seul le chemin est en BDD, le fichier binaire réside sur le disque serveur).</li>
+            <li><strong>Table <code>message</code> :</strong> Conçue pour la messagerie inter-étudiants, reliant l'expéditeur (<code>iduser1</code>) et le destinataire (<code>iduser2</code>) via deux contraintes de clés étrangères (Foreign Keys).</li>
+          </ul>
+          <div class="code-block">
+CREATE TABLE message (
+    iduser1 INT,
+    iduser2 INT,
+    msg VARCHAR(2000),
+    CONSTRAINT fk_user1 FOREIGN KEY(iduser1) REFERENCES user(iduser),
+    CONSTRAINT fk_user2 FOREIGN KEY(iduser2) REFERENCES user(iduser)
+);
+          </div>
+        </div>
+
+        <!-- 4. FONCTIONNALITÉS CLÉS -->
+        <div class="info-card">
+          <div class="info-card-title">4. Fonctionnalités &amp; Sécurité des requêtes</div>
+          <ul class="step-list">
+            <li>
+              <div class="step-num">1</div>
+              <div>
+                <strong>Protection contre les injections SQL :</strong> Utilisation systématique des requêtes préparées avec l'objet <code>mysqli</code> (<code>prepare()</code>, <code>bind_param()</code> avec typage strict <code>s</code> et <code>i</code>, puis <code>execute()</code>).
+              </div>
+            </li>
+            <li>
+              <div class="step-num">2</div>
+              <div>
+                <strong>Gestion de l'upload d'images :</strong> Formulaire avec <code>enctype="multipart/form-data"</code>, création automatique du dossier de destination avec <code>mkdir()</code> et transfert sécurisé via <code>move_uploaded_file()</code>.
+              </div>
+            </li>
+            <li>
+              <div class="step-num">3</div>
+              <div>
+                <strong>Formulaires dynamiques pré-remplis :</strong> Utilisation de l'opérateur ternaire pour injecter les données existantes du profil dans les champs du formulaire lors d'une modification.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 5. BILAN & AXES D'ÉVOLUTION -->
+        <div class="info-card">
+          <div class="info-card-title">5. Bilan &amp; Pistes d'amélioration de sécurité</div>
+          <p>
+            Dans une démarche d'analyse critique du code développé, plusieurs axes d'évolution ont été consignés dans le bilan technique :
+          </p>
+          <ul style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+            <li><strong>Hachage des mots de passe :</strong> Implémentation de <code>password_hash()</code> (Argon2id ou Bcrypt) pour remplacer le stockage en clair.</li>
+            <li><strong>Protection XSS :</strong> Échappement systématique des données utilisateur affichées avec <code>htmlspecialchars()</code>.</li>
+            <li><strong>Validation de l'upload :</strong> Vérification de l'extension et du type MIME réel de l'image (éviter tout script malveillant).</li>
+            <li><strong>Gestion de sessions :</strong> Implémentation d'une authentification avec variables <code>$_SESSION</code>.</li>
+          </ul>
+        </div>
+
+        <!-- 6. COMPÉTENCES VALIDÉES -->
+        <div class="info-card">
+          <div class="info-card-title">6. Compétences BTS SIO validées</div>
+          <div class="comp-grid">
+            <div class="comp-item">
+              <div class="comp-item-title">Concevoir et développer une solution applicative web</div>
+              <div class="comp-item-desc">Mise en œuvre du cycle complet CRUD en PHP dynamique avec gestion de formulaires et requêtes préparées.</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-item-title">Modéliser et administrer une base de données relationnelle</div>
+              <div class="comp-item-desc">Écriture de scripts DDL/DML SQL complets, gestion des clés primaires auto-incrémentées et relations étrangères.</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-item-title">Assurer la maintenance et le traitement des données</div>
+              <div class="comp-item-desc">Mise à jour sécurisée des profils, gestion des flux d'images sur le serveur et analyse critique des axes de sécurité.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. ENVIRONNEMENT TECHNIQUE -->
+        <div class="info-card">
+          <div class="info-card-title">7. Environnement technique</div>
+          <div class="tech-tags">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">CRUD</span>
+            <span class="tech-tag">Requêtes préparées (mysqli)</span>
+            <span class="tech-tag">Upload de fichiers</span>
+            <span class="tech-tag">Apache</span>
+            <span class="tech-tag">HTML5 / CSS3</span>
+            <span class="tech-tag">phpMyAdmin</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">Informations du projet</div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Établissement</div>
+              <div class="sidebar-info-value">École IRIS</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Cadre</div>
+              <div class="sidebar-info-value">Réalisation scolaire (1re année)</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Catégorie</div>
+              <div class="sidebar-info-value">Développement Web</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Langages &amp; SGBD</div>
+              <div class="sidebar-info-value">PHP / MySQL</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Environnement</div>
+              <div class="sidebar-info-value">Serveur local (Apache, PHP, MySQL)</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Fonctionnalités</div>
+              <div class="sidebar-info-value">CRUD complet + Upload</div>
+            </div>
+          </div>
+
+          <a href="epreuve-e5.html" class="btn-back">
+            &larr; Retour à l'Épreuve E5
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p style="text-align:center; padding: 20px; color: #475569;">&copy; 2026 - Tous droits réservés</p>
+  </footer>
+
+</body>
+
+</html>
