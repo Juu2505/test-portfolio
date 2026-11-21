@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet Haute Disponibilité HAProxy &amp; Heartbeat | École IRIS | E5 Portfolio</title>
+  <meta name="description" content="Mise en place d'un cluster web haute disponibilité avec HAProxy et Heartbeat sous VMware Workstation (BTS SIO, École IRIS).">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    html, body {
+      background-color: #0b1120 !important;
+      background: #0b1120 !important;
+      color: #e2e8f0 !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    header {
+      background: rgba(11, 17, 32, 0.92) !important;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.15) !important;
+      backdrop-filter: blur(14px);
+    }
+    .logo { color: #e2e8f0 !important; }
+    .menu {
+      background: rgba(21, 30, 50, 0.95) !important;
+      border: 1px solid rgba(255,255,255,0.08) !important;
+    }
+    .menu a { color: #94a3b8 !important; }
+    .menu a:hover { color: #a855f7 !important; }
+    footer { background: #080e1c; border-top: 1px solid rgba(255,255,255,0.06); }
+
+    :root {
+      --accent: #a855f7;
+      --accent-light: #c084fc;
+      --accent-dark: #9333ea;
+      --accent-orange: #f97316;
+    }
+
+    .proj-hero {
+      padding: 70px 5% 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.83rem;
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+    .breadcrumb a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-active { color: var(--accent); font-weight: 600; }
+
+    .proj-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+    .badge-purple { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .badge-orange { background: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+    .badge-gray { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
+
+    .proj-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.2;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.5px;
+    }
+    .proj-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 0 32px 0;
+    }
+
+    .proj-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 5% 60px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+    }
+    @media (max-width: 900px) { .proj-content { grid-template-columns: 1fr; } }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(21,30,50,0.8));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+    .info-card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card p { color: #94a3b8; font-size: 0.93rem; line-height: 1.7; margin: 0 0 14px 0; }
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .schema-container {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      margin: 16px 0;
+    }
+    .schema-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .schema-caption {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.85rem;
+    }
+    .table-custom th {
+      background: rgba(168,85,247,0.15);
+      color: #f8fafc;
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .table-custom td {
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #cbd5e1;
+    }
+    .table-custom tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .step-list li { display: flex; align-items: flex-start; gap: 14px; color: #cbd5e1; font-size: 0.92rem; line-height: 1.5; }
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a855f7, #9333ea);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comp-grid { display: flex; flex-direction: column; gap: 12px; }
+    .comp-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .comp-item-title { font-size: 0.85rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+    .comp-item-desc { font-size: 0.82rem; color: #64748b; margin: 0; }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      background: rgba(168,85,247,0.08);
+      border: 1px solid rgba(168,85,247,0.2);
+      color: #c084fc;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    /* SIDEBAR */
+    .sidebar-card {
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(21,30,50,0.85));
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 18px;
+      padding: 24px;
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .sidebar-info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .sidebar-info-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar-info-value { font-size: 0.88rem; font-weight: 600; color: #e2e8f0; }
+
+    .btn-pdf {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #a855f7, #9333ea);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      margin-top: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+    }
+    .btn-pdf:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+      color: #fff;
+    }
+    .btn-back {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    /* PDF SECTION */
+    .pdf-section {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      padding: 0 5%;
+    }
+    .pdf-section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, #a855f7, transparent);
+      margin-bottom: 25px;
+    }
+    .pdf-embed-wrapper {
+      width: 100%;
+      height: 750px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #1e293b;
+    }
+    .pdf-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Portfolio</a></div>
+      <ul class="menu">
+        <li><a href="epreuve-e5.html">Épreuve E5</a></li>
+        <li><a href="epreuve-e6.html">Épreuve E6</a></li>
+        <li><a href="entreprise.html">Entreprise</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+      </ul>
+      <a href="index.html" class="btn-nav-accueil">Accueil</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="proj-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <a href="epreuve-e5.html">Épreuve E5</a>
+        <span>/</span>
+        <span class="breadcrumb-active">Cluster Haute Disponibilité HAProxy &amp; Heartbeat</span>
+      </div>
+
+      <div class="proj-hero-badges">
+        <span class="badge badge-purple">École · IRIS</span>
+        <span class="badge badge-orange">Système &amp; Réseau</span>
+        <span class="badge badge-gray">BTS SIO</span>
+        <span class="badge badge-gray">Haute Disponibilité</span>
+      </div>
+
+      <h1 class="proj-title">Cluster Web Haute Disponibilité : HAProxy &amp; Heartbeat</h1>
+      <p class="proj-subtitle">
+        Mise en place d'une infrastructure web résiliente à tolérance de panne avec répartition de charge HTTP (Load Balancing Round-Robin) et basculement automatique d'IP virtuelle (VIP / Failover actif-passif).
+      </p>
+    </div>
+
+    <div class="proj-content">
+      <div>
+
+        <!-- 1. CONTEXTE -->
+        <div class="info-card">
+          <div class="info-card-title">1. Contexte &amp; Enjeux de la Haute Disponibilité</div>
+          <p>
+            Dans le cadre de ma formation en BTS SIO à l'école IRIS, ce projet a consisté à concevoir et déployer une architecture web à haute disponibilité éliminant tout point unique de défaillance (<strong>Single Point of Failure - SPOF</strong>).
+          </p>
+          <p>
+            Le projet répond aux enjeux majeurs de disponibilité en entreprise :
+          </p>
+          <ul style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0 0 14px 0;">
+            <li><strong>Enjeu économique :</strong> Éviter les pertes d'activité dues aux interruptions de service (downtime) et respecter les contrats de niveau de service (SLA).</li>
+            <li><strong>Enjeu technique :</strong> Garantir la continuité de service via la redondance matérielle et la bascule automatique (failover/failback) sans intervention humaine.</li>
+            <li><strong>Enjeu de sécurité :</strong> Absorber les pics de charge et isoler les serveurs web applicatifs en réseau interne privé (LAN).</li>
+          </ul>
+        </div>
+
+        <!-- 2. ARCHITECTURE TECHNIQUE -->
+        <div class="info-card">
+          <div class="info-card-title">2. Architecture &amp; Plan d'adressage</div>
+          <p>
+            L'infrastructure comprend <strong>5 machines virtuelles</strong> orchestrées sur deux réseaux distincts (VMnet) sous VMware Workstation :
+          </p>
+          <div class="schema-container">
+            <img src="images/haproxy/architecture_schema.png" alt="Schéma d'architecture Cluster HAProxy Heartbeat">
+            <div class="schema-caption">Schéma d'architecture du cluster HAProxy &amp; Heartbeat avec serveurs web Apache2 / PHP</div>
+          </div>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Machine</th>
+                <th>Rôle</th>
+                <th>IP WAN (eth0)</th>
+                <th>IP LAN (eth1)</th>
+                <th>Ressources</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CLI-01</strong></td>
+                <td>Poste client de test (Windows)</td>
+                <td>192.168.0.100/24</td>
+                <td>—</td>
+                <td>1 Go / 1 vCPU</td>
+              </tr>
+              <tr>
+                <td><strong>HAProxy1</strong></td>
+                <td>Load balancer primaire (Master)</td>
+                <td>192.168.0.11/24</td>
+                <td>172.20.0.11/24</td>
+                <td>1 Go / 1 vCPU</td>
+              </tr>
+              <tr>
+                <td><strong>HAProxy2</strong></td>
+                <td>Load balancer secondaire (Backup)</td>
+                <td>192.168.0.12/24</td>
+                <td>172.20.0.12/24</td>
+                <td>1 Go / 1 vCPU</td>
+              </tr>
+              <tr>
+                <td><strong>SERV-WEB1</strong></td>
+                <td>Serveur web (Apache2 / PHP)</td>
+                <td>—</td>
+                <td>172.20.0.21/24</td>
+                <td>1 Go / 1 vCPU</td>
+              </tr>
+              <tr>
+                <td><strong>SERV-WEB2</strong></td>
+                <td>Serveur web (Apache2 / PHP)</td>
+                <td>—</td>
+                <td>172.20.0.22/24</td>
+                <td>1 Go / 1 vCPU</td>
+              </tr>
+              <tr style="background: rgba(168,85,247,0.12); font-weight: 700;">
+                <td><strong>VIP Cluster</strong></td>
+                <td>Adresse IP Virtuelle flottante (Heartbeat)</td>
+                <td>192.168.0.10/24</td>
+                <td>Point d'accès client WAN</td>
+                <td>Bascule auto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3. ÉTAPES DE RÉALISATION -->
+        <div class="info-card">
+          <div class="info-card-title">3. Étapes clés de déploiement</div>
+          <ul class="step-list">
+            <li>
+              <div class="step-num">1</div>
+              <div>
+                <strong>Configuration réseau &amp; connectivité :</strong> Définition des commutateurs virtuels VMnet (Host-only), segmentation WAN/LAN et tests de connectivité ICMP (ping).
+              </div>
+            </li>
+            <li>
+              <div class="step-num">2</div>
+              <div>
+                <strong>Déploiement des backends Apache2 &amp; PHP :</strong> Installation des serveurs web, intégration du template applicatif "The Grill" avec Bootstrap CDN, et personnalisation des titres pour identifier le serveur répondant.
+              </div>
+            </li>
+            <li>
+              <div class="step-num">3</div>
+              <div>
+                <strong>Configuration du Load Balancing HAProxy :</strong> Paramétrage du frontend port 80 en round-robin, sondes d'intégrité (health-checks) régulières sur les backends et activation du tableau de bord de statistiques.
+              </div>
+            </li>
+            <li>
+              <div class="step-num">4</div>
+              <div>
+                <strong>Cluster Heartbeat &amp; IP Virtuelle (VIP) :</strong> Configuration de <code>ha.cf</code> (keepalive 5s, deadtime 30s, auto_failback on), <code>haresources</code> (attribution de la VIP 192.168.0.10) et sécurisation des échanges via <code>authkeys</code> (md5).
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 4. VALIDATION & TESTS DE TOLÉRANCE AUX PANNES -->
+        <div class="info-card">
+          <div class="info-card-title">4. Validation des tests de résilience</div>
+          <p>
+            Une série de 4 tests approfondis a été conduite depuis le poste client CLI-01 pour valider l'étanchéité et la continuité de service :
+          </p>
+          <div class="schema-container">
+            <img src="images/haproxy/stats_report.png" alt="Rapport de statistiques HAProxy">
+            <div class="schema-caption">Supervision en direct de la répartition de charge et détection de panne (health-check)</div>
+          </div>
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th>Test</th>
+                <th>Scénario testé</th>
+                <th>Comportement observé</th>
+                <th>Résultat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Round-Robin</strong></td>
+                <td>Accès client répété à l'URL de la VIP (192.168.0.10)</td>
+                <td>Alternance parfaite des réponses entre SERV-WEB1 et SERV-WEB2</td>
+                <td><span style="color: #34d399; font-weight: 700;">Validé</span></td>
+              </tr>
+              <tr>
+                <td><strong>2. Panne HAProxy1</strong></td>
+                <td>Arrêt forcé du service Heartbeat sur le nœud primaire</td>
+                <td>Bascule immédiate de la VIP sur HAProxy2, coupure invisible (1 paquet perdu)</td>
+                <td><span style="color: #34d399; font-weight: 700;">Validé</span></td>
+              </tr>
+              <tr>
+                <td><strong>3. Health-Check Web</strong></td>
+                <td>Arrêt du service Apache2 sur SERV-WEB1</td>
+                <td>Passage en rouge (DOWN) dans les stats, 100% du trafic rerouté vers SERV-WEB2</td>
+                <td><span style="color: #34d399; font-weight: 700;">Validé</span></td>
+              </tr>
+              <tr>
+                <td><strong>4. Failback auto</strong></td>
+                <td>Redémarrage du nœud primaire HAProxy1</td>
+                <td>Reprise automatique de la VIP par HAProxy1 sans interruption pour l'utilisateur</td>
+                <td><span style="color: #34d399; font-weight: 700;">Validé</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 5. COMPÉTENCES VALIDÉES -->
+        <div class="info-card">
+          <div class="info-card-title">5. Compétences BTS SIO validées</div>
+          <div class="comp-grid">
+            <div class="comp-item">
+              <div class="comp-item-title">Mettre à disposition des utilisateurs un service informatique</div>
+              <div class="comp-item-desc">Déploiement et intégration de serveurs web Apache2/PHP avec load balancer pour assurer l'accès continu aux services applicatifs.</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-item-title">Assurer la continuité de service et la résilience du SI</div>
+              <div class="comp-item-desc">Mise en place de mécanismes de tolérance aux pannes (IP virtuelle flottante Heartbeat, failover et reprise automatique).</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-item-title">Gérer le patrimoine informatique et superviser les infrastructures</div>
+              <div class="comp-item-desc">Supervision proactive via sondes d'intégrité (health-check) et interface de monitoring des flux HAProxy.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. TECHNOLOGIES UTILISÉES -->
+        <div class="info-card">
+          <div class="info-card-title">6. Environnement technique</div>
+          <div class="tech-tags">
+            <span class="tech-tag">HAProxy</span>
+            <span class="tech-tag">Heartbeat</span>
+            <span class="tech-tag">Load Balancing</span>
+            <span class="tech-tag">Haute Disponibilité (HA)</span>
+            <span class="tech-tag">IP Virtuelle (VIP)</span>
+            <span class="tech-tag">Failover / Failback</span>
+            <span class="tech-tag">Apache2</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Debian / Linux</span>
+            <span class="tech-tag">VMware Workstation</span>
+            <span class="tech-tag">Réseaux VMnet</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">Informations du projet</div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Établissement</div>
+              <div class="sidebar-info-value">École IRIS</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Cadre</div>
+              <div class="sidebar-info-value">Réalisation scolaire (1re année)</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Catégorie</div>
+              <div class="sidebar-info-value">Réseau, Support &amp; Système</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Outils principaux</div>
+              <div class="sidebar-info-value">HAProxy + Heartbeat + Apache2</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Environnement</div>
+              <div class="sidebar-info-value">VMware Workstation</div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-row">
+            <div>
+              <div class="sidebar-info-label">Date de rendu</div>
+              <div class="sidebar-info-value">13 avril 2026</div>
+            </div>
+          </div>
+
+          <a href="documentation/ProjetHAProxyHeartbeat.pdf" target="_blank" class="btn-pdf">
+            Consulter le compte-rendu (PDF)
+          </a>
+          <a href="documentation/ProjetHAProxyHeartbeat.docx" download class="btn-back" style="background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.3); color: #c084fc;">
+            Télécharger le dossier source (.docx)
+          </a>
+          <a href="epreuve-e5.html" class="btn-back">
+            Retour à l'Épreuve E5
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMBED DU PDF -->
+    <div class="pdf-section">
+      <div class="pdf-section-title">Compte-rendu complet : Cluster HAProxy &amp; Heartbeat</div>
+      <div class="section-divider"></div>
+      <div class="pdf-embed-wrapper">
+        <iframe
+          src="documentation/ProjetHAProxyHeartbeat.pdf"
+          title="Dossier technique HAProxy Heartbeat Haute Disponibilité"
+          loading="lazy">
+          <p>Votre navigateur ne supporte pas l'affichage PDF direct.
+            <a href="documentation/ProjetHAProxyHeartbeat.pdf" target="_blank">Téléchargez le document</a>.
+          </p>
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p style="text-align:center; padding: 20px; color: #475569;">&copy; 2026 - Tous droits réservés</p>
+  </footer>
+
+</body>
+
+</html>
